@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PrlPayrollRunView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.soltechsystem.model.prl.ViewObject.PrlPayrollRunView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="HRAM_EmployeeList1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.EmployeeList"
+    AMUsageName="HRAM"
+    ViewInstanceName="EmployeeList1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_HrJobsView1_1"
+    ViewObjectName="com.soltechsystem.model.hr.ViewObject.HrJobsView"
+    AMUsageName="HRAM"
+    ViewInstanceName="HrJobsView1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_HrDepartmentsView1_1"
+    ViewObjectName="com.soltechsystem.model.hr.ViewObject.HrDepartmentsView"
+    AMUsageName="HRAM"
+    ViewInstanceName="HrDepartmentsView1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_EmployeeTypeList1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.EmployeeTypeList"
+    AMUsageName="HRAM"
+    ViewInstanceName="EmployeeTypeList1"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_EmployeeId"
+    ListVOName="HRAM_EmployeeList1_1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EmployeeId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="EmployeeName"/>
+      <Item Value="EmployeeDepartment"/>
+      <Item Value="Designation"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="EmployeeId"/>
+      <Item Value="EmpName"/>
+      <Item Value="DepartmentName"/>
+      <Item Value="JobTitle"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="EmpName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="EmployeeListCriteria"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Designation"
+    ListVOName="HRAM_HrJobsView1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Designation"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="JobTitle"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Department"
+    ListVOName="HRAM_HrDepartmentsView1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Department"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DepartmentId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DepartmentName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EmployeeType"
+    ListVOName="HRAM_EmployeeTypeList1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EmployeeType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="PrlPayrollRun"
+    Entity="com.soltechsystem.model.prl.Entity.PrlPayrollRun"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PrlPayrollRun"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PrlPayrollRun"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="Department"
+    PrecisionRule="true"
+    EntityAttrName="Department"
+    EntityUsage="PrlPayrollRun"
+    AliasName="DEPARTMENT"
+    LOVName="LOV_Department">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Designation"
+    PrecisionRule="true"
+    EntityAttrName="Designation"
+    EntityUsage="PrlPayrollRun"
+    AliasName="DESIGNATION"
+    LOVName="LOV_Designation">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployeeId"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="PrlPayrollRun"
+    AliasName="EMPLOYEE_ID"
+    LOVName="LOV_EmployeeId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployeeType"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeType"
+    EntityUsage="PrlPayrollRun"
+    AliasName="EMPLOYEE_TYPE"
+    LOVName="LOV_EmployeeType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PayrollRunId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PayrollRunId"
+    EntityUsage="PrlPayrollRun"
+    AliasName="PAYROLL_RUN_ID"/>
+  <ViewAttribute
+    Name="SalaryMonth"
+    PrecisionRule="true"
+    EntityAttrName="SalaryMonth"
+    EntityUsage="PrlPayrollRun"
+    AliasName="SALARY_MONTH"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="PrlPayrollRun"
+    AliasName="UPDATED_BY"/>
+  <ViewAttribute
+    Name="UpdationDate"
+    PrecisionRule="true"
+    EntityAttrName="UpdationDate"
+    EntityUsage="PrlPayrollRun"
+    AliasName="UPDATION_DATE"/>
+  <ViewAttribute
+    Name="VersionNubmer"
+    PrecisionRule="true"
+    EntityAttrName="VersionNubmer"
+    EntityUsage="PrlPayrollRun"
+    AliasName="VERSION_NUBMER"/>
+  <ViewAttribute
+    Name="EmployeeName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select e.first_name||' '||e.last_name from hr_employees e where e.employee_id = PrlPayrollRun.employee_id)"/>
+  <ViewAttribute
+    Name="EmployeeDepartment"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select d.department_name from hr_employees e,     hr_departments d    where e.department_id = d.department_id    and e.employee_id = PrlPayrollRun.employee_id)"/>
+  <ViewAttribute
+    Name="EmployeeDesignation"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select j.job_title from hr_employees e,     hr_jobs j    where e.job_id = j.job_id    and e.employee_id = PrlPayrollRun.employee_id)"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.soltechsystem.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

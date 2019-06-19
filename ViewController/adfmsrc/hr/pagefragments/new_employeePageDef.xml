@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="new_employeePageDef"
+                Package="hr.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HrEmployeesView1" RangeSize="25" DataControl="HRAMDataControl" id="HrEmployeesView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="EmployeeId">
+      <AttrNames>
+        <Item Value="EmployeeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Col1" id="Col1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="JoiningDate">
+      <AttrNames>
+        <Item Value="JoiningDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_DepartmentId" id="DepartmentId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_EmployeeTypeId" id="EmployeeTypeId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_EmployeeStatus" id="EmployeeStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_JobId" id="JobId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ManagerFirstName">
+      <AttrNames>
+        <Item Value="ManagerFirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ManagerLastName">
+      <AttrNames>
+        <Item Value="ManagerLastName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_ManagerId" id="ManagerId"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Col9" id="Col9" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Col3" id="Col3" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Col4" id="Col4" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

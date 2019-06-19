@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.sys.vo.LOV.UserReportsList
+
+package com.soltechsystem.model.sys.vo.LOV
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="binduser")
+def binduser_VariableScript_Variable()
+{
+adf.context.current.sessionScope.get('userid')
+}
+

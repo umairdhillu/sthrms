@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="main_menu">
+    <page>/main_menu.jsf</page>
+  </view>
+  <view id="login">
+    <page>/login.jsf</page>
+  </view>
+  <view id="employees">
+    <page>/hr/jsfpages/employees.jsf</page>
+  </view>
+  <view id="security">
+    <page>/sys/jsfpages/security.jsf</page>
+  </view>
+  <view id="setup">
+    <page>/sys/jsfpages/setup.jsf</page>
+  </view>
+  <view id="payroll_master_def">
+    <page>/prl/jsfpages/payroll_master_def.jsf</page>
+  </view>
+  <method-call id="Commit">
+    <method>#{bindings.Commit.execute}</method>
+    <outcome>
+      <fixed-outcome>Commit</fixed-outcome>
+    </outcome>
+  </method-call>
+  <view id="time_attendance">
+    <page>/tms/jsfpages/time_attendance.jsf</page>
+  </view>
+  <view id="recruitment">
+    <page>/recruitment/recruitment.jsf</page>
+  </view>
+  <view id="leave_management_page">
+    <page>/hr/jsfpages/leave_management_page.jsf</page>
+  </view>
+  <control-flow-rule id="__3">
+    <from-activity-id>employees</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>goto_main_menu</from-outcome>
+      <to-activity-id>Commit</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__5">
+    <from-activity-id>security</from-activity-id>
+    <control-flow-case id="__6">
+      <from-outcome>goto_main_menu</from-outcome>
+      <to-activity-id>main_menu</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__7">
+    <from-activity-id>setup</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome>goto_main_menu</from-outcome>
+      <to-activity-id>main_menu</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__9">
+    <from-activity-id>payroll_master_def</from-activity-id>
+    <control-flow-case id="__10">
+      <from-outcome>goto_main_menu</from-outcome>
+      <to-activity-id>main_menu</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__11">
+    <from-activity-id>Commit</from-activity-id>
+    <control-flow-case id="__12">
+      <from-outcome>Commit</from-outcome>
+      <to-activity-id>main_menu</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__13">
+    <from-activity-id>time_attendance</from-activity-id>
+    <control-flow-case id="__14">
+      <from-outcome>goto_main_menu</from-outcome>
+      <to-activity-id>main_menu</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__16">
+    <from-activity-id>recruitment</from-activity-id>
+    <control-flow-case id="__17">
+      <from-outcome>goto_main_menu</from-outcome>
+      <to-activity-id>main_menu</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__20">
+    <from-activity-id>leave_management_page</from-activity-id>
+    <control-flow-case id="__21">
+      <from-outcome>goto_main_menu</from-outcome>
+      <to-activity-id>main_menu</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__1">
+    <managed-bean-name>MainMenuBean</managed-bean-name>
+    <managed-bean-class>com.soltechsystem.view.sys.MainMenu</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>LoginSetupBean</managed-bean-name>
+    <managed-bean-class>com.soltechsystem.view.sys.LoginSetup</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__15">
+    <managed-bean-name>ForTesting</managed-bean-name>
+    <managed-bean-class>com.soltechsystem.view.general.ForTesting</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

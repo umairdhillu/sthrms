@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="tf-setup">
+    <default-activity>check_session</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="setup_actions">
+      <page>/sys/page_fragments/setup_actions.jsff</page>
+    </view>
+    <router id="check_session">
+      <case id="__1">
+        <expression>#{sessionScope.username != null}</expression>
+        <outcome>YES</outcome>
+      </case>
+      <case id="__2">
+        <expression>#{sessionScope.username == null}</expression>
+        <outcome>NO</outcome>
+      </case>
+      <default-outcome>NO</default-outcome>
+    </router>
+    <url-view id="login_view">
+      <url>login</url>
+    </url-view>
+    <control-flow-rule id="__3">
+      <from-activity-id>check_session</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>YES</from-outcome>
+        <to-activity-id>setup_actions</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>NO</from-outcome>
+        <to-activity-id>login_view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

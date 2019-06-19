@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="admin_notificationsPageDef"
+                Package="hr.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="LeaveNotification1" RangeSize="25" DataControl="HRAMDataControl" id="LeaveNotification1Iterator"/>
+  </executables>
+  <bindings>
+  <tree IterBinding="LeaveNotification1Iterator" id="LeaveNotification1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.LeaveManagement.ViewObject.LeaveNotification"
+                      Name="LeaveNotification10">
+        <AttrNames>
+          <Item Value="LeaveType"/>
+          <Item Value="LeaveFrom"/>
+          <Item Value="LeaveTo"/>
+          <Item Value="EmpName"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="LeaveTypeName"/>
+          <Item Value="NumberOfLeaves"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.hr.Entity.HrEmployees
+
+package com.soltechsystem.model.hr.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="EmployeeId")
+def EmployeeId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("HR_EMPLOYEES_SEQ",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

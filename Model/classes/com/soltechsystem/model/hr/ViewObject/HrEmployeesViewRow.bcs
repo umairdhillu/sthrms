@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.hr.ViewObject.HrEmployeesView
+
+package com.soltechsystem.model.hr.ViewObject
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="FullName")
+def FullName_ExpressionScript_Expression()
+{
+(FirstName==null?'N/A':FirstName)+' '+(LastName==null?'N/A':LastName)
+}
+

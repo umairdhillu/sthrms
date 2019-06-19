@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="com.soltechsystem.model.hr.LeaveManagement.am.LeaveManagementAM">
+    <AppModuleConfig name="LeaveManagementAMLocal" jbo.project="com.soltechsystem.model.Model"
+                     ApplicationName="com.soltechsystem.model.hr.LeaveManagement.am.LeaveManagementAM"
+                     DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/hrms_connectionDS"/>
+      <Security AppModuleJndiName="com.soltechsystem.model.hr.LeaveManagement.am.LeaveManagementAM"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="LeaveManagementAMShared" jbo.project="com.soltechsystem.model.Model"
+                     ApplicationName="com.soltechsystem.model.hr.LeaveManagement.am.LeaveManagementAM"
+                     DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/hrms_connectionDS"/>
+      <Security AppModuleJndiName="com.soltechsystem.model.hr.LeaveManagement.am.LeaveManagementAM"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>

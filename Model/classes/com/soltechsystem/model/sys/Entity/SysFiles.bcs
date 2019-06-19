@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.sys.Entity.SysFiles
+
+package com.soltechsystem.model.sys.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="FileId")
+def FileId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("sys_files_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:h="http://java.sun.com/jsf/html">
+  <af:document title="Login.jsf" id="d1" styleClass="MAINIMAGE">
+    <af:messages id="m1"/>
+    <af:form id="f1" inlineStyle='background-image:none;' usesUpload="true">
+      <af:panelGroupLayout id="pgl8" layout="vertical" inlineStyle='background-image:url("bg_new.jpg");'>
+        <af:panelGridLayout id="pgl3">
+          <af:gridRow id="gr2">
+            <af:gridCell id="gc3">
+              <af:spacer width="10" height="80" id="s1"/>
+            </af:gridCell>
+            <af:gridCell id="gc4"/>
+          </af:gridRow>
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+            <af:gridCell marginStart="5px" width="40%" id="gc1" halign="stretch">
+              <af:panelGroupLayout id="pgl2" halign="center" layout="vertical">
+                <af:panelFormLayout id="pfl1" styleClass="form_back">
+                  <f:facet name="footer"/>
+                  <af:panelGroupLayout id="pgl4" layout="vertical" halign="center">
+                    <af:outputText value="ARAR Consultants" id="ot1"
+                                   inlineStyle="color:#1E90FF;font-size:25px;font-weight:bold"/>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl5" layout="vertical" halign="center">
+                    <af:outputText value="Always a Step Ahead" id="ot2" inlineStyle="color:#DEDEDE"/>
+                  </af:panelGroupLayout>
+                  <af:inputText id="it1" value="#{backingBeanScope.LoginSetupBean.username}" autoSubmit="true"
+                                placeholder="Username" contentStyle="width:18rem;height:2.5rem"/>
+                  <af:spacer width="10" height="5" id="s2"/>
+                  <af:inputText id="it2" value="#{backingBeanScope.LoginSetupBean.password}" secret="true"
+                                autoSubmit="true" contentStyle="width:18rem;height:2.5rem" placeholder="Password"/>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:button text="Login" id="b1" action="#{backingBeanScope.LoginSetupBean.doLogin}" styleClass="a"
+                             inlineStyle='background-image:url("button_bg.png");'/>
+                  <af:panelGroupLayout id="pgl1" layout="horizontal" styleClass="AFStretchWidth">
+                    <af:spacer width="100%" height="1" id="s4" inlineStyle="background-color:#000000;"/>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl7" layout="vertical" halign="center">
+                    <af:outputText value="Sign in with" id="ot3"/>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl6" layout="vertical" halign="center">
+                    <af:image id="i1"
+                              inlineStyle="width:30px; height:30px" source="/images/google_icon.png"/>
+                  </af:panelGroupLayout>
+                  <af:outputText id="login_message" inlineStyle="color:Red; font-weight:bold;"
+                                 binding="#{backingBeanScope.LoginSetupBean.login_message}" clientComponent="true"/>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="60%" marginEnd="5px" id="gc2"/>
+          </af:gridRow>
+        </af:panelGridLayout>
+      </af:panelGroupLayout>
+    </af:form>
+  </af:document>
+ 
+  <!--oracle-jdev-comment:preferred-managed-bean-name:LoginSetupBean-->
+</f:view>

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelGroupLayout id="pgl2" layout="vertical" halign="left">
+      <af:panelBox id="pb2" inlineStyle="width:250px; padding:10px" showDisclosure="false" background="dark">
+        <f:facet name="toolbar">
+          <af:button text="back" id="b1" action="back"/>
+        </f:facet>
+        <af:listView value="#{bindings.LeaveBalance1.collectionModel}" var="item"
+                     emptyText="#{bindings.LeaveBalance1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                     fetchSize="#{bindings.LeaveBalance1.rangeSize}" id="lv1">
+          <af:listItem id="li1">
+            <af:panelGridLayout id="pgl3">
+              <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+                <af:gridCell marginStart="5px" width="50%" id="gc1">
+                  <af:outputFormatted value="#{item.bindings.LeaveType.inputValue}" id="of1"/>
+                </af:gridCell>
+                <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                  <af:outputFormatted value="#{item.bindings.LeavesInBalance.inputValue}" id="of2">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.LeaveBalance1.hints.LeavesInBalance.format}"/>
+                  </af:outputFormatted>
+                </af:gridCell>
+              </af:gridRow>
+            </af:panelGridLayout>
+          </af:listItem>
+        </af:listView>
+      </af:panelBox>
+    </af:panelGroupLayout>
+    <af:panelBox text="Attendance Report" id="pb1">
+      <f:facet name="toolbar"/>
+      <af:table value="#{bindings.AttendanceReport1.collectionModel}" var="row"
+                rows="#{bindings.AttendanceReport1.rangeSize}"
+                emptyText="#{bindings.AttendanceReport1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                rowBandingInterval="0" selectedRowKeys="#{bindings.AttendanceReport1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.AttendanceReport1.collectionModel.makeCurrent}" rowSelection="single"
+                fetchSize="#{bindings.AttendanceReport1.rangeSize}" id="t1" autoHeightRows="10"
+                styleClass="AFStretchWidth">
+        <af:column headerText="In Time" id="c1">
+          <af:outputText value="#{row.InTime}" shortDesc="#{bindings.AttendanceReport1.hints.InTime.tooltip}" id="ot1">
+            <af:convertDateTime pattern="#{bindings.AttendanceReport1.hints.InTime.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="Out Time" id="c2">
+          <af:outputText value="#{row.OutTime}" shortDesc="#{bindings.AttendanceReport1.hints.OutTime.tooltip}"
+                         id="ot2">
+            <af:convertDateTime pattern="#{bindings.AttendanceReport1.hints.OutTime.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="Shift Start" id="c3">
+          <af:outputText value="#{row.ShiftStart}" shortDesc="#{bindings.AttendanceReport1.hints.ShiftStart.tooltip}"
+                         id="ot3">
+            <af:convertDateTime pattern="#{bindings.AttendanceReport1.hints.ShiftStart.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="Shift End" id="c4">
+          <af:outputText value="#{row.ShiftEnd}" shortDesc="#{bindings.AttendanceReport1.hints.ShiftEnd.tooltip}"
+                         id="ot4">
+            <af:convertDateTime pattern="#{bindings.AttendanceReport1.hints.ShiftEnd.format}"/>
+          </af:outputText>
+        </af:column>
+      </af:table>
+    </af:panelBox>
+    <af:panelBox text="Leave Report" id="pb3" disclosed="false">
+      <f:facet name="toolbar"/>
+      <af:table value="#{bindings.LeaveReport1.collectionModel}" var="row" rows="#{bindings.LeaveReport1.rangeSize}"
+                emptyText="#{bindings.LeaveReport1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                rowBandingInterval="0" selectedRowKeys="#{bindings.LeaveReport1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.LeaveReport1.collectionModel.makeCurrent}" rowSelection="single"
+                fetchSize="#{bindings.LeaveReport1.rangeSize}" id="t2">
+        <af:column headerText="From" id="c5">
+          <af:outputText value="#{row.LeaveFrom}" shortDesc="#{bindings.LeaveReport1.hints.LeaveFrom.tooltip}" id="ot5">
+            <af:convertDateTime pattern="#{bindings.LeaveReport1.hints.LeaveFrom.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="To" id="c6">
+          <af:outputText value="#{row.LeaveTo}" shortDesc="#{bindings.LeaveReport1.hints.LeaveTo.tooltip}" id="ot6">
+            <af:convertDateTime pattern="#{bindings.LeaveReport1.hints.LeaveTo.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="Status" id="c7">
+          <af:outputText value="#{row.LeaveStatus}" shortDesc="#{bindings.LeaveReport1.hints.LeaveStatus.tooltip}"
+                         id="ot7"/>
+        </af:column>
+        <af:column headerText="Leave Type" id="c8">
+          <af:outputText value="#{row.LeaveType}" shortDesc="#{bindings.LeaveReport1.hints.LeaveType.tooltip}"
+                         id="ot8"/>
+        </af:column>
+      </af:table>
+    </af:panelBox>
+  </af:panelGroupLayout>
+</ui:composition>

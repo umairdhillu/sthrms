@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="2.1" xmlns="http://java.sun.com/xml/ns/javaee">
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+  </application>
+  <validator>
+    <validator-id>ivalid</validator-id>
+    <validator-class>com.soltechsystem.view.general.IValidate</validator-class>
+  </validator>
+  <validator>
+    <validator-id>emailValid</validator-id>
+    <validator-class>com.soltechsystem.view.general.EmailValidate</validator-class>
+  </validator>
+  <validator>
+    <validator-id>doNotValidate</validator-id>
+    <validator-class>com.soltechsystem.view.general.DoNotValidate</validator-class>
+  </validator>
+  <validator>
+    <validator-id>mobileValidate</validator-id>
+    <validator-class>com.soltechsystem.view.general.MobilePhoneValidator</validator-class>
+  </validator>
+  <validator>
+    <validator-id>nicValidate</validator-id>
+    <validator-class>com.soltechsystem.view.general.IDCardValidator</validator-class>
+  </validator>
+  <validator>
+    <validator-id>timeFormat</validator-id>
+    <validator-class>com.soltechsystem.view.general.TimeFormatValidator</validator-class>
+  </validator>
+</faces-config>

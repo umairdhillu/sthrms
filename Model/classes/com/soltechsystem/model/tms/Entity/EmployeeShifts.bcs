@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.tms.Entity.EmployeeShifts
+
+package com.soltechsystem.model.tms.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="ShiftId")
+def ShiftId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("employee_shifts_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysUserRole"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SYS_USER_ROLE"
+  AliasName="SysUserRole"
+  BindingStyle="OracleName"
+  RowClass="com.soltechsystem.model.sys.Entity.SysUserRoleImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="RoleId"
+    IsNotNull="true"
+    ColumnName="ROLE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SYS_USER_ROLE"
+    PrimaryKey="true">
+    <TransientExpression
+      Name="ExpressionScript"
+      trustMode="trusted"
+      CodeSourceName="SysUserRoleRow"/>
+  </Attribute>
+  <Attribute
+    Name="RoleName"
+    Precision="100"
+    ColumnName="ROLE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SYS_USER_ROLE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RoleDescription"
+    Precision="1000"
+    ColumnName="ROLE_DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SYS_USER_ROLE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SYS_USER_ROLE"/>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="SYS_USER_ROLE"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="UpdatedBy"
+    ColumnName="UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SYS_USER_ROLE"/>
+  <Attribute
+    Name="UpdationDate"
+    ColumnName="UPDATION_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="SYS_USER_ROLE"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="VersionNumber"
+    ColumnName="VERSION_NUMBER"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SYS_USER_ROLE"
+    HistoryColumn="VersionHistory"
+    ChangeIndicator="true"/>
+  <Key
+    Name="SysC0010204"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0010204"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.soltechsystem.model.sys.Entity.SysUserRole.RoleId"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.sys.Entity.HrLookupValues
+
+package com.soltechsystem.model.sys.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="LookupId")
+def LookupId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("hr_lookup_values_Seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HrApplicationsView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="RecruitmentAM_LOVDegrees1_1"
+    ViewObjectName="com.soltechsystem.model.recruitment.LOV.LOVDegrees"
+    AMUsageName="RecruitmentAM"
+    ViewInstanceName="LOVDegrees1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="RecruitmentAM_AdvertisementSource1_1"
+    ViewObjectName="com.soltechsystem.model.recruitment.LOV.AdvertisementSource"
+    AMUsageName="RecruitmentAM"
+    ViewInstanceName="AdvertisementSource1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="RecruitmentAM_VacancyLOV1_1"
+    ViewObjectName="com.soltechsystem.model.recruitment.LOV.VacancyLOV"
+    AMUsageName="RecruitmentAM"
+    ViewInstanceName="VacancyLOV1"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ApplicantDegree"
+    ListVOName="RecruitmentAM_LOVDegrees1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ApplicantDegree"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ApplicationSource"
+    ListVOName="RecruitmentAM_AdvertisementSource1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ApplicationSource"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_VacancyId"
+    ListVOName="RecruitmentAM_VacancyLOV1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="VacancyId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="VacancyId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="VacancyTitle"/>
+      <Item Value="DepartmentName"/>
+      <Item Value="JobTitle"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="HrApplications"
+    Entity="com.soltechsystem.model.recruitment.Entity.HrApplications"/>
+  <ViewAttribute
+    Name="ApplicationId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ApplicationId"
+    EntityUsage="HrApplications"
+    AliasName="APPLICATION_ID"/>
+  <ViewAttribute
+    Name="ApplicantName"
+    PrecisionRule="true"
+    EntityAttrName="ApplicantName"
+    EntityUsage="HrApplications"
+    AliasName="APPLICANT_NAME"/>
+  <ViewAttribute
+    Name="ApplicantContact"
+    PrecisionRule="true"
+    EntityAttrName="ApplicantContact"
+    EntityUsage="HrApplications"
+    AliasName="APPLICANT_CONTACT"/>
+  <ViewAttribute
+    Name="ApplicantEmail"
+    PrecisionRule="true"
+    EntityAttrName="ApplicantEmail"
+    EntityUsage="HrApplications"
+    AliasName="APPLICANT_EMAIL"/>
+  <ViewAttribute
+    Name="ApplicantPhone"
+    PrecisionRule="true"
+    EntityAttrName="ApplicantPhone"
+    EntityUsage="HrApplications"
+    AliasName="APPLICANT_PHONE"/>
+  <ViewAttribute
+    Name="ApplicantMobile"
+    PrecisionRule="true"
+    EntityAttrName="ApplicantMobile"
+    EntityUsage="HrApplications"
+    AliasName="APPLICANT_MOBILE"/>
+  <ViewAttribute
+    Name="ApplicantDegree"
+    PrecisionRule="true"
+    EntityAttrName="ApplicantDegree"
+    EntityUsage="HrApplications"
+    AliasName="APPLICANT_DEGREE"
+    LOVName="LOV_ApplicantDegree">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VacancyId"
+    PrecisionRule="true"
+    EntityAttrName="VacancyId"
+    EntityUsage="HrApplications"
+    AliasName="VACANCY_ID"
+    LOVName="LOV_VacancyId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ApplicationSource"
+    PrecisionRule="true"
+    EntityAttrName="ApplicationSource"
+    EntityUsage="HrApplications"
+    AliasName="APPLICATION_SOURCE"
+    LOVName="LOV_ApplicationSource">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReferredBy"
+    PrecisionRule="true"
+    EntityAttrName="ReferredBy"
+    EntityUsage="HrApplications"
+    AliasName="REFERRED_BY"/>
+  <ViewAttribute
+    Name="ExpectedSalary"
+    PrecisionRule="true"
+    EntityAttrName="ExpectedSalary"
+    EntityUsage="HrApplications"
+    AliasName="EXPECTED_SALARY"/>
+  <ViewAttribute
+    Name="ProposedSalary"
+    PrecisionRule="true"
+    EntityAttrName="ProposedSalary"
+    EntityUsage="HrApplications"
+    AliasName="PROPOSED_SALARY"/>
+  <ViewAttribute
+    Name="ApplicantAvailability"
+    PrecisionRule="true"
+    EntityAttrName="ApplicantAvailability"
+    EntityUsage="HrApplications"
+    AliasName="APPLICANT_AVAILABILITY"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="HrApplications"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="HrApplications"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="HrApplications"
+    AliasName="UPDATED_BY"/>
+  <ViewAttribute
+    Name="UpdationDate"
+    PrecisionRule="true"
+    EntityAttrName="UpdationDate"
+    EntityUsage="HrApplications"
+    AliasName="UPDATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="VersionNumber"
+    PrecisionRule="true"
+    EntityAttrName="VersionNumber"
+    EntityUsage="HrApplications"
+    AliasName="VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="CV_URL"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select '?filename='||file_name||chr(38)||'type='||file_ext||chr(38)||'cat='||file_context||chr(38)||'mimetype='||file_mime_type as cv_url from sys_files where file_context = 'APPLICANT_CV' AND REFERENCE_ID = HrApplications.APPLICATION_ID)"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="ShortList"
+    PrecisionRule="true"
+    EntityAttrName="ShortList"
+    EntityUsage="HrApplications"
+    AliasName="SHORT_LIST"/>
+  <ViewAttribute
+    Name="InterviewRemarks"
+    PrecisionRule="true"
+    EntityAttrName="InterviewRemarks"
+    EntityUsage="HrApplications"
+    AliasName="INTERVIEW_REMARKS"/>
+  <ViewLinkAccessor
+    Name="InterviewEvaluationView"
+    ViewLink="com.soltechsystem.model.recruitment.ViewLink.ApplicationInterviewLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="HrApplicationQuestionnaireView"
+    ViewLink="com.soltechsystem.model.recruitment.ViewLink.ApplicationQuestionViewLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="HrApplicantOrientationHeadView"
+    ViewLink="com.soltechsystem.model.recruitment.ViewLink.ApplicantOrientationHead"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

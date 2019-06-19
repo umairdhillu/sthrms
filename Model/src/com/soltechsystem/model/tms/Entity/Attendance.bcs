@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.tms.Entity.Attendance
+
+package com.soltechsystem.model.tms.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="AttendanceId")
+def AttendanceId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("attendance_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

@@ -1,0 +1,13 @@
+//Groovy Scripts for com.soltechsystem.model.hr.Entity.HrEmpOvertime
+
+package com.soltechsystem.model.hr.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="OvertimeId")
+def OvertimeId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("hr_emp_overtime_seq",adf.object.getDBTransaction())).getSequenceNumber()
+
+}
+

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="securityPageDef"
+                Package="sys.page_fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SysUsersView1" RangeSize="9" DataControl="SysAMDataControl" id="SysUsersView1Iterator"/>
+    <searchRegion Criteria="SysUsersViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SysUsersView1Iterator" id="SysUsersViewCriteriaQuery"/>
+    <iterator Binds="SysUserRoleView1" RangeSize="25" DataControl="SysAMDataControl" id="SysUserRoleView1Iterator"/>
+    <iterator Binds="SysUserRoleDetailView1" RangeSize="5" DataControl="SysAMDataControl"
+              id="SysUserRoleDetailView1Iterator"/>
+    <iterator Binds="SysProfileAssignmentHeaderView1" RangeSize="25" DataControl="SysAMDataControl"
+              id="SysProfileAssignmentHeaderView1Iterator"/>
+    <iterator Binds="SysProfileAssignmentLinesView1" RangeSize="25" DataControl="SysAMDataControl"
+              id="SysProfileAssignmentLinesView1Iterator"/>
+    <searchRegion Binds="SysProfileAssignmentLinesView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SysProfileAssignmentLinesView1Query"/>
+    <searchRegion Criteria="SysProfileAssignmentHeaderViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SysProfileAssignmentHeaderView1Iterator" id="SysProfileAssignmentHeaderViewCriteriaQuery"/>
+    <iterator Binds="SysUserRoleAsgtView1" RangeSize="25" DataControl="SysAMDataControl"
+              id="SysUserRoleAsgtView1Iterator"/>
+    <iterator Binds="SysUserRoleAsgtDetailView1" RangeSize="25" DataControl="SysAMDataControl"
+              id="SysUserRoleAsgtDetailView1Iterator"/>
+    <searchRegion Criteria="SysUserRoleAsgtViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SysUserRoleAsgtView1Iterator" id="SysUserRoleAsgtViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SysUsersView1Iterator" id="SysUsersView1">
+      <nodeDefinition DefName="com.soltechsystem.model.sys.vo.SysUsersView" Name="SysUsersView10">
+        <AttrNames>
+          <Item Value="UserId"/>
+          <Item Value="UserName"/>
+          <Item Value="Password"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="EmployeeId"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="Col1"/>
+          <Item Value="Col2"/>
+          <Item Value="Col3"/>
+          <Item Value="Col4"/>
+          <Item Value="Col5"/>
+          <Item Value="Attrib1"/>
+          <Item Value="Attrib2"/>
+          <Item Value="Attrib3"/>
+          <Item Value="Attrib4"/>
+          <Item Value="Attrib5"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="UpdationDate"/>
+          <Item Value="VersionNumber"/>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SysUsersView1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SysUsersView1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SysUsersView1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <attributeValues IterBinding="SysUsersView1Iterator" id="UserName">
+      <AttrNames>
+        <Item Value="UserName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysUsersView1Iterator" id="Password">
+      <AttrNames>
+        <Item Value="Password"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysUsersView1Iterator" id="EmailAddress">
+      <AttrNames>
+        <Item Value="EmailAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SysUsersView1Iterator" StaticList="false" Uses="LOV_EmployeeId" id="EmployeeId"/>
+    <attributeValues IterBinding="SysUsersView1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysUsersView1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysUserRoleView1Iterator" id="RoleName">
+      <AttrNames>
+        <Item Value="RoleName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysUserRoleView1Iterator" id="RoleDescription">
+      <AttrNames>
+        <Item Value="RoleDescription"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SysUserRoleView1Iterator" id="SysUserRoleView1">
+      <nodeDefinition DefName="com.soltechsystem.model.sys.vo.SysUserRoleView" Name="SysUserRoleView10">
+        <AttrNames>
+          <Item Value="RoleName"/>
+          <Item Value="RoleDescription"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="UpdationDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SysUserRoleView1Iterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="SysUserRoleDetailView1Iterator" id="SysUserRoleDetailView1">
+      <nodeDefinition DefName="com.soltechsystem.model.sys.vo.SysUserRoleDetailView" Name="SysUserRoleDetailView10">
+        <AttrNames>
+          <Item Value="ProfileId"/>
+          <Item Value="ProfileValue"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="UpdationDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SysUserRoleDetailView1Iterator" id="CreateInsert2" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <listOfValues IterBinding="SysProfileAssignmentHeaderView1Iterator" StaticList="false" Uses="LOV_UserId"
+                  id="UserId"/>
+    <attributeValues IterBinding="SysProfileAssignmentHeaderView1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysProfileAssignmentHeaderView1Iterator" id="CreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysProfileAssignmentHeaderView1Iterator" id="UpdatedBy">
+      <AttrNames>
+        <Item Value="UpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysProfileAssignmentHeaderView1Iterator" id="UpdationDate">
+      <AttrNames>
+        <Item Value="UpdationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SysProfileAssignmentLinesView1Iterator" id="SysProfileAssignmentLinesView1">
+      <nodeDefinition DefName="com.soltechsystem.model.sys.vo.SysProfileAssignmentLinesView"
+                      Name="SysProfileAssignmentLinesView10">
+        <AttrNames>
+          <Item Value="AssignmentLineId"/>
+          <Item Value="AssignmentHeaderId"/>
+          <Item Value="ProfileId"/>
+          <Item Value="ProfileValue"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="UpdationDate"/>
+          <Item Value="VersionNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SysProfileAssignmentHeaderView1Iterator" id="UserName1">
+      <AttrNames>
+        <Item Value="UserName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SysProfileAssignmentHeaderView1Iterator" id="CreateInsert3" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SysProfileAssignmentHeaderView1Iterator" id="Next1" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SysProfileAssignmentHeaderView1Iterator" id="Previous1" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="SysProfileAssignmentLinesView1Iterator" id="CreateInsert4" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <listOfValues IterBinding="SysUserRoleAsgtView1Iterator" StaticList="false" Uses="LOV_UserId" id="UserId1"/>
+    <attributeValues IterBinding="SysUserRoleAsgtView1Iterator" id="CreationDate1">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysUserRoleAsgtView1Iterator" id="UpdationDate1">
+      <AttrNames>
+        <Item Value="UpdationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SysUserRoleAsgtDetailView1Iterator" id="SysUserRoleAsgtDetailView1">
+      <nodeDefinition DefName="com.soltechsystem.model.sys.vo.SysUserRoleAsgtDetailView"
+                      Name="SysUserRoleAsgtDetailView10">
+        <AttrNames>
+          <Item Value="RoleId"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdationDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SysUserRoleAsgtView1Iterator" id="CreateInsert5" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SysUserRoleAsgtDetailView1Iterator" id="CreateInsert6" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <attributeValues IterBinding="SysUserRoleAsgtView1Iterator" id="Username">
+      <AttrNames>
+        <Item Value="Username"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SysUserRoleAsgtView1Iterator" id="Next2" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SysUserRoleAsgtView1Iterator" id="Previous2" RequiresUpdateModel="true" Action="previous"/>
+  </bindings>
+</pageDefinition>

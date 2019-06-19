@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGridLayout id="pgl1">
+        <af:gridRow marginTop="5px" height="auto" id="gr1">
+            <af:gridCell marginStart="5px" width="34%" id="gc1" halign="stretch"
+                         rendered="${sessionScope.HR_ACCESS eq 'YES'}">
+                <af:panelBox id="pb1" background="light" showDisclosure="false" text="HR">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl2" layout="vertical" halign="center">
+                        <af:commandLink id="cl1" action="show_employees">
+                            <af:image shortDesc="test" id="i1"
+                                      inlineStyle="width:300px;height:150px" source="/images/hr.jpg"/>
+                        </af:commandLink>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="33%" id="gc2" halign="stretch"
+                         rendered="${sessionScope.SECURITY_ACCESS eq 'YES'}">
+                <af:panelBox id="pb2" background="light" showDisclosure="false" text="Security">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl3" layout="vertical" halign="center">
+                        <af:commandLink id="cl2" action="user_and_security">
+                            <af:image shortDesc="test" id="i2"
+                                      inlineStyle="width:300px;height:150px" source="/images/security.png"/>
+                        </af:commandLink>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc3" halign="stretch">
+                <af:panelBox id="pb3" background="light" showDisclosure="false" text="Time and Attendance"
+                             rendered="${sessionScope.TMS_ACCESS eq 'YES'}">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl4" layout="vertical" halign="center">
+                        <af:commandLink id="cl3" action="tms">
+                            <af:image shortDesc="test" id="i3" inlineStyle="width:300px;height:150px"
+                                      source="/images/tms.png"/>
+                        </af:commandLink>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+            </af:gridCell>
+        </af:gridRow>
+        <af:gridRow marginTop="5px" height="auto" id="gr2">
+            <af:gridCell marginStart="5px" width="34%" id="gc4" halign="stretch"
+                         rendered="#{sessionScope.SETUP_ACCESS eq 'YES'}">
+                <af:panelBox id="pb4" background="light" showDisclosure="false" text="Application Administrator">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl5" layout="vertical" halign="center">
+                        <af:commandLink id="cl4" action="setup">
+                            <af:image shortDesc="test" id="i4" inlineStyle="width:300px;height:150px"
+                                      source="/images/setup.png"/>
+                        </af:commandLink>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="33%" id="gc5" halign="stretch">
+                <af:panelBox id="pb5" background="light" showDisclosure="false" text="Payroll"
+                             rendered="#{sessionScope.PAYROLL eq 'YES'}">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl6" layout="vertical" halign="center">
+                        <af:commandLink id="cl5" action="payroll">
+                            <af:image shortDesc="test" id="i5" inlineStyle="width:300px;height:150px"
+                                      source="/images/payroll.jpg"/>
+                        </af:commandLink>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc6" halign="stretch">
+                <af:panelBox id="pb6" background="light" showDisclosure="false" text="Recruitment"
+                             rendered="#{sessionScope.PAYROLL eq 'YES'}">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl7" layout="vertical" halign="center">
+                        <af:commandLink id="cl7" action="recruitment">
+                            <af:image shortDesc="test" id="i7" inlineStyle="width:300px;height:150px"
+                                      source="/images/recruitment.png"/>
+                        </af:commandLink>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+            </af:gridCell>
+        </af:gridRow>
+        <af:gridRow marginTop="5px" height="auto" id="gr3">
+            <af:gridCell marginStart="5px" width="34%" id="gc7" halign="stretch">
+                <af:panelBox id="pb7" background="light" showDisclosure="false" text="Leave Management"
+                             rendered="#{sessionScope.PAYROLL eq 'YES'}">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout id="pgl8" layout="vertical" halign="center">
+                        <af:commandLink id="cl8" action="show_leave_management">
+                            <af:image shortDesc="test" id="i8" inlineStyle="width:300px;height:150px"
+                                      source="/images/ess.png"/>
+                        </af:commandLink>
+                    </af:panelGroupLayout>
+                </af:panelBox>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="33%" id="gc8"/>
+            <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc9"/>
+        </af:gridRow>
+        <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr4">
+            <af:gridCell marginStart="5px" width="34%" id="gc10"/>
+            <af:gridCell marginStart="5px" width="33%" id="gc11"/>
+            <af:gridCell marginStart="5px" width="33%" marginEnd="5px" id="gc12"/>
+        </af:gridRow>
+    </af:panelGridLayout>
+</ui:composition>

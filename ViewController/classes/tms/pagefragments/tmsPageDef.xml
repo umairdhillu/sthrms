@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="tmsPageDef"
+                Package="tms.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EmployeeShiftsView1" RangeSize="25" DataControl="TMSAMDataControl"
+              id="EmployeeShiftsView1Iterator"/>
+    <iterator Binds="ShiftAssignParameterForm1" RangeSize="25" DataControl="TMSAMDataControl"
+              id="ShiftAssignParameterForm1Iterator"/>
+    <iterator Binds="ShiftsAll1" RangeSize="10" DataControl="TMSAMDataControl" id="ShiftsAll1Iterator"/>
+    <searchRegion Binds="ShiftsAll1Iterator" Criteria="" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ShiftsAll1Query"/>
+    <iterator Binds="AutoAttendanceParameterForm1" RangeSize="25" DataControl="TMSAMDataControl"
+              id="AutoAttendanceParameterForm1Iterator"/>
+    <iterator id="EmployeeInoutInterfaceView1Iterator" Binds="EmployeeInoutInterfaceView1"
+              DataControl="TMSAMDataControl" RangeSize="25"/>
+    <iterator Binds="AttendanceView1" RangeSize="10" DataControl="TMSAMDataControl" id="AttendanceView1Iterator"/>
+    <searchRegion Criteria="AttendanceViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="AttendanceView1Iterator" id="AttendanceViewCriteriaQuery"/>
+    <iterator Binds="LeaveGrantParameterForm1" RangeSize="25" DataControl="TMSAMDataControl"
+              id="LeaveGrantParameterForm1Iterator"/>
+    <iterator Binds="LeaveBalances1" RangeSize="8" DataControl="TMSAMDataControl" id="LeaveBalances1Iterator"/>
+    <searchRegion Criteria="LeaveBalancesCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="LeaveBalances1Iterator" id="LeaveBalancesCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <action IterBinding="EmployeeShiftsView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="EmployeeShiftsView1Iterator" id="EmployeeShiftsView1">
+      <nodeDefinition DefName="com.soltechsystem.model.tms.ViewObject.EmployeeShiftsView" Name="EmployeeShiftsView10">
+        <AttrNames>
+          <Item Value="ShiftCode"/>
+          <Item Value="ShiftStartTime"/>
+          <Item Value="ShiftEndTime"/>
+          <Item Value="ShiftDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="ShiftAssignParameterForm1Iterator" StaticList="false" Uses="LOV_EmployeeId"
+                  id="EmployeeId"/>
+    <list IterBinding="ShiftAssignParameterForm1Iterator" StaticList="false" Uses="LOV_DepartmentId" id="DepartmentId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ShiftAssignParameterForm1Iterator" StaticList="false" Uses="LOV_ShiftId" id="ShiftId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ShiftAssignParameterForm1Iterator" id="EmployeeName">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="assignShift" RequiresUpdateModel="true" Action="invokeMethod" MethodName="assignShift"
+                  IsViewObjectMethod="false" DataControl="TMSAMDataControl"
+                  InstanceName="bindings.assignShift.dataControl.dataProvider">
+      <NamedData NDName="employeeID" NDType="java.lang.String"/>
+      <NamedData NDName="departmentID" NDType="java.lang.String"/>
+      <NamedData NDName="shiftID" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="ShiftsAll1Iterator" id="ShiftsAll1">
+      <nodeDefinition DefName="com.soltechsystem.model.tms.ViewObject.ShiftsAll" Name="ShiftsAll10">
+        <AttrNames>
+          <Item Value="Name"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="ShiftCode"/>
+          <Item Value="ShiftStartTime"/>
+          <Item Value="ShiftEndTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="AutoAttendanceParameterForm1Iterator" StaticList="false" Uses="LOV_EmployeeId"
+                  id="EmployeeId1"/>
+    <list IterBinding="AutoAttendanceParameterForm1Iterator" StaticList="false" Uses="LOV_DepartmentId"
+          id="DepartmentId1" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="AutoAttendanceParameterForm1Iterator" id="EmployeeName1">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="generateRoster" RequiresUpdateModel="true" Action="invokeMethod" MethodName="generateRoster"
+                  IsViewObjectMethod="false" DataControl="TMSAMDataControl"
+                  InstanceName="bindings.generateRoster.dataControl.dataProvider">
+      <NamedData NDName="employeeID" NDType="java.lang.String"/>
+      <NamedData NDName="departmentID" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="processAttendance" RequiresUpdateModel="true" Action="invokeMethod" MethodName="processAttendance"
+                  IsViewObjectMethod="false" DataControl="TMSAMDataControl"
+                  InstanceName="bindings.processAttendance.dataControl.dataProvider"/>
+    <action id="Commit" DataControl="TMSAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="AttendanceView1Iterator" id="AttendanceView1">
+      <nodeDefinition DefName="com.soltechsystem.model.tms.ViewObject.AttendanceView" Name="AttendanceView10">
+        <AttrNames>
+          <Item Value="AttendanceId"/>
+          <Item Value="EmployeeId"/>
+          <Item Value="InTime"/>
+          <Item Value="OutTime"/>
+          <Item Value="ShiftStart"/>
+          <Item Value="ShiftEnd"/>
+          <Item Value="CreationDate"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="UpdationDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="VersionNumber"/>
+          <Item Value="InoutDate"/>
+          <Item Value="department"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="LeaveGrantParameterForm1Iterator" StaticList="false" Uses="LOV_EmployeeId"
+                  id="EmployeeId2"/>
+    <list IterBinding="LeaveGrantParameterForm1Iterator" StaticList="false" Uses="LOV_DepartmentId" id="DepartmentId2"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="LeaveGrantParameterForm1Iterator" id="EmployeeName2">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="grantLeaves" RequiresUpdateModel="true" Action="invokeMethod" MethodName="grantLeaves"
+                  IsViewObjectMethod="false" DataControl="TMSAMDataControl"
+                  InstanceName="bindings.grantLeaves.dataControl.dataProvider">
+      <NamedData NDName="employeeID" NDType="java.lang.String"/>
+      <NamedData NDName="departmentID" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="LeaveBalances1Iterator" id="LeaveBalances1">
+      <nodeDefinition DefName="com.soltechsystem.model.tms.ViewObject.LeaveBalances" Name="LeaveBalances10">
+        <AttrNames>
+          <Item Value="Empname"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="LeavesGranted"/>
+          <Item Value="LeaveType"/>
+          <Item Value="LeaveGrantDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

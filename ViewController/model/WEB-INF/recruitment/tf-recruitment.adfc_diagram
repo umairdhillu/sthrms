@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <Router
+      id="Router2">
+      <property
+         name="activityId">checkSession</property>
+      <property
+         name="x">182.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>checkSession&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="y">144.6377</property>
+      <property
+         name="exceptionHandler">false</property>
+   </Router>
+   <UrlView
+      id="UrlView3">
+      <property
+         name="activityId">login</property>
+      <property
+         name="x">373.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>login&lt;/b>&lt;/p>&lt;p>Activity Type:  Url View&lt;/p></property>
+      <property
+         name="y">249.49414</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="exceptionHandler">false</property>
+   </UrlView>
+   <View
+      id="View4">
+      <property
+         name="activityId">recruitment</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">439.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>recruitment&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">125.29883</property>
+      <property
+         name="page">/recruitment/pagefragments/recruitment.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="Router2"
+      to="View4">
+      <property
+         name="fromOutcome">YES</property>
+      <property
+         name="sdm:polyPoints">R50,223.0,144.28711,398.0,124.94824,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="Router2"
+      to="UrlView3">
+      <property
+         name="fromOutcome">NO</property>
+      <property
+         name="sdm:polyPoints">R54,223.0,147.78711,332.0,249.14355,L50</property>
+   </ControlFlowCase>
+</SDM>

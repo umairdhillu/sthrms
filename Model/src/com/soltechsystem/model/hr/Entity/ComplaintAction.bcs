@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.hr.Entity.ComplaintAction
+
+package com.soltechsystem.model.hr.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="ActionId")
+def ActionId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("complaint_action_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

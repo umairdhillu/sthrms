@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelBox id="pb6" showDisclosure="false">
+            <f:facet name="toolbar">
+                <af:button disabled="#{!bindings.CreateInsert5.enabled}" id="b10" icon="/images/new.png"
+                           action="#{LeaveManagementBean.showLoanPopup}"/>
+            </f:facet>
+            <af:table value="#{bindings.PrlLoanView1.collectionModel}" var="row"
+                      rows="#{bindings.PrlLoanView1.rangeSize}"
+                      emptyText="#{bindings.PrlLoanView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.PrlLoanView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.PrlLoanView1.collectionModel.makeCurrent}" rowSelection="single"
+                      fetchSize="#{bindings.PrlLoanView1.rangeSize}" id="t5"
+                      
+                      binding="#{LeaveManagementBean.loanTable}" partialTriggers="::b10 ::b33 ::b34 b35 b25">
+                <af:column headerText="Employee Name" id="c24" width="200">
+                    <af:outputText value="#{row.EmployeeName}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.EmployeeName.tooltip}" id="ot17"/>
+                </af:column>
+                <af:column headerText="Loan Date" id="c25">
+                    <af:outputText value="#{row.LoanDate}" shortDesc="#{bindings.PrlLoanView1.hints.LoanDate.tooltip}"
+                                   id="ot18">
+                        <af:convertDateTime pattern="#{bindings.PrlLoanView1.hints.LoanDate.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="Loan Type" id="c26">
+                    <af:selectOneChoice value="#{row.bindings.LoanType.inputValue}"
+                                        label="#{row.bindings.LoanType.label}"
+                                        required="#{bindings.PrlLoanView1.hints.LoanType.mandatory}"
+                                        shortDesc="#{bindings.PrlLoanView1.hints.LoanType.tooltip}" readOnly="true"
+                                        id="soc11">
+                        <f:selectItems value="#{row.bindings.LoanType.items}" id="si11"/>
+                        <f:validator binding="#{row.bindings.LoanType.validator}"/>
+                    </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="Installment Amount" id="c27" width="50">
+                    <af:outputText value="#{row.InstallmentAmount}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.InstallmentAmount.tooltip}" id="ot19">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.PrlLoanView1.hints.InstallmentAmount.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="No. Of Installments" id="c28" width="50">
+                    <af:outputText value="#{row.InstallmentCount}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.InstallmentCount.tooltip}" id="ot20">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.PrlLoanView1.hints.InstallmentCount.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="Loan Amount" id="c29" width="50">
+                    <af:outputText value="#{row.LoanAmount}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.LoanAmount.tooltip}" id="ot21">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.PrlLoanView1.hints.LoanAmount.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="Stop Deduction" id="c31">
+                    <af:outputText value="#{row.StopDeduction}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.StopDeduction.tooltip}" id="ot23"/>
+                </af:column>
+                <af:column id="c51">
+                    <af:panelGroupLayout id="pgl16">
+                        <af:button id="b35" icon="/images/edit.png" action="#{LeaveManagementBean.editLoan}"/>
+                        <af:button actionListener="#{bindings.Delete1.execute}" disabled="#{!bindings.Delete1.enabled}"
+                                   id="b25" icon="/images/delete.png"/>
+                    </af:panelGroupLayout>
+                </af:column>
+            </af:table>
+        </af:panelBox>
+        <af:popup childCreation="deferred" autoCancel="enabled" id="p4"
+                  binding="#{LeaveManagementBean.loanPopup}">
+            <af:panelWindow id="pw4">
+                <af:panelFormLayout id="pfl4">
+                    <af:panelLabelAndMessage id="plam3" label="Employee">
+                        <af:inputListOfValues id="employeeId2Id"
+                                              popupTitle="Search and Select: #{bindings.EmployeeId2.hints.label}"
+                                              value="#{bindings.EmployeeId2.inputValue}"
+                                              model="#{bindings.EmployeeId2.listOfValuesModel}"
+                                              required="#{bindings.EmployeeId2.hints.mandatory}" columns="32"
+                                              shortDesc="#{bindings.EmployeeId2.hints.tooltip}"
+                                              inlineStyle="margin-left:-15px">
+                            <f:validator binding="#{bindings.EmployeeId2.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId2.format}"/>
+                        </af:inputListOfValues>
+                        <f:facet name="end">
+                            <af:outputText value="#{bindings.EmployeeName2.inputValue}" id="ot16"
+                                           inlineStyle="font-weight:bolder"/>
+                        </f:facet>
+                    </af:panelLabelAndMessage>
+                    <af:spacer width="10" height="4" id="s1"/>
+                    <af:selectOneChoice value="#{bindings.LoanType.inputValue}" label="Loan Type"
+                                        required="#{bindings.LoanType.hints.mandatory}"
+                                        shortDesc="#{bindings.LoanType.hints.tooltip}" id="soc10"
+                                        contentStyle="width:250px">
+                        <f:selectItems value="#{bindings.LoanType.items}" id="si10"/>
+                        <f:validator binding="#{bindings.LoanType.validator}"/>
+                    </af:selectOneChoice>
+                    <af:inputDate value="#{bindings.LoanDate.inputValue}" label="Loan Date"
+                                  required="#{bindings.LoanDate.hints.mandatory}" columns="32"
+                                  shortDesc="#{bindings.LoanDate.hints.tooltip}" id="id4">
+                        <f:validator binding="#{bindings.LoanDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.LoanDate.format}"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.LoanAmount.inputValue}" label="Total Loan Amount"
+                                  required="#{bindings.LoanAmount.hints.mandatory}" columns="35"
+                                  maximumLength="#{bindings.LoanAmount.hints.precision}"
+                                  shortDesc="#{bindings.LoanAmount.hints.tooltip}" id="it19">
+                        <f:validator binding="#{bindings.LoanAmount.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.LoanAmount.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.InstallmentCount.inputValue}" label="No. Of Installments"
+                                  required="#{bindings.InstallmentCount.hints.mandatory}" columns="35"
+                                  maximumLength="#{bindings.InstallmentCount.hints.precision}"
+                                  shortDesc="#{bindings.InstallmentCount.hints.tooltip}" id="it20">
+                        <f:validator binding="#{bindings.InstallmentCount.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.InstallmentCount.format}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.InstallmentAmount.inputValue}" label="Installment Amount"
+                                  required="#{bindings.InstallmentAmount.hints.mandatory}" columns="35"
+                                  maximumLength="#{bindings.InstallmentAmount.hints.precision}"
+                                  shortDesc="#{bindings.InstallmentAmount.hints.tooltip}" id="it21">
+                        <f:validator binding="#{bindings.InstallmentAmount.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.InstallmentAmount.format}"/>
+                    </af:inputText>
+                    <af:selectBooleanCheckbox value="#{bindings.StopDeduction.inputValue}" label="Stop Deduction"
+                                              shortDesc="#{bindings.StopDeduction.hints.tooltip}" id="sbc2"/>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout id="pgl15">
+                            <af:button id="b33" icon="/images/check.png"
+                                       action="#{LeaveManagementBean.saveLoanExit}"/>
+                            <af:button id="b34" icon="/images/cancel.png"
+                                       action="#{LeaveManagementBean.exitLoanPopup}"/>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelWindow>
+        </af:popup>
+    </af:panelGroupLayout>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:LeaveManagementBean-->
+</ui:composition>

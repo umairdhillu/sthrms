@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="departments_jobsPageDef"
+                Package="hr.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HrDepartmentsView1" RangeSize="25" DataControl="HRAMDataControl" id="HrDepartmentsView1Iterator"/>
+    <iterator Binds="HrJobsView1" RangeSize="25" DataControl="HRAMDataControl" id="HrJobsView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="HrDepartmentsView1Iterator" id="HrDepartmentsView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrDepartmentsView" Name="HrDepartmentsView10">
+        <AttrNames>
+          <Item Value="DepartmentName"/>
+          <Item Value="DepartmentHead"/>
+          <Item Value="DepartmentHeadName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="HrJobsView1Iterator" id="HrJobsView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrJobsView" Name="HrJobsView10">
+        <AttrNames>
+          <Item Value="JobTitle"/>
+          <Item Value="JobRole"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="HrDepartmentsView1Iterator" StaticList="false" Uses="LOV_DepartmentHead"
+                  id="DepartmentHead"/>
+    <attributeValues IterBinding="HrDepartmentsView1Iterator" id="DepartmentName">
+      <AttrNames>
+        <Item Value="DepartmentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrDepartmentsView1Iterator" id="DepartmentHeadName">
+      <AttrNames>
+        <Item Value="DepartmentHeadName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HrDepartmentsView1Iterator" id="CreateInsert" InstanceName="HRAMDataControl.HrDepartmentsView1"
+            DataControl="HRAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" DataControl="HRAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="HRAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="HrJobsView1Iterator" id="JobTitle">
+      <AttrNames>
+        <Item Value="JobTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrJobsView1Iterator" StaticList="false" Uses="LOV_JobRole" id="JobRole" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <action IterBinding="HrJobsView1Iterator" id="CreateInsert1" InstanceName="HRAMDataControl.HrJobsView1"
+            DataControl="HRAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HrVacanciesView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="HRAM_HrDepartmentsView1_1"
+    ViewObjectName="com.soltechsystem.model.hr.ViewObject.HrDepartmentsView"
+    AMUsageName="HRAM"
+    ViewInstanceName="HrDepartmentsView1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_HrJobsView1_1"
+    ViewObjectName="com.soltechsystem.model.hr.ViewObject.HrJobsView"
+    AMUsageName="HRAM"
+    ViewInstanceName="HrJobsView1"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Department"
+    ListVOName="HRAM_HrDepartmentsView1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Department"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DepartmentName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DepartmentId"/>
+      <Item Value="DepartmentName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DepartmentName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Designation"
+    ListVOName="HRAM_HrJobsView1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Designation"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DesignationName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="JobId"/>
+      <Item Value="JobTitle"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="JobTitle"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="HrVacancies"
+    Entity="com.soltechsystem.model.recruitment.Entity.HrVacancies"/>
+  <ViewAttribute
+    Name="VacancyId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="VacancyId"
+    EntityUsage="HrVacancies"
+    AliasName="VACANCY_ID"/>
+  <ViewAttribute
+    Name="VacancyTitle"
+    PrecisionRule="true"
+    EntityAttrName="VacancyTitle"
+    EntityUsage="HrVacancies"
+    AliasName="VACANCY_TITLE"/>
+  <ViewAttribute
+    Name="Department"
+    PrecisionRule="true"
+    EntityAttrName="Department"
+    EntityUsage="HrVacancies"
+    AliasName="DEPARTMENT"
+    LOVName="LOV_Department">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Designation"
+    PrecisionRule="true"
+    EntityAttrName="Designation"
+    EntityUsage="HrVacancies"
+    AliasName="DESIGNATION"
+    LOVName="LOV_Designation">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VacancyDate"
+    PrecisionRule="true"
+    EntityAttrName="VacancyDate"
+    EntityUsage="HrVacancies"
+    AliasName="VACANCY_DATE"/>
+  <ViewAttribute
+    Name="RequiredDate"
+    PrecisionRule="true"
+    EntityAttrName="RequiredDate"
+    EntityUsage="HrVacancies"
+    AliasName="REQUIRED_DATE"/>
+  <ViewAttribute
+    Name="NoOfPosts"
+    PrecisionRule="true"
+    EntityAttrName="NoOfPosts"
+    EntityUsage="HrVacancies"
+    AliasName="NO_OF_POSTS"/>
+  <ViewAttribute
+    Name="Experience"
+    PrecisionRule="true"
+    EntityAttrName="Experience"
+    EntityUsage="HrVacancies"
+    AliasName="EXPERIENCE"/>
+  <ViewAttribute
+    Name="Qualification"
+    PrecisionRule="true"
+    EntityAttrName="Qualification"
+    EntityUsage="HrVacancies"
+    AliasName="QUALIFICATION"/>
+  <ViewAttribute
+    Name="DutiesAndResponsibilities"
+    PrecisionRule="true"
+    EntityAttrName="DutiesAndResponsibilities"
+    EntityUsage="HrVacancies"
+    AliasName="DUTIES_AND_RESPONSIBILITIES"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="HrVacancies"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="HrVacancies"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="HrVacancies"
+    AliasName="UPDATED_BY"/>
+  <ViewAttribute
+    Name="UpdationDate"
+    PrecisionRule="true"
+    EntityAttrName="UpdationDate"
+    EntityUsage="HrVacancies"
+    AliasName="UPDATION_DATE"/>
+  <ViewAttribute
+    Name="VersionNumber"
+    PrecisionRule="true"
+    EntityAttrName="VersionNumber"
+    EntityUsage="HrVacancies"
+    AliasName="VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="DesignationName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select job_title from hr_jobs where job_id = HrVacancies.DESIGNATION)"/>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select DEPARTMENT_NAME from hr_DEPARTMENTS where DEPARTMENT_id = HrVacancies.DEPARTMENT)"/>
+</ViewObject>

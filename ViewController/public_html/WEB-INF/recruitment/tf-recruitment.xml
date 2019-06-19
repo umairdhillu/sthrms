@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="tf-recruitment">
+    <default-activity>checkSession</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__9">
+      <managed-bean-name>RecruitmentBean</managed-bean-name>
+      <managed-bean-class>com.soltechsystem.view.recruitment.Recruitment</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__6">
+      <managed-bean-name>RecruitmentFiles</managed-bean-name>
+      <managed-bean-class>com.soltechsystem.view.recruitment.RecruitmentFiles</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <router id="checkSession">
+      <case id="__1">
+        <expression>#{sessionScope.username != null}</expression>
+        <outcome>YES</outcome>
+      </case>
+      <case id="__2">
+        <expression>#{sessionScope.username == null}</expression>
+        <outcome>NO</outcome>
+      </case>
+      <default-outcome>NO</default-outcome>
+    </router>
+    <url-view id="login">
+      <url>login</url>
+    </url-view>
+    <view id="recruitment">
+      <page>/recruitment/pagefragments/recruitment.jsff</page>
+    </view>
+    <control-flow-rule id="__3">
+      <from-activity-id>checkSession</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>YES</from-outcome>
+        <to-activity-id>recruitment</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>NO</from-outcome>
+        <to-activity-id>login</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

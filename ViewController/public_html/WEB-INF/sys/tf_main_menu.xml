@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="tf_main_menu">
+    <default-activity>check_session</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <router id="check_session">
+      <case id="__4">
+        <expression>#{sessionScope.username != null}</expression>
+        <outcome>YES</outcome>
+      </case>
+      <case id="__5">
+        <expression>#{sessionScope.username == null}</expression>
+        <outcome>NO</outcome>
+      </case>
+      <default-outcome>NO</default-outcome>
+    </router>
+    <view id="main_menu">
+      <page>/sys/page_fragments/main_menu.jsff</page>
+    </view>
+    <url-view id="login_page">
+      <url>login</url>
+    </url-view>
+    <url-view id="employees_view_url">
+      <url>employees</url>
+    </url-view>
+    <url-view id="urlView1">
+      <url>security</url>
+    </url-view>
+    <url-view id="setup">
+      <url>setup</url>
+    </url-view>
+    <url-view id="payroll">
+      <url>payroll_master_def</url>
+    </url-view>
+    <url-view id="tms">
+      <url>time_attendance</url>
+    </url-view>
+    <url-view id="recruitment">
+      <url>recruitment</url>
+    </url-view>
+    <url-view id="leave_management_url">
+      <url>leave_management_page</url>
+    </url-view>
+    <control-flow-rule id="__1">
+      <from-activity-id>check_session</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>NO</from-outcome>
+        <to-activity-id>login_page</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>YES</from-outcome>
+        <to-activity-id>main_menu</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>main_menu</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>show_employees</from-outcome>
+        <to-activity-id>employees_view_url</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>user_and_security</from-outcome>
+        <to-activity-id>urlView1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>setup</from-outcome>
+        <to-activity-id>setup</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>payroll</from-outcome>
+        <to-activity-id>payroll</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>tms</from-outcome>
+        <to-activity-id>tms</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome>recruitment</from-outcome>
+        <to-activity-id>recruitment</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__13">
+        <from-outcome>show_leave_management</from-outcome>
+        <to-activity-id>leave_management_url</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

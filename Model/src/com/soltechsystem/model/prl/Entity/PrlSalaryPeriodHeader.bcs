@@ -1,0 +1,13 @@
+//Groovy Scripts for com.soltechsystem.model.prl.Entity.PrlSalaryPeriodHeader
+
+package com.soltechsystem.model.prl.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="PeriodId")
+def PeriodId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("prl_salary_period_seq",adf.object.getDBTransaction())).getSequenceNumber()
+
+}
+

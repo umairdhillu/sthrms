@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PrlSpecialAllowDeductView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <Variable
+    Name="employee_bind"
+    Kind="viewcriteria"
+    Type="java.math.BigDecimal">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.soltechsystem.model.prl.ViewObject.PrlSpecialAllowDeductView.employee_bind_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="allow_Deduct_Date_bind"
+    Kind="viewcriteria"
+    Type="java.sql.Timestamp">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.soltechsystem.model.prl.ViewObject.PrlSpecialAllowDeductView.allow_Deduct_Date_bind_LABEL"/>
+        <DISPLAYWIDTH
+          Value="13"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <ViewAccessor
+    Name="PRLAM_MonthsList1_1"
+    ViewObjectName="com.soltechsystem.model.prl.LOV.MonthsList"
+    AMUsageName="PRLAM"
+    ViewInstanceName="MonthsList1"
+    RowLevelBinds="false"/>
+  <ViewAccessor
+    Name="PRLAM_SpecialAllowDeductList1_1"
+    ViewObjectName="com.soltechsystem.model.prl.LOV.SpecialAllowDeductList"
+    AMUsageName="PRLAM"
+    ViewInstanceName="SpecialAllowDeductList1"
+    RowLevelBinds="false"/>
+  <ViewAccessor
+    Name="HRAM_EmployeeList1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.EmployeeList"
+    AMUsageName="HRAM"
+    ViewInstanceName="EmployeeList1"
+    RowLevelBinds="false"/>
+  <ListBinding
+    Name="LOV_AdjustmentType"
+    ListVOName="PRLAM_SpecialAllowDeductList1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AdjustmentType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="AllowDeductId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="AllowenceDeductionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EmployeeId"
+    ListVOName="HRAM_EmployeeList1_1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EmployeeId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="EmployeeDepartment"/>
+      <Item Value="EmployeeGrade"/>
+      <Item Value="EmployeeDesignation"/>
+      <Item Value="EmployeeName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="EmployeeId"/>
+      <Item Value="DepartmentName"/>
+      <Item Value="GradeName"/>
+      <Item Value="JobTitle"/>
+      <Item Value="EmpName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="EmpName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="EmployeeListCriteria"/>
+  </ListBinding>
+  <EntityUsage
+    Name="PrlSpecialAllowDeduct"
+    Entity="com.soltechsystem.model.prl.Entity.PrlSpecialAllowDeduct"/>
+  <ViewAttribute
+    Name="SpecialId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SpecialId"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="SPECIAL_ID"/>
+  <ViewAttribute
+    Name="EmployeeId"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="EMPLOYEE_ID"
+    LOVName="LOV_EmployeeId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AdjustmentType"
+    PrecisionRule="true"
+    EntityAttrName="AdjustmentType"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="ADJUSTMENT_TYPE"
+    LOVName="LOV_AdjustmentType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Amount"
+    PrecisionRule="true"
+    EntityAttrName="Amount"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="AMOUNT"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="UPDATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="UpdationDate"
+    PrecisionRule="true"
+    EntityAttrName="UpdationDate"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="UPDATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="VersionNumber"
+    PrecisionRule="true"
+    EntityAttrName="VersionNumber"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="EmployeeName"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select e.first_name||' '||e.last_name from hr_employees e where e.employee_id = PrlSpecialAllowDeduct.employee_id)"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="EmployeeDepartment"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select d.department_name from hr_employees e,     hr_departments d    where e.department_id = d.department_id    and e.employee_id = PrlSpecialAllowDeduct.employee_id)"/>
+  <ViewAttribute
+    Name="EmployeeDesignation"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select j.job_title from hr_employees e,     hr_jobs j    where e.job_id = j.job_id    and e.employee_id = PrlSpecialAllowDeduct.employee_id)"/>
+  <ViewAttribute
+    Name="EmployeeGrade"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select g.grade_name from hr_employees e,     prl_grade_header g    where e.grade_id = g.grade_header_id    and e.employee_id = PrlSpecialAllowDeduct.employee_id)"/>
+  <ViewAttribute
+    Name="AllowDeductDate"
+    PrecisionRule="true"
+    EntityAttrName="AllowDeductDate"
+    EntityUsage="PrlSpecialAllowDeduct"
+    AliasName="ALLOW_DEDUCT_DATE"/>
+  <ViewCriteria
+    Name="PrlSpecialAllowDeductViewCriteria"
+    ViewObjectName="com.soltechsystem.model.prl.ViewObject.PrlSpecialAllowDeductView"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="Never"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PrlSpecialAllowDeductViewCriteria_row_0"
+      UpperColumns="1"
+      Conjunction="AND">
+      <ViewCriteriaItem
+        Name="EmployeeId"
+        ViewAttribute="EmployeeId"
+        Operator="="
+        Conjunction="AND"
+        Value=":employee_bind"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="AllowDeductDate"
+        ViewAttribute="AllowDeductDate"
+        Operator="BETWEEN"
+        Conjunction="AND"
+        Value=":allow_Deduct_Date_bind"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.soltechsystem.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,469 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelTabbed position="above" id="pt1" styleClass="AFStretchWidth">
+      <af:showDetailItem id="Policy" text="Shifts">
+        <af:panelBox id="pb1" showDisclosure="false">
+          <f:facet name="toolbar">
+            <af:panelGroupLayout id="pgl2" layout="horizontal">
+              <af:button actionListener="#{bindings.CreateInsert.execute}"
+                         disabled="#{!bindings.CreateInsert.enabled}" id="b1" icon="/images/add.png"/>
+            </af:panelGroupLayout>
+          </f:facet>
+          <af:table value="#{bindings.EmployeeShiftsView1.collectionModel}" var="row"
+                    rows="#{bindings.EmployeeShiftsView1.rangeSize}"
+                    emptyText="#{bindings.EmployeeShiftsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.EmployeeShiftsView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.EmployeeShiftsView1.collectionModel.makeCurrent}"
+                    rowSelection="single" fetchSize="#{bindings.EmployeeShiftsView1.rangeSize}" id="t1"
+                    partialTriggers="::b1">
+            <af:column headerText="Shift Code" id="c1">
+              <af:inputText value="#{row.bindings.ShiftCode.inputValue}"
+                            label="#{bindings.EmployeeShiftsView1.hints.ShiftCode.label}"
+                            required="#{bindings.EmployeeShiftsView1.hints.ShiftCode.mandatory}"
+                            columns="#{bindings.EmployeeShiftsView1.hints.ShiftCode.displayWidth}"
+                            maximumLength="#{bindings.EmployeeShiftsView1.hints.ShiftCode.precision}"
+                            shortDesc="#{bindings.EmployeeShiftsView1.hints.ShiftCode.tooltip}" id="it1">
+                <f:validator binding="#{row.bindings.ShiftCode.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column id="c4" headerText="Description">
+              <af:inputText value="#{row.bindings.ShiftDesc.inputValue}" simple="true"
+                            required="#{bindings.EmployeeShiftsView1.hints.ShiftDesc.mandatory}"
+                            columns="#{bindings.EmployeeShiftsView1.hints.ShiftDesc.displayWidth}"
+                            maximumLength="#{bindings.EmployeeShiftsView1.hints.ShiftDesc.precision}"
+                            shortDesc="#{bindings.EmployeeShiftsView1.hints.ShiftDesc.tooltip}" id="it4">
+                <f:validator binding="#{row.bindings.ShiftDesc.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="Start Time" id="c2">
+              <af:inputText value="#{row.bindings.ShiftStartTime.inputValue}"
+                            label="#{bindings.EmployeeShiftsView1.hints.ShiftStartTime.label}"
+                            required="#{bindings.EmployeeShiftsView1.hints.ShiftStartTime.mandatory}"
+                            columns="#{bindings.EmployeeShiftsView1.hints.ShiftStartTime.displayWidth}"
+                            maximumLength="#{bindings.EmployeeShiftsView1.hints.ShiftStartTime.precision}"
+                            shortDesc="#{bindings.EmployeeShiftsView1.hints.ShiftStartTime.tooltip}" id="it2"
+                            autoSubmit="true">
+                <f:validator validatorId="timeFormat"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="End Time" id="c3">
+              <af:inputText value="#{row.bindings.ShiftEndTime.inputValue}"
+                            label="#{bindings.EmployeeShiftsView1.hints.ShiftEndTime.label}"
+                            required="#{bindings.EmployeeShiftsView1.hints.ShiftEndTime.mandatory}"
+                            columns="#{bindings.EmployeeShiftsView1.hints.ShiftEndTime.displayWidth}"
+                            maximumLength="#{bindings.EmployeeShiftsView1.hints.ShiftEndTime.precision}"
+                            shortDesc="#{bindings.EmployeeShiftsView1.hints.ShiftEndTime.tooltip}" id="it3"
+                            autoSubmit="true">
+                <f:validator validatorId="timeFormat"/>
+              </af:inputText>
+            </af:column>
+          </af:table>
+        </af:panelBox>
+      </af:showDetailItem>
+      <af:showDetailItem text="Shift Assignments" id="sdi1">
+        <af:panelGridLayout id="pgl3">
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+            <af:gridCell marginStart="5px" width="50%" id="gc1" halign="stretch">
+              <af:panelBox id="pb2" showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:panelFormLayout id="pfl1">
+                  <af:panelLabelAndMessage label="Employee" id="plam1">
+                    <f:facet name="end">
+                      <af:outputText value="#{bindings.EmployeeName.inputValue}"
+                                     shortDesc="#{bindings.EmployeeName.hints.tooltip}" id="ot1"
+                                     inlineStyle="font-weight:bold"/>
+                    </f:facet>
+                    <af:inputListOfValues id="employeeIdId"
+                                          popupTitle="Search and Select: #{bindings.EmployeeId.hints.label}"
+                                          value="#{bindings.EmployeeId.inputValue}"
+                                          model="#{bindings.EmployeeId.listOfValuesModel}"
+                                          required="#{bindings.EmployeeId.hints.mandatory}" columns="30"
+                                          shortDesc="#{bindings.EmployeeId.hints.tooltip}"
+                                          inlineStyle="margin-left:-15px">
+                      <f:validator binding="#{bindings.EmployeeId.validator}"/>
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId.format}"/>
+                    </af:inputListOfValues>
+                  </af:panelLabelAndMessage>
+                  <af:selectOneChoice value="#{bindings.DepartmentId.inputValue}" label="Department"
+                                      required="#{bindings.DepartmentId.hints.mandatory}"
+                                      shortDesc="#{bindings.DepartmentId.hints.tooltip}" id="soc1"
+                                      contentStyle="width:200px">
+                    <f:selectItems value="#{bindings.DepartmentId.items}" id="si1"/>
+                    <f:validator binding="#{bindings.DepartmentId.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.ShiftId.inputValue}" label="Shift"
+                                      required="#{bindings.ShiftId.hints.mandatory}"
+                                      shortDesc="#{bindings.ShiftId.hints.tooltip}" id="soc2"
+                                      contentStyle="width:200px">
+                    <f:selectItems value="#{bindings.ShiftId.items}" id="si2"/>
+                    <f:validator binding="#{bindings.ShiftId.validator}"/>
+                  </af:selectOneChoice>
+                  <f:facet name="footer">
+                    <af:button text="Assign Shift" id="b2" action="#{Tms.assignShifts}"/>
+                  </f:facet>
+                </af:panelFormLayout>
+              </af:panelBox>
+            </af:gridCell>
+            <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2" halign="stretch">
+              <af:panelBox id="pb3" showDisclosure="false">
+                <f:facet name="toolbar"/>
+              </af:panelBox>
+              <af:table value="#{bindings.ShiftsAll1.collectionModel}" var="row" rows="#{bindings.ShiftsAll1.rangeSize}"
+                        emptyText="#{bindings.ShiftsAll1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        rowBandingInterval="0" selectedRowKeys="#{bindings.ShiftsAll1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.ShiftsAll1.collectionModel.makeCurrent}" rowSelection="single"
+                        fetchSize="#{bindings.ShiftsAll1.rangeSize}"
+                        filterModel="#{bindings.ShiftsAll1Query.queryDescriptor}" filterVisible="true"
+                        queryListener="#{bindings.ShiftsAll1Query.processQuery}" varStatus="vs" id="t2"
+                        autoHeightRows="10" styleClass="AFStretchWidth" binding="#{Tms.shiftsAll}">
+                <af:column sortProperty="#{bindings.ShiftsAll1.hints.Name.name}" filterable="true"
+                           headerText="Employee Name" id="c5">
+                  <af:inputText value="#{row.bindings.Name.inputValue}" label="#{bindings.ShiftsAll1.hints.Name.label}"
+                                required="#{bindings.ShiftsAll1.hints.Name.mandatory}"
+                                columns="#{bindings.ShiftsAll1.hints.Name.displayWidth}"
+                                maximumLength="#{bindings.ShiftsAll1.hints.Name.precision}"
+                                shortDesc="#{bindings.ShiftsAll1.hints.Name.tooltip}" id="it5" readOnly="true">
+                    <f:validator binding="#{row.bindings.Name.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.ShiftsAll1.hints.DepartmentName.name}" filterable="true"
+                           headerText="Department Name" id="c6">
+                  <af:inputText value="#{row.bindings.DepartmentName.inputValue}"
+                                label="#{bindings.ShiftsAll1.hints.DepartmentName.label}"
+                                required="#{bindings.ShiftsAll1.hints.DepartmentName.mandatory}"
+                                columns="#{bindings.ShiftsAll1.hints.DepartmentName.displayWidth}"
+                                maximumLength="#{bindings.ShiftsAll1.hints.DepartmentName.precision}"
+                                shortDesc="#{bindings.ShiftsAll1.hints.DepartmentName.tooltip}" id="it6"
+                                readOnly="true">
+                    <f:validator binding="#{row.bindings.DepartmentName.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.ShiftsAll1.hints.ShiftCode.name}" filterable="true"
+                           headerText="Shift Code" id="c7">
+                  <af:inputText value="#{row.bindings.ShiftCode.inputValue}"
+                                label="#{bindings.ShiftsAll1.hints.ShiftCode.label}"
+                                required="#{bindings.ShiftsAll1.hints.ShiftCode.mandatory}"
+                                columns="#{bindings.ShiftsAll1.hints.ShiftCode.displayWidth}"
+                                maximumLength="#{bindings.ShiftsAll1.hints.ShiftCode.precision}"
+                                shortDesc="#{bindings.ShiftsAll1.hints.ShiftCode.tooltip}" id="it7" readOnly="true">
+                    <f:validator binding="#{row.bindings.ShiftCode.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.ShiftsAll1.hints.ShiftStartTime.name}" filterable="true"
+                           headerText="Shift Start Time" id="c8">
+                  <af:inputText value="#{row.bindings.ShiftStartTime.inputValue}"
+                                label="#{bindings.ShiftsAll1.hints.ShiftStartTime.label}"
+                                required="#{bindings.ShiftsAll1.hints.ShiftStartTime.mandatory}"
+                                columns="#{bindings.ShiftsAll1.hints.ShiftStartTime.displayWidth}"
+                                maximumLength="#{bindings.ShiftsAll1.hints.ShiftStartTime.precision}"
+                                shortDesc="#{bindings.ShiftsAll1.hints.ShiftStartTime.tooltip}" id="it8"
+                                readOnly="true">
+                    <f:validator binding="#{row.bindings.ShiftStartTime.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="#{bindings.ShiftsAll1.hints.ShiftEndTime.name}" filterable="true"
+                           headerText="Shift End Time" id="c9">
+                  <af:inputText value="#{row.bindings.ShiftEndTime.inputValue}"
+                                label="#{bindings.ShiftsAll1.hints.ShiftEndTime.label}"
+                                required="#{bindings.ShiftsAll1.hints.ShiftEndTime.mandatory}"
+                                columns="#{bindings.ShiftsAll1.hints.ShiftEndTime.displayWidth}"
+                                maximumLength="#{bindings.ShiftsAll1.hints.ShiftEndTime.precision}"
+                                shortDesc="#{bindings.ShiftsAll1.hints.ShiftEndTime.tooltip}" id="it9" readOnly="true">
+                    <f:validator binding="#{row.bindings.ShiftEndTime.validator}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+            </af:gridCell>
+          </af:gridRow>
+        </af:panelGridLayout>
+      </af:showDetailItem>
+      <af:showDetailItem text="Roster Generation" id="sdi2">
+        <af:panelGroupLayout id="pgl7" layout="vertical">
+          <af:panelBox id="pb4" showDisclosure="false">
+            <f:facet name="toolbar"/>
+            <af:panelFormLayout id="pfl2">
+              <af:selectOneChoice value="#{bindings.DepartmentId1.inputValue}" label="Department"
+                                  required="#{bindings.DepartmentId1.hints.mandatory}"
+                                  shortDesc="#{bindings.DepartmentId1.hints.tooltip}" id="soc3">
+                <f:selectItems value="#{bindings.DepartmentId1.items}" id="si3"/>
+                <f:validator binding="#{bindings.DepartmentId1.validator}"/>
+              </af:selectOneChoice>
+              <af:panelLabelAndMessage label="Employee Name" id="plam2">
+                <af:inputListOfValues id="employeeId1Id"
+                                      popupTitle="Search and Select: #{bindings.EmployeeId1.hints.label}"
+                                      value="#{bindings.EmployeeId1.inputValue}"
+                                      model="#{bindings.EmployeeId1.listOfValuesModel}"
+                                      required="#{bindings.EmployeeId1.hints.mandatory}" columns="10"
+                                      shortDesc="#{bindings.EmployeeId1.hints.tooltip}">
+                  <f:validator binding="#{bindings.EmployeeId1.validator}"/>
+                  <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId1.format}"/>
+                </af:inputListOfValues>
+                <f:facet name="end">
+                  <af:outputText value="#{bindings.EmployeeName1.inputValue}"
+                                 shortDesc="#{bindings.EmployeeName1.hints.tooltip}" partialTriggers="employeeId1Id"
+                                 id="it10"/>
+                </f:facet>
+              </af:panelLabelAndMessage>
+              <f:facet name="footer">
+                <af:button text="Run" id="b3" icon="/images/run.png" action="#{Tms.generateRoster}"/>
+              </f:facet>
+            </af:panelFormLayout>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:showDetailItem>
+      <af:showDetailItem text="Attendance" id="sdi3">
+        <af:panelGroupLayout id="pgl5" layout="vertical">
+          <af:panelBox id="pb5" showDisclosure="false">
+            <f:facet name="toolbar"/>
+            <af:panelGroupLayout id="pgl4" layout="horizontal">
+              <af:inputFile label="Upload Attendance File" id="if1"
+                            value="#{backingBeanScope.TmsFileBean.attendanceFile}"/>
+              <af:button text="Process" id="b4" action="#{backingBeanScope.TmsFileBean.processAttendance}"/>
+            </af:panelGroupLayout>
+          </af:panelBox>
+          <af:panelBox text="Search Attendance" id="pb6" disclosed="false">
+            <f:facet name="toolbar"/>
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.AttendanceViewCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.AttendanceViewCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.AttendanceViewCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.AttendanceViewCriteriaQuery.processQueryOperation}"
+                      displayMode="simple" saveQueryMode="hidden"/>
+          </af:panelBox>
+          <af:panelBox id="pb7" showDisclosure="false">
+            <f:facet name="toolbar"/>
+            <af:table value="#{bindings.AttendanceView1.collectionModel}" var="row"
+                      rows="#{bindings.AttendanceView1.rangeSize}"
+                      emptyText="#{bindings.AttendanceView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.AttendanceView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.AttendanceView1.collectionModel.makeCurrent}" rowSelection="single"
+                      fetchSize="#{bindings.AttendanceView1.rangeSize}" id="t3" autoHeightRows="10"
+                      styleClass="AFStretchWidth">
+              <af:column headerText="#{bindings.AttendanceView1.hints.AttendanceId.label}" id="c10" rendered="false">
+                <af:inputText value="#{row.bindings.AttendanceId.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.AttendanceId.label}"
+                              required="#{bindings.AttendanceView1.hints.AttendanceId.mandatory}"
+                              columns="#{bindings.AttendanceView1.hints.AttendanceId.displayWidth}"
+                              maximumLength="#{bindings.AttendanceView1.hints.AttendanceId.precision}"
+                              shortDesc="#{bindings.AttendanceView1.hints.AttendanceId.tooltip}" id="it11">
+                  <f:validator binding="#{row.bindings.AttendanceId.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.AttendanceView1.hints.AttendanceId.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.AttendanceView1.hints.EmployeeId.label}" id="c11">
+                <af:inputText value="#{row.bindings.EmployeeId.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.EmployeeId.label}"
+                              required="#{bindings.AttendanceView1.hints.EmployeeId.mandatory}"
+                              columns="#{bindings.AttendanceView1.hints.EmployeeId.displayWidth}"
+                              maximumLength="#{bindings.AttendanceView1.hints.EmployeeId.precision}"
+                              shortDesc="#{bindings.AttendanceView1.hints.EmployeeId.tooltip}" id="it12">
+                  <f:validator binding="#{row.bindings.EmployeeId.validator}"/>
+                  <af:convertNumber groupingUsed="false" pattern="#{bindings.AttendanceView1.hints.EmployeeId.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="In Time" id="c12" width="160">
+                <af:inputDate value="#{row.bindings.InTime.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.InTime.label}"
+                              required="#{bindings.AttendanceView1.hints.InTime.mandatory}"
+                              columns="20"
+                              shortDesc="#{bindings.AttendanceView1.hints.InTime.tooltip}" id="id1">
+                  <f:validator binding="#{row.bindings.InTime.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.AttendanceView1.hints.InTime.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="Out Time" id="c13" width="160">
+                <af:inputDate value="#{row.bindings.OutTime.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.OutTime.label}"
+                              required="#{bindings.AttendanceView1.hints.OutTime.mandatory}"
+                              columns="20"
+                              shortDesc="#{bindings.AttendanceView1.hints.OutTime.tooltip}" id="id2">
+                  <f:validator binding="#{row.bindings.OutTime.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.AttendanceView1.hints.OutTime.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="Shift Start" id="c14" width="160">
+                <af:inputDate value="#{row.bindings.ShiftStart.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.ShiftStart.label}"
+                              required="#{bindings.AttendanceView1.hints.ShiftStart.mandatory}"
+                              columns="20"
+                              shortDesc="#{bindings.AttendanceView1.hints.ShiftStart.tooltip}" id="id3">
+                  <f:validator binding="#{row.bindings.ShiftStart.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.AttendanceView1.hints.ShiftStart.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="Shift End" id="c15" width="160">
+                <af:inputDate value="#{row.bindings.ShiftEnd.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.ShiftEnd.label}"
+                              required="#{bindings.AttendanceView1.hints.ShiftEnd.mandatory}"
+                              columns="20"
+                              shortDesc="#{bindings.AttendanceView1.hints.ShiftEnd.tooltip}" id="id4">
+                  <f:validator binding="#{row.bindings.ShiftEnd.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.AttendanceView1.hints.ShiftEnd.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="#{bindings.AttendanceView1.hints.CreationDate.label}" id="c16" rendered="false">
+                <af:inputDate value="#{row.bindings.CreationDate.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.CreationDate.label}"
+                              required="#{bindings.AttendanceView1.hints.CreationDate.mandatory}"
+                              columns="#{bindings.AttendanceView1.hints.CreationDate.displayWidth}"
+                              shortDesc="#{bindings.AttendanceView1.hints.CreationDate.tooltip}" id="id5">
+                  <f:validator binding="#{row.bindings.CreationDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.AttendanceView1.hints.CreationDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="#{bindings.AttendanceView1.hints.CreatedBy.label}" id="c17" rendered="false">
+                <af:inputText value="#{row.bindings.CreatedBy.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.CreatedBy.label}"
+                              required="#{bindings.AttendanceView1.hints.CreatedBy.mandatory}"
+                              columns="#{bindings.AttendanceView1.hints.CreatedBy.displayWidth}"
+                              maximumLength="#{bindings.AttendanceView1.hints.CreatedBy.precision}"
+                              shortDesc="#{bindings.AttendanceView1.hints.CreatedBy.tooltip}" id="it13">
+                  <f:validator binding="#{row.bindings.CreatedBy.validator}"/>
+                  <af:convertNumber groupingUsed="false" pattern="#{bindings.AttendanceView1.hints.CreatedBy.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.AttendanceView1.hints.UpdationDate.label}" id="c18" rendered="false">
+                <af:inputDate value="#{row.bindings.UpdationDate.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.UpdationDate.label}"
+                              required="#{bindings.AttendanceView1.hints.UpdationDate.mandatory}"
+                              columns="#{bindings.AttendanceView1.hints.UpdationDate.displayWidth}"
+                              shortDesc="#{bindings.AttendanceView1.hints.UpdationDate.tooltip}" id="id6">
+                  <f:validator binding="#{row.bindings.UpdationDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.AttendanceView1.hints.UpdationDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="#{bindings.AttendanceView1.hints.UpdatedBy.label}" id="c19" rendered="false">
+                <af:inputText value="#{row.bindings.UpdatedBy.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.UpdatedBy.label}"
+                              required="#{bindings.AttendanceView1.hints.UpdatedBy.mandatory}"
+                              columns="#{bindings.AttendanceView1.hints.UpdatedBy.displayWidth}"
+                              maximumLength="#{bindings.AttendanceView1.hints.UpdatedBy.precision}"
+                              shortDesc="#{bindings.AttendanceView1.hints.UpdatedBy.tooltip}" id="it14">
+                  <f:validator binding="#{row.bindings.UpdatedBy.validator}"/>
+                  <af:convertNumber groupingUsed="false" pattern="#{bindings.AttendanceView1.hints.UpdatedBy.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.AttendanceView1.hints.VersionNumber.label}" id="c20" rendered="false">
+                <af:inputText value="#{row.bindings.VersionNumber.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.VersionNumber.label}"
+                              required="#{bindings.AttendanceView1.hints.VersionNumber.mandatory}"
+                              columns="#{bindings.AttendanceView1.hints.VersionNumber.displayWidth}"
+                              maximumLength="#{bindings.AttendanceView1.hints.VersionNumber.precision}"
+                              shortDesc="#{bindings.AttendanceView1.hints.VersionNumber.tooltip}" id="it15">
+                  <f:validator binding="#{row.bindings.VersionNumber.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.AttendanceView1.hints.VersionNumber.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column headerText="#{bindings.AttendanceView1.hints.InoutDate.label}" id="c21">
+                <af:inputDate value="#{row.bindings.InoutDate.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.InoutDate.label}"
+                              required="#{bindings.AttendanceView1.hints.InoutDate.mandatory}"
+                              columns="#{bindings.AttendanceView1.hints.InoutDate.displayWidth}"
+                              shortDesc="#{bindings.AttendanceView1.hints.InoutDate.tooltip}" id="id7">
+                  <f:validator binding="#{row.bindings.InoutDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.AttendanceView1.hints.InoutDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="#{bindings.AttendanceView1.hints.department.label}" id="c22" rendered="false">
+                <af:inputText value="#{row.bindings.department.inputValue}"
+                              label="#{bindings.AttendanceView1.hints.department.label}"
+                              required="#{bindings.AttendanceView1.hints.department.mandatory}"
+                              columns="#{bindings.AttendanceView1.hints.department.displayWidth}"
+                              maximumLength="#{bindings.AttendanceView1.hints.department.precision}"
+                              shortDesc="#{bindings.AttendanceView1.hints.department.tooltip}" id="it16">
+                  <f:validator binding="#{row.bindings.department.validator}"/>
+                </af:inputText>
+              </af:column>
+            </af:table>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:showDetailItem>
+      <af:showDetailItem text="Grant Leaves" id="sdi4">
+        <af:panelBox id="pb8" showDisclosure="false">
+          <f:facet name="toolbar"/>
+          <af:panelFormLayout id="pfl3">
+            <af:selectOneChoice value="#{bindings.DepartmentId2.inputValue}" label="Department"
+                                required="#{bindings.DepartmentId2.hints.mandatory}"
+                                shortDesc="#{bindings.DepartmentId2.hints.tooltip}" id="soc4">
+              <f:selectItems value="#{bindings.DepartmentId2.items}" id="si4"/>
+              <f:validator binding="#{bindings.DepartmentId2.validator}"/>
+            </af:selectOneChoice>
+            <af:panelLabelAndMessage label="Employee" id="plam3">
+              <af:inputListOfValues id="employeeId2Id"
+                                    popupTitle="Search and Select: #{bindings.EmployeeId2.hints.label}"
+                                    value="#{bindings.EmployeeId2.inputValue}"
+                                    model="#{bindings.EmployeeId2.listOfValuesModel}"
+                                    required="#{bindings.EmployeeId2.hints.mandatory}"
+                                    columns="#{bindings.EmployeeId2.hints.displayWidth}"
+                                    shortDesc="#{bindings.EmployeeId2.hints.tooltip}">
+                <f:validator binding="#{bindings.EmployeeId2.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId2.format}"/>
+              </af:inputListOfValues>
+              <f:facet name="end">
+                <af:outputText value="#{bindings.EmployeeName2.inputValue}"
+                               shortDesc="#{bindings.EmployeeName2.hints.tooltip}" partialTriggers="employeeId2Id"
+                               id="it17"/>
+              </f:facet>
+            </af:panelLabelAndMessage>
+            <f:facet name="footer">
+              <af:button text="Grant" id="b5" action="#{Tms.grantLeaves}"/>
+            </f:facet>
+          </af:panelFormLayout>
+        </af:panelBox>
+        <af:spacer width="10" height="20" id="s1"/>
+        <af:panelGroupLayout id="pgl6" layout="vertical">
+          <af:panelBox text="Search" id="pb9" disclosed="false">
+            <f:facet name="toolbar"/>
+            <af:query id="qryId2" headerText="Search" disclosed="true"
+                      value="#{bindings.LeaveBalancesCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.LeaveBalancesCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.LeaveBalancesCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.LeaveBalancesCriteriaQuery.processQueryOperation}"
+                      displayMode="simple"/>
+          </af:panelBox>
+          <af:panelBox id="pb10" showDisclosure="false">
+            <f:facet name="toolbar"/>
+            <af:table value="#{bindings.LeaveBalances1.collectionModel}" var="row"
+                      rows="#{bindings.LeaveBalances1.rangeSize}"
+                      emptyText="#{bindings.LeaveBalances1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.LeaveBalances1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.LeaveBalances1.collectionModel.makeCurrent}" rowSelection="single"
+                      fetchSize="#{bindings.LeaveBalances1.rangeSize}" id="t4" autoHeightRows="8"
+                      styleClass="AFStretchWidth">
+              <af:column headerText="#{bindings.LeaveBalances1.hints.Empname.label}" id="c23">
+                <af:outputText value="#{row.Empname}" shortDesc="#{bindings.LeaveBalances1.hints.Empname.tooltip}"
+                               id="ot2"/>
+              </af:column>
+              <af:column headerText="#{bindings.LeaveBalances1.hints.DepartmentName.label}" id="c24">
+                <af:outputText value="#{row.DepartmentName}"
+                               shortDesc="#{bindings.LeaveBalances1.hints.DepartmentName.tooltip}" id="ot3"/>
+              </af:column>
+              <af:column headerText="#{bindings.LeaveBalances1.hints.LeavesGranted.label}" id="c25">
+                <af:outputText value="#{row.LeavesGranted}"
+                               shortDesc="#{bindings.LeaveBalances1.hints.LeavesGranted.tooltip}" id="ot4">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.LeaveBalances1.hints.LeavesGranted.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column headerText="#{bindings.LeaveBalances1.hints.LeaveType.label}" id="c26">
+                <af:outputText value="#{row.LeaveType}" shortDesc="#{bindings.LeaveBalances1.hints.LeaveType.tooltip}"
+                               id="ot5"/>
+              </af:column>
+              <af:column headerText="#{bindings.LeaveBalances1.hints.LeaveGrantDate.label}" id="c27">
+                <af:outputText value="#{row.LeaveGrantDate}"
+                               shortDesc="#{bindings.LeaveBalances1.hints.LeaveGrantDate.tooltip}" id="ot6">
+                  <af:convertDateTime pattern="#{bindings.LeaveBalances1.hints.LeaveGrantDate.format}"/>
+                </af:outputText>
+              </af:column>
+            </af:table>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:showDetailItem>
+    </af:panelTabbed>
+  </af:panelGroupLayout>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:Tms-->
+</ui:composition>

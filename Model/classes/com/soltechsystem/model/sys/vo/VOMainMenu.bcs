@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.sys.vo.VOMainMenu
+
+package com.soltechsystem.model.sys.vo
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="uname")
+def uname_VariableScript_Variable()
+{
+adf.context.current.sessionScope.get('username')
+}
+

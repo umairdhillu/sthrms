@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="recruitmentPageDef"
+                Package="recruitment.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HrVacanciesView1" RangeSize="25" DataControl="RecruitmentAMDataControl"
+              id="HrVacanciesView1Iterator"/>
+    <iterator Binds="HrApplicationsView1" RangeSize="25" DataControl="RecruitmentAMDataControl"
+              id="HrApplicationsView1Iterator"/>
+    <iterator id="SysFilesView1Iterator" Binds="SysFilesView1" DataControl="SysAMDataControl" RangeSize="25"/>
+    <iterator Binds="InterviewEvaluationView1" RangeSize="10" DataControl="RecruitmentAMDataControl"
+              id="InterviewEvaluationView1Iterator"/>
+    <iterator Binds="InterviewEvaluationView2" RangeSize="25" DataControl="RecruitmentAMDataControl"
+              id="InterviewEvaluationView2Iterator"/>
+    <iterator Binds="QuestionnaireView1" RangeSize="25" DataControl="RecruitmentAMDataControl"
+              id="QuestionnaireView1Iterator"/>
+    <iterator Binds="HrApplicationQuestionnaireView2" RangeSize="25" DataControl="RecruitmentAMDataControl"
+              id="HrApplicationQuestionnaireView2Iterator"/>
+    <iterator Binds="OrientationHeadView1" RangeSize="25" DataControl="RecruitmentAMDataControl"
+              id="OrientationHeadView1Iterator"/>
+    <searchRegion Binds="OrientationHeadView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="OrientationHeadView1Query"/>
+    <iterator Binds="OrientationLinesView1" RangeSize="25" DataControl="RecruitmentAMDataControl"
+              id="OrientationLinesView1Iterator"/>
+    <iterator Binds="HrApplicantOrientationHeadView2" RangeSize="25" DataControl="RecruitmentAMDataControl"
+              id="HrApplicantOrientationHeadView2Iterator"/>
+    <iterator Binds="HrApplicantOrientationView2" RangeSize="25" DataControl="RecruitmentAMDataControl"
+              id="HrApplicantOrientationView2Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="HrVacanciesView1Iterator" id="HrVacanciesView1">
+      <nodeDefinition DefName="com.soltechsystem.model.recruitment.ViewObject.HrVacanciesView" Name="HrVacanciesView10">
+        <AttrNames>
+          <Item Value="VacancyId"/>
+          <Item Value="VacancyTitle"/>
+          <Item Value="Department"/>
+          <Item Value="Designation"/>
+          <Item Value="VacancyDate"/>
+          <Item Value="RequiredDate"/>
+          <Item Value="NoOfPosts"/>
+          <Item Value="Experience"/>
+          <Item Value="Qualification"/>
+          <Item Value="DutiesAndResponsibilities"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="HrVacanciesView1Iterator" id="VacancyId">
+      <AttrNames>
+        <Item Value="VacancyId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrVacanciesView1Iterator" id="VacancyTitle">
+      <AttrNames>
+        <Item Value="VacancyTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrVacanciesView1Iterator" StaticList="false" Uses="LOV_Department" id="Department"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrVacanciesView1Iterator" StaticList="false" Uses="LOV_Designation" id="Designation"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrVacanciesView1Iterator" id="VacancyDate">
+      <AttrNames>
+        <Item Value="VacancyDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrVacanciesView1Iterator" id="RequiredDate">
+      <AttrNames>
+        <Item Value="RequiredDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrVacanciesView1Iterator" id="NoOfPosts">
+      <AttrNames>
+        <Item Value="NoOfPosts"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrVacanciesView1Iterator" id="Experience">
+      <AttrNames>
+        <Item Value="Experience"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrVacanciesView1Iterator" id="Qualification">
+      <AttrNames>
+        <Item Value="Qualification"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrVacanciesView1Iterator" id="DutiesAndResponsibilities">
+      <AttrNames>
+        <Item Value="DutiesAndResponsibilities"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HrVacanciesView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="HrVacanciesView1Iterator" id="CreateInsert"
+            InstanceName="RecruitmentAMDataControl.HrVacanciesView1" DataControl="RecruitmentAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Rollback" DataControl="RecruitmentAMDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <action id="Commit" DataControl="RecruitmentAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <tree IterBinding="HrApplicationsView1Iterator" id="HrApplicationsView1">
+      <nodeDefinition DefName="com.soltechsystem.model.recruitment.ViewObject.HrApplicationsView"
+                      Name="HrApplicationsView10">
+        <AttrNames>
+          <Item Value="ApplicantName"/>
+          <Item Value="ApplicantContact"/>
+          <Item Value="ApplicantEmail"/>
+          <Item Value="ApplicantPhone"/>
+          <Item Value="ApplicantMobile"/>
+          <Item Value="ApplicantDegree"/>
+          <Item Value="VacancyId"/>
+          <Item Value="ApplicationSource"/>
+          <Item Value="ReferredBy"/>
+          <Item Value="ExpectedSalary"/>
+          <Item Value="ProposedSalary"/>
+          <Item Value="ApplicantAvailability"/>
+          <Item Value="CV_URL"/>
+          <Item Value="ShortList"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="ApplicantName">
+      <AttrNames>
+        <Item Value="ApplicantName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="ApplicantContact">
+      <AttrNames>
+        <Item Value="ApplicantContact"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="ApplicantEmail">
+      <AttrNames>
+        <Item Value="ApplicantEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="ApplicantPhone">
+      <AttrNames>
+        <Item Value="ApplicantPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="ApplicantMobile">
+      <AttrNames>
+        <Item Value="ApplicantMobile"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrApplicationsView1Iterator" StaticList="false" Uses="LOV_ApplicantDegree" id="ApplicantDegree"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrApplicationsView1Iterator" StaticList="false" Uses="LOV_VacancyId" id="VacancyId1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrApplicationsView1Iterator" StaticList="false" Uses="LOV_ApplicationSource"
+          id="ApplicationSource" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="ReferredBy">
+      <AttrNames>
+        <Item Value="ReferredBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="ExpectedSalary">
+      <AttrNames>
+        <Item Value="ExpectedSalary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="ProposedSalary">
+      <AttrNames>
+        <Item Value="ProposedSalary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="ApplicantAvailability">
+      <AttrNames>
+        <Item Value="ApplicantAvailability"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HrApplicationsView1Iterator" id="CreateInsert1"
+            InstanceName="RecruitmentAMDataControl.HrApplicationsView1" DataControl="RecruitmentAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="HrApplicationsView1Iterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit1" DataControl="SysAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="CV_URL">
+      <AttrNames>
+        <Item Value="CV_URL"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="HrApplicationsView1Iterator" id="ShortList" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="ShortList"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="HrApplicationsView1Iterator" id="InterviewRemarks">
+      <AttrNames>
+        <Item Value="InterviewRemarks"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="deleteFileLinks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="deleteFileLinks"
+                  IsViewObjectMethod="false" DataControl="RecruitmentAMDataControl"
+                  InstanceName="bindings.deleteFileLinks.dataControl.dataProvider">
+      <NamedData NDName="type" NDType="java.lang.String"/>
+      <NamedData NDName="referenceID" NDType="int"/>
+    </methodAction>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="InterviewEvaluationId">
+      <AttrNames>
+        <Item Value="InterviewEvaluationId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="ApplicationId">
+      <AttrNames>
+        <Item Value="ApplicationId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="InterviewDate">
+      <AttrNames>
+        <Item Value="InterviewDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="InterviewVenue">
+      <AttrNames>
+        <Item Value="InterviewVenue"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="InterviewEvaluationView2Iterator" StaticList="false" Uses="LOV_Recommendations"
+          id="Recommendations" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="InterviewEvaluationView2Iterator" StaticList="false" Uses="LOV_SpecificJobKnowledge"
+          id="SpecificJobKnowledge" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="InterviewEvaluationView2Iterator" StaticList="false" Uses="LOV_RelatedJobExperience"
+          id="RelatedJobExperience" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="InterviewEvaluationView2Iterator" StaticList="false" Uses="LOV_Dynamism" id="Dynamism"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="InterviewEvaluationView2Iterator" StaticList="false" Uses="LOV_CommunicationSkills"
+          id="CommunicationSkills" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="InterviewEvaluationView2Iterator" StaticList="false" Uses="LOV_ConfidenceLevel"
+          id="ConfidenceLevel" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="InterviewEvaluationView2Iterator" StaticList="false" Uses="LOV_Apperance" id="Apperance"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="Strengths">
+      <AttrNames>
+        <Item Value="Strengths"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="Weakness">
+      <AttrNames>
+        <Item Value="Weakness"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="AdditionalComments">
+      <AttrNames>
+        <Item Value="AdditionalComments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="CreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="UpdatedBy">
+      <AttrNames>
+        <Item Value="UpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="UpdationDate">
+      <AttrNames>
+        <Item Value="UpdationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InterviewEvaluationView2Iterator" id="VersionNumber">
+      <AttrNames>
+        <Item Value="VersionNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="InterviewEvaluationView2Iterator" id="CreateInsert2"
+            InstanceName="RecruitmentAMDataControl.InterviewEvaluationView2" DataControl="RecruitmentAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <methodAction id="interviewDone" RequiresUpdateModel="true" Action="invokeMethod" MethodName="interviewDone"
+                  IsViewObjectMethod="false" DataControl="RecruitmentAMDataControl"
+                  InstanceName="bindings.interviewDone.dataControl.dataProvider"
+                  ReturnName="data.RecruitmentAMDataControl.methodResults.interviewDone_interviewDone_dataControl_dataProvider_interviewDone_result">
+      <NamedData NDName="applicationID" NDType="int"/>
+    </methodAction>
+    <tree IterBinding="QuestionnaireView1Iterator" id="QuestionnaireView1">
+      <nodeDefinition DefName="com.soltechsystem.model.recruitment.ViewObject.QuestionnaireView"
+                      Name="QuestionnaireView10">
+        <AttrNames>
+          <Item Value="Question"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="QuestionnaireView1Iterator" id="CreateInsert3" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="HrApplicationQuestionnaireView2Iterator" id="HrApplicationQuestionnaireView2">
+      <nodeDefinition DefName="com.soltechsystem.model.recruitment.ViewObject.HrApplicationQuestionnaireView"
+                      Name="HrApplicationQuestionnaireView20">
+        <AttrNames>
+          <Item Value="Question"/>
+          <Item Value="Answer"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="OrientationHeadView1Iterator" id="OrientationHeadView1">
+      <nodeDefinition DefName="com.soltechsystem.model.recruitment.ViewObject.OrientationHeadView"
+                      Name="OrientationHeadView10">
+        <AttrNames>
+          <Item Value="Head"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="OrientationLinesView1Iterator" id="OrientationLinesView1">
+      <nodeDefinition DefName="com.soltechsystem.model.recruitment.ViewObject.OrientationLinesView"
+                      Name="OrientationLinesView10">
+        <AttrNames>
+          <Item Value="Line"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="OrientationHeadView1Iterator" id="CreateInsert4" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="OrientationLinesView1Iterator" id="CreateInsert5" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="HrApplicantOrientationHeadView2Iterator" id="HrApplicantOrientationHeadView2">
+      <nodeDefinition DefName="com.soltechsystem.model.recruitment.ViewObject.HrApplicantOrientationHeadView"
+                      Name="HrApplicantOrientationHeadView20">
+        <AttrNames>
+          <Item Value="Head"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="HrApplicantOrientationView"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.soltechsystem.model.recruitment.ViewObject.HrApplicantOrientationView"
+                      Name="HrApplicantOrientationHeadView21">
+        <AttrNames>
+          <Item Value="Line"/>
+          <Item Value="OrientationDone"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="HrApplicantOrientationView2Iterator" id="OrientationDone" DTSupportsMRU="false"
+            StaticList="true">
+      <AttrNames>
+        <Item Value="OrientationDone"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

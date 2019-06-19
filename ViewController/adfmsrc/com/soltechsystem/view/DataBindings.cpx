@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.12.24" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.soltechsystem.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/main_menu.jsf" usageId="com_soltechsystem_view_main_menuPageDef"/>
+    <page path="/login.jsf" usageId="com_soltechsystem_view_loginPageDef"/>
+    <page path="/hr/pagefragments/employees.jsff" usageId="com_soltechsystem_view_employeesPageDef"/>
+    <page path="/WEB-INF/hr/tf_employees.xml#tf_employees@Execute"
+          usageId="com_soltechsystem_view_tf_employees_tf_employees_ExecutePageDef"/>
+    <page path="/hr/jsfpages/employees.jsf" usageId="com_soltechsystem_view_employeesPageDef1"/>
+    <page path="/sys/page_fragments/security.jsff" usageId="com_soltechsystem_view_securityPageDef"/>
+    <page path="/sys/jsfpages/security.jsf" usageId="com_soltechsystem_view_securityPageDef1"/>
+    <page path="/WEB-INF/sys/tf-security.xml#tf-security@Execute"
+          usageId="com_soltechsystem_view_tf_security_tf_security_ExecutePageDef"/>
+    <page path="/hr/pagefragments/new_employee.jsff" usageId="com_soltechsystem_view_new_employeePageDef"/>
+    <page path="/sys/page_fragments/setup_actions.jsff" usageId="com_soltechsystem_view_setup_actionsPageDef"/>
+    <page path="/sys/jsfpages/setup.jsf" usageId="com_soltechsystem_view_setupPageDef"/>
+    <page path="/WEB-INF/hr/tf_employees.xml#tf_employees@CreateInsert"
+          usageId="com_soltechsystem_view_tf_employees_tf_employees_CreateInsertPageDef"/>
+    <page path="/WEB-INF/hr/tf_employees.xml#tf_employees@Commit"
+          usageId="com_soltechsystem_view_tf_employees_tf_employees_CommitPageDef"/>
+    <page path="/hr/pagefragments/edit_details_after_enroll.jsff"
+          usageId="com_soltechsystem_view_edit_details_after_enrollPageDef"/>
+    <page path="/prl/pagefragments/payroll_master_def.jsff" usageId="com_soltechsystem_view_payroll_master_defPageDef"/>
+    <page path="/prl/jsfpages/payroll_master_def.jsf" usageId="com_soltechsystem_view_payroll_master_defPageDef1"/>
+    <page path="/WEB-INF/prl/tf-payroll.xml#tf-payroll@Execute"
+          usageId="com_soltechsystem_view_tf_payroll_tf_payroll_ExecutePageDef"/>
+    <page path="/WEB-INF/prl/payroll_run.xml#payroll_run@CreateInsert"
+          usageId="com_soltechsystem_view_payroll_run_payroll_run_CreateInsertPageDef"/>
+    <page path="/prl/pagefragments/payroll_run.jsff" usageId="com_soltechsystem_view_payroll_runPageDef"/>
+    <page path="/WEB-INF/hr/tf_employees.xml#tf_employees@Rollback"
+          usageId="com_soltechsystem_view_tf_employees_tf_employees_RollbackPageDef"/>
+    <page path="/untitled1.jsf" usageId="com_soltechsystem_view_untitled1PageDef"/>
+    <page path="/hr/pagefragments/departments_jobs.jsff" usageId="com_soltechsystem_view_departments_jobsPageDef"/>
+    <page path="PageFlow#Commit" usageId="com_soltechsystem_view_adfc_config___CommitPageDef"/>
+    <page path="/tms/jsfpages/time_attendance.jsf" usageId="com_soltechsystem_view_time_attendancePageDef"/>
+    <page path="/hr/pagefragments/emp_history.jsff" usageId="com_soltechsystem_view_emp_historyPageDef"/>
+    <page path="/WEB-INF/hr/tf_employees.xml#tf_employees@ExecuteWithParams"
+          usageId="com_soltechsystem_view_tf_employees_tf_employees_ExecuteWithParamsPageDef"/>
+    <page path="/recruitment/recruitment.jsf" usageId="com_soltechsystem_view_recruitmentPageDef"/>
+    <page path="/recruitment/pagefragments/recruitment.jsff" usageId="com_soltechsystem_view_recruitmentPageDef1"/>
+    <page path="/hr/pagefragments/leave_management.jsff" usageId="com_soltechsystem_view_leave_managementPageDef"/>
+    <page path="/hr/jsfpages/leave_management_page.jsf" usageId="com_soltechsystem_view_leave_management_pagePageDef"/>
+    <page path="/tms/pagefragments/tms.jsff" usageId="com_soltechsystem_view_tmsPageDef"/>
+    <page path="/hr/pagefragments/leave_application.jsff" usageId="com_soltechsystem_view_leave_applicationPageDef"/>
+    <page path="/hr/pagefragments/approve_leaves.jsff" usageId="com_soltechsystem_view_approve_leavesPageDef"/>
+    <page path="/hr/pagefragments/admin_notifications.jsff"
+          usageId="com_soltechsystem_view_admin_notificationsPageDef"/>
+    <page path="/hr/pagefragments/leave_balance.jsff" usageId="com_soltechsystem_view_leave_balancePageDef"/>
+    <page path="/hr/pagefragments/loan_application.jsff" usageId="com_soltechsystem_view_loan_applicationPageDef"/>
+    <page path="/hr/pagefragments/advance_salary.jsff" usageId="com_soltechsystem_view_advance_salaryPageDef"/>
+    <page path="/hr/pagefragments/daily_attendance_register.jsff"
+          usageId="com_soltechsystem_view_daily_attendance_registerPageDef"/>
+    <page path="/hr/employee_complaint_setup.jsff" usageId="com_soltechsystem_view_employee_complaint_setupPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_soltechsystem_view_main_menuPageDef" path="com.soltechsystem.view.pageDefs.main_menuPageDef"/>
+    <page id="com_soltechsystem_view_loginPageDef" path="com.soltechsystem.view.pageDefs.loginPageDef"/>
+    <page id="com_soltechsystem_view_employeesPageDef" path="hr.pagefragments.employeesPageDef"/>
+    <page id="com_soltechsystem_view_tf_employees_tf_employees_ExecutePageDef"
+          path="hr.tf_employees_tf_employees_ExecutePageDef"/>
+    <page id="com_soltechsystem_view_employeesPageDef1" path="hr.jsfpages.employeesPageDef"/>
+    <page id="com_soltechsystem_view_securityPageDef" path="sys.page_fragments.securityPageDef"/>
+    <page id="com_soltechsystem_view_securityPageDef1" path="sys.jsfpages.securityPageDef"/>
+    <page id="com_soltechsystem_view_tf_security_tf_security_ExecutePageDef"
+          path="sys.tf_security_tf_security_ExecutePageDef"/>
+    <page id="com_soltechsystem_view_new_employeePageDef" path="hr.pagefragments.new_employeePageDef"/>
+    <page id="com_soltechsystem_view_setup_actionsPageDef" path="sys.page_fragments.setup_actionsPageDef"/>
+    <page id="com_soltechsystem_view_setupPageDef" path="sys.jsfpages.setupPageDef"/>
+    <page id="com_soltechsystem_view_tf_employees_tf_employees_CreateInsertPageDef"
+          path="hr.tf_employees_tf_employees_CreateInsertPageDef"/>
+    <page id="com_soltechsystem_view_tf_employees_tf_employees_CommitPageDef"
+          path="hr.tf_employees_tf_employees_CommitPageDef"/>
+    <page id="com_soltechsystem_view_edit_details_after_enrollPageDef"
+          path="hr.pagefragments.edit_details_after_enrollPageDef"/>
+    <page id="com_soltechsystem_view_payroll_master_defPageDef" path="prl.pagefragments.payroll_master_defPageDef"/>
+    <page id="com_soltechsystem_view_payroll_master_defPageDef1" path="prl.jsfpages.payroll_master_defPageDef"/>
+    <page id="com_soltechsystem_view_tf_payroll_tf_payroll_ExecutePageDef"
+          path="prl.tf_payroll_tf_payroll_ExecutePageDef"/>
+    <page id="com_soltechsystem_view_payroll_run_payroll_run_CreateInsertPageDef"
+          path="prl.payroll_run_payroll_run_CreateInsertPageDef"/>
+    <page id="com_soltechsystem_view_payroll_runPageDef" path="prl.pagefragments.payroll_runPageDef"/>
+    <page id="com_soltechsystem_view_tf_employees_tf_employees_RollbackPageDef"
+          path="hr.tf_employees_tf_employees_RollbackPageDef"/>
+    <page id="com_soltechsystem_view_untitled1PageDef" path="com.soltechsystem.view.pageDefs.untitled1PageDef"/>
+    <page id="com_soltechsystem_view_departments_jobsPageDef" path="hr.pagefragments.departments_jobsPageDef"/>
+    <page id="com_soltechsystem_view_adfc_config___CommitPageDef"
+          path="com.soltechsystem.view.pageDefs.adfc_config___CommitPageDef"/>
+    <page id="com_soltechsystem_view_time_attendancePageDef" path="tms.jsfpages.time_attendancePageDef"/>
+    <page id="com_soltechsystem_view_emp_historyPageDef" path="hr.pagefragments.emp_historyPageDef"/>
+    <page id="com_soltechsystem_view_tf_employees_tf_employees_ExecuteWithParamsPageDef"
+          path="hr.tf_employees_tf_employees_ExecuteWithParamsPageDef"/>
+    <page id="com_soltechsystem_view_recruitmentPageDef" path="recruitment.recruitmentPageDef"/>
+    <page id="com_soltechsystem_view_recruitmentPageDef1" path="recruitment.pagefragments.recruitmentPageDef"/>
+    <page id="com_soltechsystem_view_leave_managementPageDef" path="hr.pagefragments.leave_managementPageDef"/>
+    <page id="com_soltechsystem_view_leave_management_pagePageDef" path="hr.jsfpages.leave_management_pagePageDef"/>
+    <page id="com_soltechsystem_view_tmsPageDef" path="tms.pagefragments.tmsPageDef"/>
+    <page id="com_soltechsystem_view_leave_applicationPageDef" path="hr.pagefragments.leave_applicationPageDef"/>
+    <page id="com_soltechsystem_view_approve_leavesPageDef" path="hr.pagefragments.approve_leavesPageDef"/>
+    <page id="com_soltechsystem_view_admin_notificationsPageDef" path="hr.pagefragments.admin_notificationsPageDef"/>
+    <page id="com_soltechsystem_view_leave_balancePageDef" path="hr.pagefragments.leave_balancePageDef"/>
+    <page id="com_soltechsystem_view_loan_applicationPageDef" path="hr.pagefragments.loan_applicationPageDef"/>
+    <page id="com_soltechsystem_view_advance_salaryPageDef" path="hr.pagefragments.advance_salaryPageDef"/>
+    <page id="com_soltechsystem_view_daily_attendance_registerPageDef"
+          path="hr.pagefragments.daily_attendance_registerPageDef"/>
+    <page id="com_soltechsystem_view_employee_complaint_setupPageDef" path="hr.employee_complaint_setupPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="SysAMDataControl" Package="com.soltechsystem.model.sys.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="SysAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="HRAMDataControl" Package="com.soltechsystem.model.hr.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="HRAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="PRLAMDataControl" Package="com.soltechsystem.model.prl.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="PRLAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="TMSAMDataControl" Package="com.soltechsystem.model.tms.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="TMSAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="RecruitmentAMDataControl" Package="com.soltechsystem.model.recruitment.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="RecruitmentAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="LeaveManagementAMDataControl" Package="com.soltechsystem.model.hr.LeaveManagement.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="LeaveManagementAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="DashboardDataControl" Package="com.soltechsystem.model.dashboard.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="DashboardLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

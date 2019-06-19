@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.hr.LeaveManagement.ViewObject.EmployeeLeavesView
+
+package com.soltechsystem.model.hr.LeaveManagement.ViewObject
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="empid")
+def empid_VariableScript_Variable()
+{
+adf.context.current.sessionScope.get('userid')
+}
+

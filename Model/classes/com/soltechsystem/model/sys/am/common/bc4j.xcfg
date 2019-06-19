@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!---->
+<BC4JConfig xmlns="http://xmlns.oracle.com/bc4j/configuration" version="11.1">
+  <AppModuleConfigBag ApplicationName="com.soltechsystem.model.sys.am.SysAM">
+    <AppModuleConfig name="SysAMLocal" jbo.project="com.soltechsystem.model.Model"
+                     ApplicationName="com.soltechsystem.model.sys.am.SysAM" DeployPlatform="LOCAL">
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/hrms_connectionDS"/>
+      <Security AppModuleJndiName="com.soltechsystem.model.sys.am.SysAM"/>
+    </AppModuleConfig>
+    <AppModuleConfig name="SysAMShared" jbo.project="com.soltechsystem.model.Model"
+                     ApplicationName="com.soltechsystem.model.sys.am.SysAM" DeployPlatform="LOCAL">
+      <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+      <Database jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/hrms_connectionDS"/>
+      <Security AppModuleJndiName="com.soltechsystem.model.sys.am.SysAM"/>
+    </AppModuleConfig>
+  </AppModuleConfigBag>
+</BC4JConfig>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="emp_historyPageDef"
+                Package="hr.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HrEmployeesHistoryView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmployeesHistoryView1Iterator"/>
+    <searchRegion Binds="HrEmployeesHistoryView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="HrEmployeesHistoryView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="HrEmployeesHistoryView1Iterator" id="HrEmployeesHistoryView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeesHistoryView"
+                      Name="HrEmployeesHistoryView10">
+        <AttrNames>
+          <Item Value="EmployeeId"/>
+          <Item Value="FirstName"/>
+          <Item Value="MiddleName"/>
+          <Item Value="LastName"/>
+          <Item Value="UserCreated"/>
+          <Item Value="LocationId"/>
+          <Item Value="JobId"/>
+          <Item Value="JoiningDate"/>
+          <Item Value="GradeId"/>
+          <Item Value="EmployeeTypeId"/>
+          <Item Value="EmployeeCode"/>
+          <Item Value="EmployeeStatus"/>
+          <Item Value="ProbationStartDate"/>
+          <Item Value="ProbationEndDate"/>
+          <Item Value="ConfirmationDate"/>
+          <Item Value="EffectiveStartDate"/>
+          <Item Value="EffectiveEndDate"/>
+          <Item Value="CostToCompany"/>
+          <Item Value="ManagerId"/>
+          <Item Value="DepartmentId"/>
+          <Item Value="EmployeeNtn"/>
+          <Item Value="Salutation"/>
+          <Item Value="FatherOrHusbandName"/>
+          <Item Value="DateOfBirth"/>
+          <Item Value="Gender"/>
+          <Item Value="MartialStatus"/>
+          <Item Value="Nationality"/>
+          <Item Value="EmployeeCnic"/>
+          <Item Value="CnicExpiryDate"/>
+          <Item Value="PassportNumber"/>
+          <Item Value="PassportExpiryDate"/>
+          <Item Value="DrivingLicenseNumber"/>
+          <Item Value="LicenseExpiryDate"/>
+          <Item Value="BloodGroup"/>
+          <Item Value="IdentityMark"/>
+          <Item Value="Col1"/>
+          <Item Value="Col2"/>
+          <Item Value="Col3"/>
+          <Item Value="Col4"/>
+          <Item Value="Col5"/>
+          <Item Value="Col6"/>
+          <Item Value="Col7"/>
+          <Item Value="Col8"/>
+          <Item Value="Col9"/>
+          <Item Value="Col10"/>
+          <Item Value="Col11"/>
+          <Item Value="Col12"/>
+          <Item Value="Col13"/>
+          <Item Value="Col14"/>
+          <Item Value="Attrib1"/>
+          <Item Value="Attrib2"/>
+          <Item Value="Attrib3"/>
+          <Item Value="Attrib4"/>
+          <Item Value="Attrib5"/>
+          <Item Value="Attrib6"/>
+          <Item Value="Attrib7"/>
+          <Item Value="Attrib8"/>
+          <Item Value="Attrib9"/>
+          <Item Value="Attrib10"/>
+          <Item Value="Attrib11"/>
+          <Item Value="Attrib12"/>
+          <Item Value="Attrib13"/>
+          <Item Value="Attrib14"/>
+          <Item Value="Attrib15"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="UpdationDate"/>
+          <Item Value="VersionNumber"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="DrivingLicExpiry"/>
+          <Item Value="GrossPay"/>
+          <Item Value="PaymentMode"/>
+          <Item Value="BankId"/>
+          <Item Value="AccountNumber"/>
+          <Item Value="EmployeeActive"/>
+          <Item Value="Test"/>
+          <Item Value="FamilyNumber"/>
+          <Item Value="ResignationDate"/>
+          <Item Value="NoticePeriodStartDate"/>
+          <Item Value="HistoryId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

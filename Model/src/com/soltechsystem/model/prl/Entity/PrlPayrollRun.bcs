@@ -1,0 +1,13 @@
+//Groovy Scripts for com.soltechsystem.model.prl.Entity.PrlPayrollRun
+
+package com.soltechsystem.model.prl.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="PayrollRunId")
+def PayrollRunId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("prl_payroll_run_Seq",adf.object.getDBTransaction())).getSequenceNumber()
+
+}
+

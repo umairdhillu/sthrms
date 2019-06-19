@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.recruitment.Entity.OrientationHead
+
+package com.soltechsystem.model.recruitment.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="HeadId")
+def HeadId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("orientation_head_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

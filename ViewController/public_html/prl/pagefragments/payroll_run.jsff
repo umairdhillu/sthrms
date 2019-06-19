@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:panelFormLayout id="pfl1">
+    <af:inputText value="#{bindings.SalaryMonth.inputValue}" label="Month"
+                  required="#{bindings.SalaryMonth.hints.mandatory}"
+                  columns="35"
+                  maximumLength="#{bindings.SalaryMonth.hints.precision}"
+                  shortDesc="#{bindings.SalaryMonth.hints.tooltip}" id="it1">
+      <f:validator binding="#{bindings.SalaryMonth.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.SalaryMonth.format}"/>
+    </af:inputText>
+    <af:selectOneChoice value="#{bindings.Department.inputValue}" label="#{bindings.Department.label}"
+                        required="#{bindings.Department.hints.mandatory}"
+                        shortDesc="#{bindings.Department.hints.tooltip}" id="soc1" contentStyle="width:222px">
+      <f:selectItems value="#{bindings.Department.items}" id="si1"/>
+      <f:validator binding="#{bindings.Department.validator}"/>
+    </af:selectOneChoice>
+    <af:selectOneChoice value="#{bindings.Designation.inputValue}" label="#{bindings.Designation.label}"
+                        required="#{bindings.Designation.hints.mandatory}"
+                        shortDesc="#{bindings.Designation.hints.tooltip}" id="soc2" contentStyle="width:222px">
+      <f:selectItems value="#{bindings.Designation.items}" id="si2"/>
+      <f:validator binding="#{bindings.Designation.validator}"/>
+    </af:selectOneChoice>
+    <af:selectOneChoice value="#{bindings.EmployeeType.inputValue}" label="#{bindings.EmployeeType.label}"
+                        required="#{bindings.EmployeeType.hints.mandatory}"
+                        shortDesc="#{bindings.EmployeeType.hints.tooltip}" id="soc3" contentStyle="width:222px">
+      <f:selectItems value="#{bindings.EmployeeType.items}" id="si3"/>
+      <f:validator binding="#{bindings.EmployeeType.validator}"/>
+    </af:selectOneChoice>
+    <af:panelLabelAndMessage label="Employee" id="plam1">
+      <af:inputListOfValues id="employeeIdId" popupTitle="Search and Select: #{bindings.EmployeeId.hints.label}"
+                            value="#{bindings.EmployeeId.inputValue}"
+                            model="#{bindings.EmployeeId.listOfValuesModel}"
+                            required="#{bindings.EmployeeId.hints.mandatory}" columns="32"
+                            shortDesc="#{bindings.EmployeeId.hints.tooltip}" inlineStyle="margin-left:-15px">
+        <f:validator binding="#{bindings.EmployeeId.validator}"/>
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId.format}"/>
+      </af:inputListOfValues>
+      <f:facet name="end">
+        <af:outputText value="#{bindings.EmployeeName.inputValue}" id="ot1" inlineStyle="font-weight:bolder"/>
+      </f:facet>
+    </af:panelLabelAndMessage>
+    <af:inputText value="#{bindings.EmployeeDepartment.inputValue}" label="Employee Department"
+                  required="#{bindings.EmployeeDepartment.hints.mandatory}"
+                  columns="35"
+                  maximumLength="#{bindings.EmployeeDepartment.hints.precision}"
+                  shortDesc="#{bindings.EmployeeDepartment.hints.tooltip}" partialTriggers="employeeIdId" id="it4"
+                  disabled="true">
+      <f:validator binding="#{bindings.EmployeeDepartment.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.EmployeeDesignation.inputValue}" label="Employee Designation"
+                  required="#{bindings.EmployeeDesignation.hints.mandatory}"
+                  columns="35"
+                  maximumLength="#{bindings.EmployeeDesignation.hints.precision}"
+                  shortDesc="#{bindings.EmployeeDesignation.hints.tooltip}" id="it5" disabled="true">
+      <f:validator binding="#{bindings.EmployeeDesignation.validator}"/>
+    </af:inputText>
+    <f:facet name="footer">
+      <af:panelGroupLayout id="pgl1">
+        <af:button text="button 1" id="b1" action="return"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelFormLayout>
+</ui:composition>

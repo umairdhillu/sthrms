@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.sys.Entity.SysProfileAssignmentHeader
+
+package com.soltechsystem.model.sys.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="AssignmentHeaderId")
+def AssignmentHeaderId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("sys_profile_asgt_header_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

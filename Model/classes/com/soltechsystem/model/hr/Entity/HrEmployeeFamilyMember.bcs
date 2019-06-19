@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.hr.Entity.HrEmployeeFamilyMember
+
+package com.soltechsystem.model.hr.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="MemberId")
+def MemberId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("HR_EMPLOYEE_FAMILY_MEMBER_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

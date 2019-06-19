@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <Router
+      id="Router2">
+      <property
+         name="activityId">check_session</property>
+      <property
+         name="x">85.0</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>check_session&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="y">150.6377</property>
+      <property
+         name="exceptionHandler">false</property>
+   </Router>
+   <UrlView
+      id="UrlView3">
+      <property
+         name="activityId">login</property>
+      <property
+         name="x">231.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>login&lt;/b>&lt;/p>&lt;p>Activity Type:  Url View&lt;/p></property>
+      <property
+         name="y">305.84473</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="exceptionHandler">false</property>
+   </UrlView>
+   <View
+      id="View4">
+      <property
+         name="activityId">tms</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">270.0</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>tms&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">131.29883</property>
+      <property
+         name="page">/tms/pagefragments/tms.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="Router2"
+      to="View4">
+      <property
+         name="fromOutcome">YES</property>
+      <property
+         name="sdm:polyPoints">R50,126.0,150.28711,229.0,130.94824,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="Router2"
+      to="UrlView3">
+      <property
+         name="fromOutcome">NO</property>
+      <property
+         name="sdm:polyPoints">B50,85.0,204.28711,190.0,305.49414,L50</property>
+   </ControlFlowCase>
+</SDM>

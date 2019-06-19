@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.tms.Entity.EmployeeInoutInterface
+
+package com.soltechsystem.model.tms.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="InoutInterfaceId")
+def InoutInterfaceId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("employee_inout_interface_Seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

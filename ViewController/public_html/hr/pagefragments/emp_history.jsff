@@ -1,0 +1,620 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelBox text="#{pageFlowScope.var_emp}" id="pb1" showDisclosure="false">
+      <f:facet name="toolbar">
+        <af:button text="Back" id="b1" action="back_to_original"/>
+      </f:facet>
+      <af:table value="#{bindings.HrEmployeesHistoryView1.collectionModel}" var="row"
+                rows="#{bindings.HrEmployeesHistoryView1.rangeSize}"
+                emptyText="#{bindings.HrEmployeesHistoryView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                rowBandingInterval="0" selectedRowKeys="#{bindings.HrEmployeesHistoryView1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.HrEmployeesHistoryView1.collectionModel.makeCurrent}"
+                rowSelection="single" fetchSize="#{bindings.HrEmployeesHistoryView1.rangeSize}"
+                filterModel="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor}" filterVisible="true"
+                queryListener="#{bindings.HrEmployeesHistoryView1Query.processQuery}" varStatus="vs" id="t1">
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EmployeeId.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EmployeeId.label}" id="c1">
+          <af:outputText value="#{row.EmployeeId}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EmployeeId.tooltip}" id="ot1">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.EmployeeId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.FirstName.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.FirstName.label}" id="c2">
+          <af:outputText value="#{row.FirstName}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.FirstName.tooltip}" id="ot2"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.MiddleName.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.MiddleName.label}" id="c3">
+          <af:outputText value="#{row.MiddleName}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.MiddleName.tooltip}" id="ot3"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.LastName.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.LastName.label}" id="c4">
+          <af:outputText value="#{row.LastName}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.LastName.tooltip}"
+                         id="ot4"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.UserCreated.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.UserCreated.label}" id="c5">
+          <af:outputText value="#{row.UserCreated}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.UserCreated.tooltip}" id="ot5"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.LocationId.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.LocationId.label}" id="c6">
+          <af:outputText value="#{row.LocationId}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.LocationId.tooltip}" id="ot6">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.LocationId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.JobId.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.JobId.label}" id="c7">
+          <af:outputText value="#{row.JobId}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.JobId.tooltip}"
+                         id="ot7">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.JobId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.JoiningDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.JoiningDate.label}" id="c8">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.JoiningDate.value}"
+                          id="id1">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.JoiningDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.JoiningDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.JoiningDate.tooltip}" id="ot8">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.JoiningDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.GradeId.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.GradeId.label}" id="c9">
+          <af:outputText value="#{row.GradeId}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.GradeId.tooltip}"
+                         id="ot9">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.GradeId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EmployeeTypeId.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EmployeeTypeId.label}" id="c10">
+          <af:outputText value="#{row.EmployeeTypeId}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EmployeeTypeId.tooltip}" id="ot10">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.EmployeeTypeId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EmployeeCode.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EmployeeCode.label}" id="c11">
+          <af:outputText value="#{row.EmployeeCode}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EmployeeCode.tooltip}" id="ot11"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EmployeeStatus.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EmployeeStatus.label}" id="c12">
+          <af:outputText value="#{row.EmployeeStatus}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EmployeeStatus.tooltip}" id="ot12">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.EmployeeStatus.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.ProbationStartDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.ProbationStartDate.label}" id="c13">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ProbationStartDate.value}"
+                          id="id2">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.ProbationStartDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.ProbationStartDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.ProbationStartDate.tooltip}" id="ot13">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.ProbationStartDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.ProbationEndDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.ProbationEndDate.label}" id="c14">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ProbationEndDate.value}"
+                          id="id3">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.ProbationEndDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.ProbationEndDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.ProbationEndDate.tooltip}" id="ot14">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.ProbationEndDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.ConfirmationDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.ConfirmationDate.label}" id="c15">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ConfirmationDate.value}"
+                          id="id4">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.ConfirmationDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.ConfirmationDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.ConfirmationDate.tooltip}" id="ot15">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.ConfirmationDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EffectiveStartDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EffectiveStartDate.label}" id="c16">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.EffectiveStartDate.value}"
+                          id="id5">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.EffectiveStartDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.EffectiveStartDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EffectiveStartDate.tooltip}" id="ot16">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.EffectiveStartDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EffectiveEndDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EffectiveEndDate.label}" id="c17">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.EffectiveEndDate.value}"
+                          id="id6">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.EffectiveEndDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.EffectiveEndDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EffectiveEndDate.tooltip}" id="ot17">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.EffectiveEndDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.CostToCompany.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.CostToCompany.label}" id="c18">
+          <af:outputText value="#{row.CostToCompany}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.CostToCompany.tooltip}" id="ot18">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.CostToCompany.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.ManagerId.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.ManagerId.label}" id="c19">
+          <af:outputText value="#{row.ManagerId}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.ManagerId.tooltip}" id="ot19">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.ManagerId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.DepartmentId.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.DepartmentId.label}" id="c20">
+          <af:outputText value="#{row.DepartmentId}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.DepartmentId.tooltip}" id="ot20">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.DepartmentId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EmployeeNtn.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EmployeeNtn.label}" id="c21">
+          <af:outputText value="#{row.EmployeeNtn}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EmployeeNtn.tooltip}" id="ot21"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Salutation.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Salutation.label}" id="c22">
+          <af:outputText value="#{row.Salutation}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Salutation.tooltip}" id="ot22"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.FatherOrHusbandName.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.FatherOrHusbandName.label}" id="c23">
+          <af:outputText value="#{row.FatherOrHusbandName}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.FatherOrHusbandName.tooltip}" id="ot23"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.DateOfBirth.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.DateOfBirth.label}" id="c24">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.DateOfBirth.value}"
+                          id="id7">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.DateOfBirth.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.DateOfBirth}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.DateOfBirth.tooltip}" id="ot24">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.DateOfBirth.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Gender.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Gender.label}" id="c25">
+          <af:outputText value="#{row.Gender}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Gender.tooltip}"
+                         id="ot25"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.MartialStatus.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.MartialStatus.label}" id="c26">
+          <af:outputText value="#{row.MartialStatus}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.MartialStatus.tooltip}" id="ot26"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Nationality.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Nationality.label}" id="c27">
+          <af:outputText value="#{row.Nationality}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Nationality.tooltip}" id="ot27"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EmployeeCnic.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EmployeeCnic.label}" id="c28">
+          <af:outputText value="#{row.EmployeeCnic}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EmployeeCnic.tooltip}" id="ot28"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.CnicExpiryDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.CnicExpiryDate.label}" id="c29">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CnicExpiryDate.value}"
+                          id="id8">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.CnicExpiryDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.CnicExpiryDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.CnicExpiryDate.tooltip}" id="ot29">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.CnicExpiryDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.PassportNumber.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.PassportNumber.label}" id="c30">
+          <af:outputText value="#{row.PassportNumber}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.PassportNumber.tooltip}" id="ot30"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.PassportExpiryDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.PassportExpiryDate.label}" id="c31">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.PassportExpiryDate.value}"
+                          id="id9">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.PassportExpiryDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.PassportExpiryDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.PassportExpiryDate.tooltip}" id="ot31">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.PassportExpiryDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.DrivingLicenseNumber.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.DrivingLicenseNumber.label}" id="c32">
+          <af:outputText value="#{row.DrivingLicenseNumber}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.DrivingLicenseNumber.tooltip}" id="ot32"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.LicenseExpiryDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.LicenseExpiryDate.label}" id="c33">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.LicenseExpiryDate.value}"
+                          id="id10">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.LicenseExpiryDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.LicenseExpiryDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.LicenseExpiryDate.tooltip}" id="ot33">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.LicenseExpiryDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.BloodGroup.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.BloodGroup.label}" id="c34">
+          <af:outputText value="#{row.BloodGroup}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.BloodGroup.tooltip}" id="ot34">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.BloodGroup.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.IdentityMark.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.IdentityMark.label}" id="c35">
+          <af:outputText value="#{row.IdentityMark}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.IdentityMark.tooltip}" id="ot35"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col1.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col1.label}" id="c36">
+          <af:outputText value="#{row.Col1}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col1.tooltip}"
+                         id="ot36">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col1.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col2.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col2.label}" id="c37">
+          <af:outputText value="#{row.Col2}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col2.tooltip}"
+                         id="ot37">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col2.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col3.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col3.label}" id="c38">
+          <af:outputText value="#{row.Col3}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col3.tooltip}"
+                         id="ot38">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col3.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col4.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col4.label}" id="c39">
+          <af:outputText value="#{row.Col4}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col4.tooltip}"
+                         id="ot39">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col4.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col5.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col5.label}" id="c40">
+          <af:outputText value="#{row.Col5}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col5.tooltip}"
+                         id="ot40">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col5.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col6.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col6.label}" id="c41">
+          <af:outputText value="#{row.Col6}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col6.tooltip}"
+                         id="ot41">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col6.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col7.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col7.label}" id="c42">
+          <af:outputText value="#{row.Col7}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col7.tooltip}"
+                         id="ot42">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col7.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col8.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col8.label}" id="c43">
+          <af:outputText value="#{row.Col8}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col8.tooltip}"
+                         id="ot43">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col8.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col9.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col9.label}" id="c44">
+          <af:outputText value="#{row.Col9}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col9.tooltip}"
+                         id="ot44">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col9.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col10.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col10.label}" id="c45">
+          <af:outputText value="#{row.Col10}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col10.tooltip}"
+                         id="ot45">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col10.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col11.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col11.label}" id="c46">
+          <af:outputText value="#{row.Col11}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col11.tooltip}"
+                         id="ot46">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col11.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col12.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col12.label}" id="c47">
+          <af:outputText value="#{row.Col12}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col12.tooltip}"
+                         id="ot47">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col12.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col13.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col13.label}" id="c48">
+          <af:outputText value="#{row.Col13}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col13.tooltip}"
+                         id="ot48">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col13.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Col14.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Col14.label}" id="c49">
+          <af:outputText value="#{row.Col14}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Col14.tooltip}"
+                         id="ot49">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.Col14.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib1.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib1.label}" id="c50">
+          <af:outputText value="#{row.Attrib1}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib1.tooltip}"
+                         id="ot50"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib2.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib2.label}" id="c51">
+          <af:outputText value="#{row.Attrib2}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib2.tooltip}"
+                         id="ot51"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib3.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib3.label}" id="c52">
+          <af:outputText value="#{row.Attrib3}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib3.tooltip}"
+                         id="ot52"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib4.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib4.label}" id="c53">
+          <af:outputText value="#{row.Attrib4}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib4.tooltip}"
+                         id="ot53"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib5.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib5.label}" id="c54">
+          <af:outputText value="#{row.Attrib5}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib5.tooltip}"
+                         id="ot54"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib6.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib6.label}" id="c55">
+          <af:outputText value="#{row.Attrib6}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib6.tooltip}"
+                         id="ot55"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib7.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib7.label}" id="c56">
+          <af:outputText value="#{row.Attrib7}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib7.tooltip}"
+                         id="ot56"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib8.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib8.label}" id="c57">
+          <af:outputText value="#{row.Attrib8}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib8.tooltip}"
+                         id="ot57"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib9.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib9.label}" id="c58">
+          <af:outputText value="#{row.Attrib9}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib9.tooltip}"
+                         id="ot58"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib10.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib10.label}" id="c59">
+          <af:outputText value="#{row.Attrib10}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib10.tooltip}"
+                         id="ot59"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib11.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib11.label}" id="c60">
+          <af:outputText value="#{row.Attrib11}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib11.tooltip}"
+                         id="ot60"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib12.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib12.label}" id="c61">
+          <af:outputText value="#{row.Attrib12}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib12.tooltip}"
+                         id="ot61"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib13.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib13.label}" id="c62">
+          <af:outputText value="#{row.Attrib13}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib13.tooltip}"
+                         id="ot62"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib14.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib14.label}" id="c63">
+          <af:outputText value="#{row.Attrib14}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib14.tooltip}"
+                         id="ot63"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Attrib15.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Attrib15.label}" id="c64">
+          <af:outputText value="#{row.Attrib15}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Attrib15.tooltip}"
+                         id="ot64"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.CreatedBy.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.CreatedBy.label}" id="c65">
+          <af:outputText value="#{row.CreatedBy}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.CreatedBy.tooltip}" id="ot65">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.CreatedBy.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.CreationDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.CreationDate.label}" id="c66">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CreationDate.value}"
+                          id="id11">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.CreationDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.CreationDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.CreationDate.tooltip}" id="ot66">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.CreationDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.UpdatedBy.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.UpdatedBy.label}" id="c67">
+          <af:outputText value="#{row.UpdatedBy}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.UpdatedBy.tooltip}" id="ot67">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.UpdatedBy.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.UpdationDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.UpdationDate.label}" id="c68">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.UpdationDate.value}"
+                          id="id12">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.UpdationDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.UpdationDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.UpdationDate.tooltip}" id="ot68">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.UpdationDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.VersionNumber.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.VersionNumber.label}" id="c69">
+          <af:outputText value="#{row.VersionNumber}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.VersionNumber.tooltip}" id="ot69">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.VersionNumber.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EmailAddress.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EmailAddress.label}" id="c70">
+          <af:outputText value="#{row.EmailAddress}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EmailAddress.tooltip}" id="ot70"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.DrivingLicExpiry.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.DrivingLicExpiry.label}" id="c71">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.DrivingLicExpiry.value}"
+                          id="id13">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.DrivingLicExpiry.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.DrivingLicExpiry}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.DrivingLicExpiry.tooltip}" id="ot71">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.DrivingLicExpiry.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.GrossPay.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.GrossPay.label}" id="c72">
+          <af:outputText value="#{row.GrossPay}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.GrossPay.tooltip}"
+                         id="ot72">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.GrossPay.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.PaymentMode.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.PaymentMode.label}" id="c73">
+          <af:outputText value="#{row.PaymentMode}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.PaymentMode.tooltip}" id="ot73">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.PaymentMode.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.BankId.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.BankId.label}" id="c74">
+          <af:outputText value="#{row.BankId}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.BankId.tooltip}"
+                         id="ot74">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.HrEmployeesHistoryView1.hints.BankId.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.AccountNumber.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.AccountNumber.label}" id="c75">
+          <af:outputText value="#{row.AccountNumber}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.AccountNumber.tooltip}" id="ot75"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.EmployeeActive.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.EmployeeActive.label}" id="c76">
+          <af:outputText value="#{row.EmployeeActive}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.EmployeeActive.tooltip}" id="ot76"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.Test.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.Test.label}" id="c77">
+          <af:outputText value="#{row.Test}" shortDesc="#{bindings.HrEmployeesHistoryView1.hints.Test.tooltip}"
+                         id="ot77"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.FamilyNumber.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.FamilyNumber.label}" id="c78">
+          <af:outputText value="#{row.FamilyNumber}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.FamilyNumber.tooltip}" id="ot78"/>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.ResignationDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.ResignationDate.label}" id="c79">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ResignationDate.value}"
+                          id="id14">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.ResignationDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.ResignationDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.ResignationDate.tooltip}" id="ot79">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.ResignationDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.NoticePeriodStartDate.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.NoticePeriodStartDate.label}" id="c80">
+          <f:facet name="filter">
+            <af:inputDate value="#{bindings.HrEmployeesHistoryView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.NoticePeriodStartDate.value}"
+                          id="id15">
+              <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.NoticePeriodStartDate.format}"/>
+            </af:inputDate>
+          </f:facet>
+          <af:outputText value="#{row.NoticePeriodStartDate}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.NoticePeriodStartDate.tooltip}" id="ot80">
+            <af:convertDateTime pattern="#{bindings.HrEmployeesHistoryView1.hints.NoticePeriodStartDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="#{bindings.HrEmployeesHistoryView1.hints.HistoryId.name}" filterable="true"
+                   headerText="#{bindings.HrEmployeesHistoryView1.hints.HistoryId.label}" id="c81">
+          <af:outputText value="#{row.HistoryId}"
+                         shortDesc="#{bindings.HrEmployeesHistoryView1.hints.HistoryId.tooltip}" id="ot81">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.HrEmployeesHistoryView1.hints.HistoryId.format}"/>
+          </af:outputText>
+        </af:column>
+      </af:table>
+    </af:panelBox>
+  </af:panelGroupLayout>
+</ui:composition>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="tf_employees_tf_employees_ExecuteWithParamsPageDef" Package="hr" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="HrEmployeesHistoryView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmployeesHistoryView1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="HrEmployeesHistoryView1Iterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="b_emp" NDValue="#{pageFlowScope.var_emp}" NDType="java.math.BigDecimal"/>
+    </action>
+  </bindings>
+</pageDefinition>

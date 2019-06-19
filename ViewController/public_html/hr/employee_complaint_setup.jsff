@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelTabbed position="above" id="pt1" styleClass="AFStretchWidth">
+      <af:showDetailItem id="t1" text="Define Complains" disclosed="true">
+        <af:panelBox id="pb1" showDisclosure="false">
+          <f:facet name="toolbar"/>
+          <af:panelFormLayout id="pfl1">
+            <af:inputText value="#{bindings.Severity.inputValue}"
+                          required="#{bindings.Severity.hints.mandatory}"
+                          columns="#{bindings.Severity.hints.displayWidth}"
+                          maximumLength="#{bindings.Severity.hints.precision}"
+                          shortDesc="#{bindings.Severity.hints.tooltip}" id="it1"
+                          contentStyle="font-size:25px;color:black;margin-left:-12px"
+                          disabled="true">
+              <f:validator binding="#{bindings.Severity.validator}"/>
+            </af:inputText>
+            <f:facet name="footer">
+              <af:panelGroupLayout id="pgl2" inlineStyle="margin-left:-8px">
+                <af:button actionListener="#{bindings.Next.execute}" text="Next" disabled="#{!bindings.Next.enabled}"
+                           partialSubmit="true" id="b1"/>
+                <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                           disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"/>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:panelFormLayout>
+          <af:panelBox id="pb2" showDisclosure="false">
+            <f:facet name="toolbar">
+              <af:button actionListener="#{bindings.CreateInsert.execute}"
+                         disabled="#{!bindings.CreateInsert.enabled}" id="b3" icon="/images/add.png"/>
+            </f:facet>
+            <af:table value="#{bindings.ComplaintTypesView1.collectionModel}" var="row"
+                      rows="#{bindings.ComplaintTypesView1.rangeSize}"
+                      emptyText="#{bindings.ComplaintTypesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.ComplaintTypesView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.ComplaintTypesView1.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.ComplaintTypesView1.rangeSize}" id="t2"
+                      partialTriggers="::b3">
+              <af:column headerText="Complain" id="c1" width="500">
+                <af:inputText value="#{row.bindings.ComplaintType.inputValue}"
+                              label="#{bindings.ComplaintTypesView1.hints.ComplaintType.label}"
+                              required="#{bindings.ComplaintTypesView1.hints.ComplaintType.mandatory}"
+                              columns="#{bindings.ComplaintTypesView1.hints.ComplaintType.displayWidth}"
+                              maximumLength="#{bindings.ComplaintTypesView1.hints.ComplaintType.precision}"
+                              shortDesc="#{bindings.ComplaintTypesView1.hints.ComplaintType.tooltip}" id="it2">
+                  <f:validator binding="#{row.bindings.ComplaintType.validator}"/>
+                </af:inputText>
+              </af:column>
+            </af:table>
+          </af:panelBox>
+        </af:panelBox>
+      </af:showDetailItem>
+      <af:showDetailItem text="Employee Complain Action" id="sdi1">
+        <af:panelBox id="pb3" showDisclosure="false">
+          <f:facet name="toolbar">
+            <af:button actionListener="#{bindings.CreateInsert1.execute}"
+                       disabled="#{!bindings.CreateInsert1.enabled}" id="b4" icon="/images/add.png"/>
+          </f:facet>
+          <af:table value="#{bindings.ComplaintActionView1.collectionModel}" var="row"
+                    rows="#{bindings.ComplaintActionView1.rangeSize}"
+                    emptyText="#{bindings.ComplaintActionView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.ComplaintActionView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.ComplaintActionView1.collectionModel.makeCurrent}"
+                    rowSelection="single" fetchSize="#{bindings.ComplaintActionView1.rangeSize}" id="t3"
+                    partialTriggers="::b4">
+            <af:column headerText="Severity" id="c2">
+              <af:selectOneChoice value="#{row.bindings.SeverityId.inputValue}" label="#{row.bindings.SeverityId.label}"
+                                  required="#{bindings.ComplaintActionView1.hints.SeverityId.mandatory}"
+                                  shortDesc="#{bindings.ComplaintActionView1.hints.SeverityId.tooltip}" id="soc1">
+                <f:selectItems value="#{row.bindings.SeverityId.items}" id="si1"/>
+                <f:validator binding="#{row.bindings.SeverityId.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column headerText="#{bindings.ComplaintActionView1.hints.Occurance.label}" id="c3">
+              <af:inputText value="#{row.bindings.Occurance.inputValue}"
+                            label="#{bindings.ComplaintActionView1.hints.Occurance.label}"
+                            required="#{bindings.ComplaintActionView1.hints.Occurance.mandatory}"
+                            columns="#{bindings.ComplaintActionView1.hints.Occurance.displayWidth}"
+                            maximumLength="#{bindings.ComplaintActionView1.hints.Occurance.precision}"
+                            shortDesc="#{bindings.ComplaintActionView1.hints.Occurance.tooltip}" id="it3">
+                <f:validator binding="#{row.bindings.Occurance.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.ComplaintActionView1.hints.Occurance.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column headerText="Action" id="c4" width="500">
+              <af:inputText value="#{row.bindings.ActionText.inputValue}"
+                            label="#{bindings.ComplaintActionView1.hints.ActionText.label}"
+                            required="#{bindings.ComplaintActionView1.hints.ActionText.mandatory}"
+                            columns="#{bindings.ComplaintActionView1.hints.ActionText.displayWidth}"
+                            maximumLength="#{bindings.ComplaintActionView1.hints.ActionText.precision}"
+                            shortDesc="#{bindings.ComplaintActionView1.hints.ActionText.tooltip}" id="it4">
+                <f:validator binding="#{row.bindings.ActionText.validator}"/>
+              </af:inputText>
+            </af:column>
+          </af:table>
+        </af:panelBox>
+      </af:showDetailItem>
+    </af:panelTabbed>
+  </af:panelGroupLayout>
+</ui:composition>

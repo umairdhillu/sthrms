@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="untitled1.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGroupLayout id="pgl1" layout="vertical">
+                <dvt:hierarchyViewer id="hv1" var="node" value="#{bindings.Departments1.treeModel}"
+                                     selectionListener="#{bindings.Departments1.treeModel.makeCurrent}"
+                                     detailWindow="none" layout="hier_vert_top"
+                                     levelFetchSize="#{bindings.Departments1.rangeSize}" styleClass="AFStretchWidth"
+                                     summary="sdfsafad">
+                    <dvt:link linkType="orthogonalRounded" id="l1"/>
+                    <dvt:node type="com.soltechsystem.model.dashboard.VO.Departments" width="233" height="233" id="n1">
+                        <f:facet name="zoom100">
+                            <af:panelGroupLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                                 layout="vertical" id="pgl2">
+                                <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                    <af:panelGroupLayout layout="vertical" id="pgl4">
+                                        <af:outputText value="#{node.DepartmentId}"
+                                                       shortDesc="#{node.hints.DepartmentId.tooltip}"
+                                                       styleClass="AFHVNodeTitleTextStyle" id="ot1">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{node.hints.DepartmentId.format}"/>
+                                        </af:outputText>
+                                        <af:outputText value="#{node.DepartmentName}"
+                                                       shortDesc="#{node.hints.DepartmentName.tooltip}"
+                                                       styleClass="AFHVNodeSubtitleTextStyle" id="ot2"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </dvt:node>
+                    <dvt:node type="com.soltechsystem.model.dashboard.VO.Employees" width="233" height="233" id="n2">
+                        <f:facet name="zoom100">
+                            <af:panelGroupLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                                 layout="vertical" id="pgl5">
+                                <af:panelGroupLayout layout="horizontal" id="pgl6">
+                                    <af:panelGroupLayout layout="vertical" id="pgl7">
+                                        <af:outputText value="#{node.EmployeeId}"
+                                                       shortDesc="#{node.hints.EmployeeId.tooltip}"
+                                                       styleClass="AFHVNodeTitleTextStyle" id="ot3">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{node.hints.EmployeeId.format}"/>
+                                        </af:outputText>
+                                        <af:outputText value="#{node.EmployeeName}"
+                                                       shortDesc="#{node.hints.EmployeeName.tooltip}"
+                                                       styleClass="AFHVNodeSubtitleTextStyle" id="ot4"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                                <af:spacer height="5" id="s1"/>
+                                <dvt:panelCard effect="slide_horz" styleClass="AFHVNodePadding" id="pc1">
+                                    <af:showDetailItem text="Panel Card 1" id="sdi1">
+                                        <af:spacer height="2" id="s2"/>
+                                        <af:panelFormLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                                            id="pfl1">
+                                            <af:panelLabelAndMessage label="#{node.hints.Gender.label}"
+                                                                     styleClass="AFHVPanelCardLabelStyle" id="plam1">
+                                                <af:outputText value="#{node.Gender}"
+                                                               shortDesc="#{node.hints.Gender.tooltip}"
+                                                               styleClass="AFHVPanelCardTextStyle" id="ot5"/>
+                                            </af:panelLabelAndMessage>
+                                            <af:panelLabelAndMessage label="#{node.hints.JoiningDate.label}"
+                                                                     styleClass="AFHVPanelCardLabelStyle" id="plam2">
+                                                <af:outputText value="#{node.JoiningDate}"
+                                                               shortDesc="#{node.hints.JoiningDate.tooltip}"
+                                                               styleClass="AFHVPanelCardTextStyle" id="ot6">
+                                                    <af:convertDateTime pattern="#{node.hints.JoiningDate.format}"/>
+                                                </af:outputText>
+                                            </af:panelLabelAndMessage>
+                                        </af:panelFormLayout>
+                                    </af:showDetailItem>
+                                </dvt:panelCard>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </dvt:node>
+                    <dvt:node type="com.soltechsystem.model.dashboard.VO.LeafEmployee" width="233" height="233" id="n3">
+                        <f:facet name="zoom100">
+                            <af:panelGroupLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                                 layout="vertical" id="pgl8">
+                                <af:panelGroupLayout layout="horizontal" id="pgl9">
+                                    <af:panelGroupLayout layout="vertical" id="pgl10">
+                                        <af:outputText value="#{node.EmployeeId}"
+                                                       shortDesc="#{node.hints.EmployeeId.tooltip}"
+                                                       styleClass="AFHVNodeTitleTextStyle" id="ot7">
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{node.hints.EmployeeId.format}"/>
+                                        </af:outputText>
+                                        <af:outputText value="#{node.EmployeeName}"
+                                                       shortDesc="#{node.hints.EmployeeName.tooltip}"
+                                                       styleClass="AFHVNodeSubtitleTextStyle" id="ot8"/>
+                                    </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                                <af:spacer height="5" id="s3"/>
+                                <dvt:panelCard effect="slide_horz" styleClass="AFHVNodePadding" id="pc2">
+                                    <af:showDetailItem text="Panel Card 1" id="sdi2">
+                                        <af:spacer height="2" id="s4"/>
+                                        <af:panelFormLayout styleClass="AFStretchWidth AFHVNodeStretchHeight AFHVNodePadding"
+                                                            id="pfl2">
+                                            <af:panelLabelAndMessage label="#{node.hints.Gender.label}"
+                                                                     styleClass="AFHVPanelCardLabelStyle" id="plam3">
+                                                <af:outputText value="#{node.Gender}"
+                                                               shortDesc="#{node.hints.Gender.tooltip}"
+                                                               styleClass="AFHVPanelCardTextStyle" id="ot9"/>
+                                            </af:panelLabelAndMessage>
+                                            <af:panelLabelAndMessage label="#{node.hints.JoiningDate.label}"
+                                                                     styleClass="AFHVPanelCardLabelStyle" id="plam4">
+                                                <af:outputText value="#{node.JoiningDate}"
+                                                               shortDesc="#{node.hints.JoiningDate.tooltip}"
+                                                               styleClass="AFHVPanelCardTextStyle" id="ot10">
+                                                    <af:convertDateTime pattern="#{node.hints.JoiningDate.format}"/>
+                                                </af:outputText>
+                                            </af:panelLabelAndMessage>
+                                        </af:panelFormLayout>
+                                    </af:showDetailItem>
+                                </dvt:panelCard>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </dvt:node>
+                </dvt:hierarchyViewer>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

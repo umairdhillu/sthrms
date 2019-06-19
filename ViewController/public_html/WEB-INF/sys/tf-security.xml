@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="tf-security">
+    <default-activity>check_session</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="security">
+      <page>/sys/page_fragments/security.jsff</page>
+    </view>
+    <router id="check_session">
+      <case id="__1">
+        <expression>#{sessionScope.username != null}</expression>
+        <outcome>YES</outcome>
+      </case>
+      <case id="__2">
+        <expression>#{sessionScope.username == null}</expression>
+        <outcome>NO</outcome>
+      </case>
+      <default-outcome>NO</default-outcome>
+    </router>
+    <url-view id="LoginView">
+      <url>login</url>
+    </url-view>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome>
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__3">
+      <from-activity-id>check_session</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>YES</from-outcome>
+        <to-activity-id>Execute</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>NO</from-outcome>
+        <to-activity-id>LoginView</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>Execute</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>Execute</from-outcome>
+        <to-activity-id>security</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

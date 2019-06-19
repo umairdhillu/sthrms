@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.hr.LeaveManagement.Entity.EmployeeLeaves
+
+package com.soltechsystem.model.hr.LeaveManagement.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="LeaveId")
+def LeaveId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("employee_leaves_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

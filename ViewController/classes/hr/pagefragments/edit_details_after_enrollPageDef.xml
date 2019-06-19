@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="edit_details_after_enrollPageDef" Package="hr.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HrEmployeesView1" RangeSize="25" DataControl="HRAMDataControl" id="HrEmployeesView1Iterator"/>
+    <iterator Binds="HrEmployeeContactView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmployeeContactView1Iterator"/>
+    <iterator Binds="HrEmployeeExperienceView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmployeeExperienceView1Iterator"/>
+    <iterator Binds="HrEmployeeReferenceView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmployeeReferenceView1Iterator"/>
+    <iterator Binds="HrEmployeeQualificationView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmployeeQualificationView1Iterator"/>
+    <iterator Binds="HrEmployeeAddressView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmployeeAddressView1Iterator"/>
+    <iterator Binds="HrEmployeeFamilyMemberView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmployeeFamilyMemberView1Iterator"/>
+    <iterator Binds="HrEmployeeKinView1" RangeSize="25" DataControl="HRAMDataControl" id="HrEmployeeKinView1Iterator"/>
+    <iterator Binds="HrEmergencyContactView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmergencyContactView1Iterator"/>
+    <iterator id="SysFilesView1Iterator" Binds="SysFilesView1" DataControl="HRAMDataControl" RangeSize="25"/>
+    <iterator Binds="DrivingLicenseView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="DrivingLicenseView1Iterator"/>
+    <iterator Binds="CnicView1" RangeSize="25" DataControl="HRAMDataControl" id="CnicView1Iterator"/>
+    <iterator Binds="PassportView1" RangeSize="25" DataControl="HRAMDataControl" id="PassportView1Iterator"/>
+    <iterator Binds="PrlAllowDeductTrxView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="PrlAllowDeductTrxView1Iterator"/>
+    <iterator Binds="HrEmployeeAssetsView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="HrEmployeeAssetsView1Iterator"/>
+    <iterator id="StartDatesList1Iterator" Binds="StartDatesList1" DataControl="HRAMDataControl" RangeSize="25"/>
+    <iterator Binds="PrlAllowDeductTrxView1" RangeSize="10" DataControl="PRLAMDataControl"
+              id="PrlAllowDeductTrxView1Iterator1"/>
+    <iterator Binds="EmployeeAttachmentsHeaderAll1" RangeSize="25" DataControl="HRAMDataControl"
+              id="EmployeeAttachmentsHeaderAll1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="JoiningDate">
+      <AttrNames>
+        <Item Value="JoiningDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="EmployeeCode">
+      <AttrNames>
+        <Item Value="EmployeeCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ManagerFirstName">
+      <AttrNames>
+        <Item Value="ManagerFirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HrEmployeeContactView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="DepartmentName">
+      <AttrNames>
+        <Item Value="DepartmentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ManagerLastName">
+      <AttrNames>
+        <Item Value="ManagerLastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="JobTitle">
+      <AttrNames>
+        <Item Value="JobTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="EmployeeType">
+      <AttrNames>
+        <Item Value="EmployeeType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="EmployeeStatusDesc">
+      <AttrNames>
+        <Item Value="EmployeeStatusDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="EmployeeRoll">
+      <AttrNames>
+        <Item Value="EmployeeRoll"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="Col2">
+      <AttrNames>
+        <Item Value="Col2"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Col1" id="Col1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_EmployeeTypeId" id="EmployeeTypeId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_JobId" id="JobId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_DepartmentId" id="DepartmentId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Col6" id="Col6" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_ManagerId" id="ManagerId"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_EmployeeStatus" id="EmployeeStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="Attrib2">
+      <AttrNames>
+        <Item Value="Attrib2"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Salutation" id="Salutation"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="FatherOrHusbandName">
+      <AttrNames>
+        <Item Value="FatherOrHusbandName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="DateOfBirth">
+      <AttrNames>
+        <Item Value="DateOfBirth"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="Attrib3">
+      <AttrNames>
+        <Item Value="Attrib3"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Gender" id="Gender" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_MartialStatus" id="MartialStatus"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Nationality" id="Nationality"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="PassportNumber">
+      <AttrNames>
+        <Item Value="PassportNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="PassportExpiryDate">
+      <AttrNames>
+        <Item Value="PassportExpiryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="DrivingLicenseNumber">
+      <AttrNames>
+        <Item Value="DrivingLicenseNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="DrivingLicExpiry">
+      <AttrNames>
+        <Item Value="DrivingLicExpiry"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="HrEmployeeAddressView1Iterator" id="HrEmployeeAddressView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeeAddressView"
+                      Name="HrEmployeeAddressView10">
+        <AttrNames>
+          <Item Value="HouseNumber"/>
+          <Item Value="Street"/>
+          <Item Value="SectorBlock"/>
+          <Item Value="Area"/>
+          <Item Value="Zipcode"/>
+          <Item Value="PoBoxNumber"/>
+          <Item Value="Country"/>
+          <Item Value="StateProvince"/>
+          <Item Value="City"/>
+          <Item Value="Division"/>
+          <Item Value="District"/>
+          <Item Value="Tehsil"/>
+          <Item Value="UnionCouncil"/>
+          <Item Value="PoliceStation"/>
+          <Item Value="CompleteAddress"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="HrEmployeeAddressView1Iterator" StaticList="false" Uses="LOV_Country" id="Country"/>
+    <action IterBinding="HrEmployeeAddressView1Iterator" id="CreateInsert1"
+            InstanceName="HRAMDataControl.HrEmployeeAddressView1" DataControl="HRAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <list IterBinding="HrEmployeeAddressView1Iterator" StaticList="false" Uses="LOV_AddressType" id="AddressType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeeAddressView1Iterator" id="HouseNumber">
+      <AttrNames>
+        <Item Value="HouseNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAddressView1Iterator" id="Street">
+      <AttrNames>
+        <Item Value="Street"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAddressView1Iterator" id="SectorBlock">
+      <AttrNames>
+        <Item Value="SectorBlock"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAddressView1Iterator" id="Area">
+      <AttrNames>
+        <Item Value="Area"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAddressView1Iterator" id="Zipcode">
+      <AttrNames>
+        <Item Value="Zipcode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAddressView1Iterator" id="PoBoxNumber">
+      <AttrNames>
+        <Item Value="PoBoxNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeeAddressView1Iterator" StaticList="false" Uses="LOV_StateProvince" id="StateProvince"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeeAddressView1Iterator" StaticList="false" Uses="LOV_City" id="City"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeeAddressView1Iterator" StaticList="false" Uses="LOV_Division" id="Division"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeeAddressView1Iterator" StaticList="false" Uses="LOV_District" id="District"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeeAddressView1Iterator" StaticList="false" Uses="LOV_Tehsil" id="Tehsil"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeeAddressView1Iterator" id="UnionCouncil">
+      <AttrNames>
+        <Item Value="UnionCouncil"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAddressView1Iterator" id="PoliceStation">
+      <AttrNames>
+        <Item Value="PoliceStation"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HrEmployeeAddressView1Iterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="HrEmployeeExperienceView1Iterator" id="HrEmployeeExperienceView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeeExperienceView"
+                      Name="HrEmployeeExperienceView10">
+        <AttrNames>
+          <Item Value="ExperienceType"/>
+          <Item Value="JobTitle"/>
+          <Item Value="OrganizationName"/>
+          <Item Value="FromDat"/>
+          <Item Value="ToDat"/>
+          <Item Value="LeftReason"/>
+          <Item Value="Col1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HrEmployeeExperienceView1Iterator" id="CreateInsert2" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="HrEmployeeReferenceView1Iterator" id="HrEmployeeReferenceView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeeReferenceView"
+                      Name="HrEmployeeReferenceView10">
+        <AttrNames>
+          <Item Value="ReferenceName"/>
+          <Item Value="Designation"/>
+          <Item Value="OrganizationName"/>
+          <Item Value="ContactNumber"/>
+          <Item Value="Email"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HrEmployeeReferenceView1Iterator" id="CreateInsert3" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="HrEmployeeQualificationView1Iterator" id="HrEmployeeQualificationView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeeQualificationView"
+                      Name="HrEmployeeQualificationView10">
+        <AttrNames>
+          <Item Value="QualificationType"/>
+          <Item Value="InstituteName"/>
+          <Item Value="Percentage"/>
+          <Item Value="Grade"/>
+          <Item Value="FromDat"/>
+          <Item Value="ToDat"/>
+          <Item Value="Specialization"/>
+          <Item Value="ScoreType"/>
+          <Item Value="Score"/>
+          <Item Value="QualificationId"/>
+          <Item Value="Attrib2"/>
+          <Item Value="Attrib3"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HrEmployeeQualificationView1Iterator" id="CreateInsert4" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="HrEmployeeFamilyMemberView1Iterator" id="CreateInsert5" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" DataControl="HRAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action IterBinding="HrEmployeeKinView1Iterator" id="CreateInsert6" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="IdentityMark">
+      <AttrNames>
+        <Item Value="IdentityMark"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="Col7">
+      <AttrNames>
+        <Item Value="Col7"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="Col8">
+      <AttrNames>
+        <Item Value="Col8"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="Attrib7">
+      <AttrNames>
+        <Item Value="Attrib7"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="Attrib8">
+      <AttrNames>
+        <Item Value="Attrib8"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="Attrib9">
+      <AttrNames>
+        <Item Value="Attrib9"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="Attrib10">
+      <AttrNames>
+        <Item Value="Attrib10"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HrEmergencyContactView1Iterator" id="CreateInsert7" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="EmployeeId">
+      <AttrNames>
+        <Item Value="EmployeeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="EmployeeCnic">
+      <AttrNames>
+        <Item Value="EmployeeCnic"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="CnicExpiryDate">
+      <AttrNames>
+        <Item Value="CnicExpiryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="deleteFileLinks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="deleteFileLinks"
+                  IsViewObjectMethod="false" DataControl="SysAMDataControl"
+                  InstanceName="bindings.deleteFileLinks.dataControl.dataProvider">
+      <NamedData NDName="type" NDType="java.lang.String"/>
+      <NamedData NDName="employeeID" NDType="int"/>
+    </methodAction>
+    <tree IterBinding="DrivingLicenseView1Iterator" id="DrivingLicenseView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.DrivingLicenseView" Name="DrivingLicenseView10">
+        <AttrNames>
+          <Item Value="ReferenceId"/>
+          <Item Value="FileMimeType"/>
+          <Item Value="FileName"/>
+          <Item Value="FileExt"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="CnicView1Iterator" id="CnicView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.CnicView" Name="CnicView10">
+        <AttrNames>
+          <Item Value="FileExt"/>
+          <Item Value="FileName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="PassportView1Iterator" id="PassportView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.PassportView" Name="PassportView10">
+        <AttrNames>
+          <Item Value="FileName"/>
+          <Item Value="FileExt"/>
+          <Item Value="FileId"/>
+          <Item Value="FileMimeType"/>
+          <Item Value="ReferenceId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_GradeId" id="GradeId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <methodAction id="assignGrade" RequiresUpdateModel="true" Action="invokeMethod" MethodName="assignGrade"
+                  IsViewObjectMethod="false" DataControl="PRLAMDataControl"
+                  InstanceName="bindings.assignGrade.dataControl.dataProvider">
+      <NamedData NDName="employeeID" NDValue="" NDType="int"/>
+      <NamedData NDName="gradeID" NDValue="" NDType="int"/>
+    </methodAction>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ConfirmationDate">
+      <AttrNames>
+        <Item Value="ConfirmationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HrEmployeeAssetsView1Iterator" id="CreateInsert9" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <list IterBinding="HrEmployeeAssetsView1Iterator" StaticList="false" Uses="LOV_AssetType" id="AssetType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeeAssetsView1Iterator" StaticList="false" Uses="LOV_UsageType" id="UsageType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeeAssetsView1Iterator" id="PurchaseDate">
+      <AttrNames>
+        <Item Value="PurchaseDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAssetsView1Iterator" id="PurchaseValue">
+      <AttrNames>
+        <Item Value="PurchaseValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAssetsView1Iterator" id="EffectiveStartDate">
+      <AttrNames>
+        <Item Value="EffectiveStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAssetsView1Iterator" id="EffectiveEndDate">
+      <AttrNames>
+        <Item Value="EffectiveEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAssetsView1Iterator" id="AssetInfo1">
+      <AttrNames>
+        <Item Value="AssetInfo1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAssetsView1Iterator" id="AssetInfo2">
+      <AttrNames>
+        <Item Value="AssetInfo2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAssetsView1Iterator" id="AssetInfo3">
+      <AttrNames>
+        <Item Value="AssetInfo3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeAssetsView1Iterator" id="Attrib1">
+      <AttrNames>
+        <Item Value="Attrib1"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" DataControl="HRAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="HrEmployeeAssetsView1Iterator" id="Attrib21">
+      <AttrNames>
+        <Item Value="Attrib2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="GrossPay">
+      <AttrNames>
+        <Item Value="GrossPay"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_PaymentMode" id="PaymentMode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_BankId" id="BankId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="AccountNumber">
+      <AttrNames>
+        <Item Value="AccountNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="HrEmployeesView1Iterator" id="EmployeeActive" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="EmployeeActive"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    
+    <attributeValues IterBinding="PrlAllowDeductTrxView1Iterator" id="AllowenceDeductionName">
+      <AttrNames>
+        <Item Value="AllowenceDeductionName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlAllowDeductTrxView1Iterator" id="ValueTypeMeaning">
+      <AttrNames>
+        <Item Value="ValueTypeMeaning"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlAllowDeductTrxView1Iterator" id="Val">
+      <AttrNames>
+        <Item Value="Val"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlAllowDeductTrxView1Iterator" id="DeductionTypeMeaning">
+      <AttrNames>
+        <Item Value="DeductionTypeMeaning"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlAllowDeductTrxView1Iterator" id="TrxTypeMeaning">
+      <AttrNames>
+        <Item Value="TrxTypeMeaning"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PrlAllowDeductTrxView1Iterator" StaticList="false" Uses="LOV_StartDateType" id="StartDateType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PrlAllowDeductTrxView1Iterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PrlAllowDeductTrxView1Iterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="PrlAllowDeductTrxView1Iterator" id="PrlAllowDeductTrxView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlAllowDeductTrxView"
+                      Name="PrlAllowDeductTrxView10">
+        <AttrNames>
+          <Item Value="TrxId"/>
+          <Item Value="EmployeeId"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdationDate"/>
+          <Item Value="VersionNumber"/>
+          <Item Value="AllowenceDeductionName"/>
+          <Item Value="DeductionType"/>
+          <Item Value="TrxType"/>
+          <Item Value="Val"/>
+          <Item Value="ValueType"/>
+          <Item Value="ValueTypeMeaning"/>
+          <Item Value="TrxTypeMeaning"/>
+          <Item Value="DeductionTypeMeaning"/>
+          <Item Value="AllowDeductId"/>
+          <Item Value="Active"/>
+          <Item Value="StartDateType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PrlAllowDeductTrxView1Iterator" id="CreateInsert8" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <list IterBinding="PrlAllowDeductTrxView1Iterator" StaticList="false" Uses="LOV_AllowDeductId" id="AllowDeductId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <button IterBinding="PrlAllowDeductTrxView1Iterator" id="Active" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="MobilePhone">
+      <AttrNames>
+        <Item Value="MobilePhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="EmailAddress">
+      <AttrNames>
+        <Item Value="EmailAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Attrib5" id="Attrib5"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="FamilyNumber">
+      <AttrNames>
+        <Item Value="FamilyNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HrEmployeeQualificationView1Iterator" id="Delete2" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="HrEmployeeAssetsView1Iterator" id="Delete3" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction IterBinding="PrlAllowDeductTrxView1Iterator1" id="getDate" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getDate" IsViewObjectMethod="false" DataControl="PRLAMDataControl"
+                  InstanceName="bindings.PrlAllowDeductTrxView1Iterator1.currentRow" IsLocalObjectReference="true"
+                  ReturnName="data.PRLAMDataControl.methodResults.getDate_getDate_getDate_result"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="NoticePeriodStartDate">
+      <AttrNames>
+        <Item Value="NoticePeriodStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ResignationDate">
+      <AttrNames>
+        <Item Value="ResignationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ProbationEndDate">
+      <AttrNames>
+        <Item Value="ProbationEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ProbationStartDate">
+      <AttrNames>
+        <Item Value="ProbationStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HrEmployeeContactView1Iterator" id="Delete4" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="HrEmployeeKinView1Iterator" id="Delete5" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="HrEmployeeFamilyMemberView1Iterator" id="Delete6" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="HrEmployeeContactView1Iterator" id="HrEmployeeContactView1" ChangeEventPolicy="none">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeeContactView"
+                      Name="HrEmployeeContactView10">
+        <AttrNames>
+          <Item Value="ContactType"/>
+          <Item Value="ContactDescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="HrEmployeeFamilyMemberView1Iterator" id="HrEmployeeFamilyMemberView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeeFamilyMemberView"
+                      Name="HrEmployeeFamilyMemberView10">
+        <AttrNames>
+          <Item Value="RelationType"/>
+          <Item Value="Name"/>
+          <Item Value="Cnic"/>
+          <Item Value="Dob"/>
+          <Item Value="Address"/>
+          <Item Value="DirectDep" Binds="DirectDep"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="HrEmployeeFamilyMemberView1Iterator" id="DirectDep" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="DirectDep"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="HrEmployeeKinView1Iterator" id="HrEmployeeKinView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeeKinView" Name="HrEmployeeKinView10">
+        <AttrNames>
+          <Item Value="Relation"/>
+          <Item Value="KinName"/>
+          <Item Value="KinCnic"/>
+          <Item Value="KinContact"/>
+          <Item Value="GuardianName"/>
+          <Item Value="Percentage"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="HrEmergencyContactView1Iterator" id="HrEmergencyContactView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmergencyContactView"
+                      Name="HrEmergencyContactView10">
+        <AttrNames>
+          <Item Value="ContactName"/>
+          <Item Value="Relation"/>
+          <Item Value="ContactNumber"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="HrEmergencyContactView1Iterator" id="Delete7" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="BloodGroup">
+      <AttrNames>
+        <Item Value="BloodGroup"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="HrEmployeeAssetsView1Iterator" id="HrEmployeeAssetsView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeeAssetsView"
+                      Name="HrEmployeeAssetsView10">
+        <AttrNames>
+          <Item Value="AssetType"/>
+          <Item Value="PurchaseDate"/>
+          <Item Value="PurchaseValue"/>
+          <Item Value="EffectiveStartDate"/>
+          <Item Value="EffectiveEndDate"/>
+          <Item Value="UsageType"/>
+          <Item Value="AssetInfo1"/>
+          <Item Value="AssetInfo2"/>
+          <Item Value="AssetInfo3"/>
+          <Item Value="Attrib1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="HrEmployeeQualificationView1Iterator" id="QualificationId">
+      <AttrNames>
+        <Item Value="QualificationId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeQualificationView1Iterator" id="Attrib11">
+      <AttrNames>
+        <Item Value="Attrib1"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Col9" id="Col9" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <tree IterBinding="EmployeeAttachmentsHeaderAll1Iterator" id="EmployeeAttachmentsHeaderAll1">
+      <nodeDefinition DefName="com.soltechsystem.model.sys.vo.EmployeeAttachmentsHeaderAll"
+                      Name="EmployeeAttachmentsHeaderAll10">
+        <AttrNames>
+          <Item Value="EmployeeId"/>
+          <Item Value="LookupId"/>
+          <Item Value="LookupValue"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="AttachmentLines"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.soltechsystem.model.sys.vo.AttachmentLines" Name="EmployeeAttachmentsHeaderAll11">
+        <AttrNames>
+          <Item Value="ReferenceId"/>
+          <Item Value="FileContext"/>
+          <Item Value="FileExt"/>
+          <Item Value="FileId"/>
+          <Item Value="FileName"/>
+          <Item Value="FileMimeType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Col3" id="Col3" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="HrEmployeesView1Iterator" StaticList="false" Uses="LOV_Col4" id="Col4" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="BasicPay">
+      <AttrNames>
+        <Item Value="BasicPay"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelBox id="pb1" showDisclosure="false">
+            <f:facet name="toolbar">
+                <af:button text="Back" id="b1" action="back"/>
+            </f:facet>
+            <af:table value="#{bindings.LeavesApprovals1.collectionModel}" var="row"
+                      rows="#{bindings.LeavesApprovals1.rangeSize}"
+                      emptyText="#{bindings.LeavesApprovals1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.LeavesApprovals1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.LeavesApprovals1.collectionModel.makeCurrent}" rowSelection="single"
+                      fetchSize="#{bindings.LeavesApprovals1.rangeSize}" id="t2">
+                <af:column headerText="#{bindings.LeavesApprovals1.hints.LeaveId.label}" id="c9" rendered="false">
+                    <af:outputText value="#{row.LeaveId}" shortDesc="#{bindings.LeavesApprovals1.hints.LeaveId.tooltip}"
+                                   id="ot7">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.LeavesApprovals1.hints.LeaveId.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="Type" id="c10">
+                    <af:outputText value="#{row.LeaveTypeName}"
+                                   shortDesc="#{bindings.LeavesApprovals1.hints.LeaveType.tooltip}" id="ot8">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.LeavesApprovals1.hints.LeaveType.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="From" id="c11">
+                    <af:outputText value="#{row.LeaveFrom}"
+                                   shortDesc="#{bindings.LeavesApprovals1.hints.LeaveFrom.tooltip}" id="ot9">
+                        <af:convertDateTime pattern="#{bindings.LeavesApprovals1.hints.LeaveFrom.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="To" id="c12">
+                    <af:outputText value="#{row.LeaveTo}" shortDesc="#{bindings.LeavesApprovals1.hints.LeaveTo.tooltip}"
+                                   id="ot10">
+                        <af:convertDateTime pattern="#{bindings.LeavesApprovals1.hints.LeaveTo.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="Total" id="c15">
+                    <af:outputText value="#{row.NumberOfLeaves}"
+                                   shortDesc="#{bindings.LeavesApprovals1.hints.NumberOfLeaves.tooltip}" id="ot13">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.LeavesApprovals1.hints.NumberOfLeaves.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="Employee" id="c13">
+                    <af:outputText value="#{row.EmpName}" shortDesc="#{bindings.LeavesApprovals1.hints.EmpName.tooltip}"
+                                   id="ot11"/>
+                </af:column>
+                <af:column headerText="Department" id="c14">
+                    <af:outputText value="#{row.DepartmentName}"
+                                   shortDesc="#{bindings.LeavesApprovals1.hints.DepartmentName.tooltip}" id="ot12"/>
+                </af:column>
+                <af:column id="c16" width="150">
+                    <af:panelGroupLayout id="pgl4" layout="horizontal">
+                        <af:button text="Approve" id="b6" action="#{LeaveManagementBean.approveLeave}"/>
+                        <af:button text="Reject" id="b7" action="#{LeaveManagementBean.rejectLeave}"/>
+                    </af:panelGroupLayout>
+                </af:column>
+            </af:table>
+        </af:panelBox>
+    </af:panelGroupLayout>
+</ui:composition>

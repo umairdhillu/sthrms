@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PrlAllowDeductTrxView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full"
+  RowClass="com.soltechsystem.model.prl.ViewObject.PrlAllowDeductTrxViewRowImpl"
+  RowInterface="com.soltechsystem.model.prl.ViewObject.common.PrlAllowDeductTrxViewRow">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="PRLAM_AllowDeductList1_1"
+    ViewObjectName="com.soltechsystem.model.prl.LOV.AllowDeductList"
+    AMUsageName="PRLAM"
+    ViewInstanceName="AllowDeductList1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_StartDatesList1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.StartDatesList"
+    AMUsageName="HRAM"
+    ViewInstanceName="StartDatesList1"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="empid">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[EmployeeId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_StartDateType"
+    ListVOName="HRAM_StartDatesList1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="StartDateType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="StartDate"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Datetype"/>
+      <Item Value="Dat"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Lbl"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_AllowDeductId"
+    ListVOName="PRLAM_AllowDeductList1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AllowDeductId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="AllowenceDeductionName"/>
+      <Item Value="ValueType"/>
+      <Item Value="ValueTypeMeaning"/>
+      <Item Value="DeductionType"/>
+      <Item Value="DeductionTypeMeaning"/>
+      <Item Value="TrxType"/>
+      <Item Value="TrxTypeMeaning"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="AllowDeductId"/>
+      <Item Value="AllowenceDeductionName"/>
+      <Item Value="ValueType"/>
+      <Item Value="ValueTypeMeaning"/>
+      <Item Value="DeductionType"/>
+      <Item Value="DeductionTypeMeaning"/>
+      <Item Value="LineType"/>
+      <Item Value="TrxTypeMeaning"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="AllowenceDeductionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="PrlAllowDeductTrx"
+    Entity="com.soltechsystem.model.prl.Entity.PrlAllowDeductTrx"/>
+  <ViewAttribute
+    Name="TrxId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="TrxId"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="TRX_ID"/>
+  <ViewAttribute
+    Name="EmployeeId"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="EMPLOYEE_ID"/>
+  <ViewAttribute
+    Name="StartDate"
+    PrecisionRule="true"
+    EntityAttrName="StartDate"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="START_DATE"/>
+  <ViewAttribute
+    Name="EndDate"
+    PrecisionRule="true"
+    EntityAttrName="EndDate"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="END_DATE"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="UPDATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="UpdationDate"
+    PrecisionRule="true"
+    EntityAttrName="UpdationDate"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="UPDATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="VersionNumber"
+    PrecisionRule="true"
+    EntityAttrName="VersionNumber"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="AllowenceDeductionName"
+    PrecisionRule="true"
+    EntityAttrName="AllowenceDeductionName"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="ALLOWENCE_DEDUCTION_NAME"/>
+  <ViewAttribute
+    Name="DeductionType"
+    PrecisionRule="true"
+    EntityAttrName="DeductionType"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="DEDUCTION_TYPE"/>
+  <ViewAttribute
+    Name="TrxType"
+    PrecisionRule="true"
+    EntityAttrName="TrxType"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="TRX_TYPE"/>
+  <ViewAttribute
+    Name="Val"
+    PrecisionRule="true"
+    EntityAttrName="Val"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="VAL"/>
+  <ViewAttribute
+    Name="ValueType"
+    PrecisionRule="true"
+    EntityAttrName="ValueType"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="VALUE_TYPE"/>
+  <ViewAttribute
+    Name="ValueTypeMeaning"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select lv.lookup_value from hr_lookup_values lv where lv.lookup_id = PrlAllowDeductTrx.value_type)"
+    IsQueriable="false"/>
+  <ViewAttribute
+    Name="TrxTypeMeaning"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select lv.lookup_value from hr_lookup_values lv where lv.lookup_id = PrlAllowDeductTrx.trx_type)"/>
+  <ViewAttribute
+    Name="DeductionTypeMeaning"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(select lv.lookup_value from hr_lookup_values lv where lv.lookup_id = PrlAllowDeductTrx.deduction_type)"/>
+  <ViewAttribute
+    Name="AllowDeductId"
+    PrecisionRule="true"
+    EntityAttrName="AllowDeductId"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="ALLOW_DEDUCT_ID"
+    LOVName="LOV_AllowDeductId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Active"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="ACTIVE"/>
+  <ViewAttribute
+    Name="StartDateType"
+    PrecisionRule="true"
+    EntityAttrName="StartDateType"
+    EntityUsage="PrlAllowDeductTrx"
+    AliasName="START_DATE_TYPE"
+    LOVName="LOV_StartDateType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="getDate"
+      MethodName="getDate">
+      <Return
+        Name="_return_type_"
+        Type="java.sql.Date"/>
+    </Method>
+  </ClientRowInterface>
+  <DeclarativeWhereClause
+    Name="DeclarativeWhereClause">
+    <ViewCriteria
+      Name="PrlAllowDeductTrxViewWhereCriteria"
+      ViewObjectName="com.soltechsystem.model.prl.ViewObject.PrlAllowDeductTrxView"
+      Conjunction="AND"
+      Mode="3">
+      <ViewCriteriaRow
+        Name="PrlAllowDeductTrxViewWhereCriteria_row_0"
+        UpperColumns="1">
+        <ViewCriteriaItem
+          Name="EndDate"
+          ViewAttribute="EndDate"
+          Operator="ISBLANK"
+          Conjunction="AND"
+          Required="Optional"/>
+      </ViewCriteriaRow>
+    </ViewCriteria>
+  </DeclarativeWhereClause>
+</ViewObject>

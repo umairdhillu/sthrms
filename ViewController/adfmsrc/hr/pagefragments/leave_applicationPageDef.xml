@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="leave_applicationPageDef"
+                Package="hr.pagefragments">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="EmployeeLeavesView1" RangeSize="25" DataControl="LeaveManagementAMDataControl"
+                  id="EmployeeLeavesView1Iterator"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="EmployeeLeavesView1Iterator" id="EmployeeLeavesView1">
+            <nodeDefinition DefName="com.soltechsystem.model.hr.LeaveManagement.ViewObject.EmployeeLeavesView"
+                            Name="EmployeeLeavesView10">
+                <AttrNames>
+                    <Item Value="LeaveType"/>
+                    <Item Value="LeaveStatus"/>
+                    <Item Value="LeaveFrom"/>
+                    <Item Value="LeaveTo"/>
+                    <Item Value="Department"/>
+                    <Item Value="Designation"/>
+                    <Item Value="EmployeeName"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="EmployeeLeavesView1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <attributeValues IterBinding="EmployeeLeavesView1Iterator" id="LeaveStatus">
+            <AttrNames>
+                <Item Value="LeaveStatus"/>
+            </AttrNames>
+        </attributeValues>
+        <list IterBinding="EmployeeLeavesView1Iterator" StaticList="false" Uses="LOV_LeaveType" id="LeaveType"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <attributeValues IterBinding="EmployeeLeavesView1Iterator" id="LeaveFrom">
+            <AttrNames>
+                <Item Value="LeaveFrom"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="EmployeeLeavesView1Iterator" id="LeaveTo">
+            <AttrNames>
+                <Item Value="LeaveTo"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="EmployeeLeavesView1Iterator" id="Department">
+            <AttrNames>
+                <Item Value="Department"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="EmployeeLeavesView1Iterator" id="Designation">
+            <AttrNames>
+                <Item Value="Designation"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="EmployeeLeavesView1Iterator" id="EmployeeName">
+            <AttrNames>
+                <Item Value="EmployeeName"/>
+            </AttrNames>
+        </attributeValues>
+        <action IterBinding="EmployeeLeavesView1Iterator" id="CreateInsert"
+                InstanceName="LeaveManagementAMDataControl.EmployeeLeavesView1"
+                DataControl="LeaveManagementAMDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+        <action id="Commit" DataControl="LeaveManagementAMDataControl" RequiresUpdateModel="true"
+                Action="commitTransaction"/>
+        <action id="Rollback" DataControl="LeaveManagementAMDataControl" RequiresUpdateModel="false"
+                Action="rollbackTransaction"/>
+        <listOfValues IterBinding="EmployeeLeavesView1Iterator" StaticList="false" Uses="LOV_EmployeeId"
+                      id="EmployeeId"/>
+    </bindings>
+</pageDefinition>

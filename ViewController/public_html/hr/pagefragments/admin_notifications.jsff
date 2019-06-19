@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelBox id="pb1" showDisclosure="false">
+      <f:facet name="toolbar">
+                <af:button text="back" id="b1" action="back"/>
+            </f:facet>
+      <af:table value="#{bindings.LeaveNotification1.collectionModel}" var="row"
+                          rows="#{bindings.LeaveNotification1.rangeSize}"
+                          emptyText="#{bindings.LeaveNotification1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.LeaveNotification1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.LeaveNotification1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.LeaveNotification1.rangeSize}" id="t3">
+                    <af:column headerText="Type" id="c17">
+                        <af:outputText value="#{row.LeaveType}"
+                                       shortDesc="#{bindings.LeaveNotification1.hints.LeaveType.tooltip}" id="ot14">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.LeaveNotification1.hints.LeaveType.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="From" id="c18">
+                        <af:outputText value="#{row.LeaveFrom}"
+                                       shortDesc="#{bindings.LeaveNotification1.hints.LeaveFrom.tooltip}" id="ot15">
+                            <af:convertDateTime pattern="#{bindings.LeaveNotification1.hints.LeaveFrom.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="To" id="c19">
+                        <af:outputText value="#{row.LeaveTo}"
+                                       shortDesc="#{bindings.LeaveNotification1.hints.LeaveTo.tooltip}" id="ot16">
+                            <af:convertDateTime pattern="#{bindings.LeaveNotification1.hints.LeaveTo.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="Employee" id="c20">
+                        <af:outputText value="#{row.EmpName}"
+                                       shortDesc="#{bindings.LeaveNotification1.hints.EmpName.tooltip}" id="ot17"/>
+                    </af:column>
+                    <af:column headerText="Department" id="c21">
+                        <af:outputText value="#{row.DepartmentName}"
+                                       shortDesc="#{bindings.LeaveNotification1.hints.DepartmentName.tooltip}"
+                                       id="ot18"/>
+                    </af:column>
+                    <af:column headerText="Leave Type" id="c22">
+                        <af:outputText value="#{row.LeaveTypeName}"
+                                       shortDesc="#{bindings.LeaveNotification1.hints.LeaveTypeName.tooltip}"
+                                       id="ot19"/>
+                    </af:column>
+                    <af:column headerText="Total" id="c23">
+                        <af:outputText value="#{row.NumberOfLeaves}"
+                                       shortDesc="#{bindings.LeaveNotification1.hints.NumberOfLeaves.tooltip}"
+                                       id="ot20">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.LeaveNotification1.hints.NumberOfLeaves.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column id="c24">
+                        <af:button text="O.K" id="b8" action="#{LeaveManagementBean.adminView}"/>
+                    </af:column>
+                </af:table>
+    </af:panelBox>
+  </af:panelGroupLayout>
+</ui:composition>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="tf_employees">
+    <default-activity>check_session</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__5">
+      <managed-bean-name>EmployeeBackingBean</managed-bean-name>
+      <managed-bean-class>com.soltechsystem.view.hr_backing.EmployeeBacking</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__21">
+      <managed-bean-name>ImageUploading</managed-bean-name>
+      <managed-bean-class>com.soltechsystem.view.general.FileUp</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome>
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="employees">
+      <page>/hr/pagefragments/employees.jsff</page>
+    </view>
+    <router id="check_session">
+      <case id="__6">
+        <expression>#{sessionScope.username != null}</expression>
+        <outcome>YES</outcome>
+      </case>
+      <case id="__7">
+        <expression>#{sessionScope.username == null}</expression>
+        <outcome>NO</outcome>
+      </case>
+      <default-outcome>NO</default-outcome>
+    </router>
+    <url-view id="login">
+      <url>login</url>
+    </url-view>
+    <url-view id="main_menu">
+      <url>main_menu</url>
+    </url-view>
+    <view id="new_employee">
+      <page>/hr/pagefragments/new_employee.jsff</page>
+    </view>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="Commit">
+      <method>#{bindings.Commit.execute}</method>
+      <outcome>
+        <fixed-outcome>Commit</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="edit_details_after_enroll">
+      <page>/hr/pagefragments/edit_details_after_enroll.jsff</page>
+    </view>
+    <method-call id="Rollback">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome>
+        <fixed-outcome>Rollback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="departments">
+      <page>/hr/pagefragments/departments_jobs.jsff</page>
+    </view>
+    <view id="emp_history">
+      <page>/hr/pagefragments/emp_history.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="employee_complaint_setup">
+      <page>/hr/employee_complaint_setup.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>Execute</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>Execute</from-outcome>
+        <to-activity-id>employees</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>check_session</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>YES</from-outcome>
+        <to-activity-id>Execute</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>NO</from-outcome>
+        <to-activity-id>login</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>employees</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>main_menu</from-outcome>
+        <to-activity-id>main_menu</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>new_employee</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>edit_selected</from-outcome>
+        <to-activity-id>edit_details_after_enroll</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__25">
+        <from-outcome>jobs_departments_view</from-outcome>
+        <to-activity-id>departments</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__28">
+        <from-outcome>complaint_setup</from-outcome>
+        <to-activity-id>employee_complaint_setup</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>new_employee</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>new_employee</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>enroll_and_add_detail</from-outcome>
+        <to-activity-id>Commit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__22">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>Rollback</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id>Commit</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome>Commit</from-outcome>
+        <to-activity-id>edit_details_after_enroll</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>edit_details_after_enroll</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>all_employees</from-outcome>
+        <to-activity-id>Execute</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__31">
+        <from-outcome>emp_history</from-outcome>
+        <to-activity-id>ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id>Rollback</from-activity-id>
+      <control-flow-case id="__24">
+        <from-outcome>Rollback</from-outcome>
+        <to-activity-id>employees</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__26">
+      <from-activity-id>departments</from-activity-id>
+      <control-flow-case id="__27">
+        <from-outcome>goto_employees</from-outcome>
+        <to-activity-id>employees</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__32">
+      <from-activity-id>ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__33">
+        <from-outcome>ExecuteWithParams</from-outcome>
+        <to-activity-id>emp_history</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__34">
+      <from-activity-id>emp_history</from-activity-id>
+      <control-flow-case id="__35">
+        <from-outcome>back_to_original</from-outcome>
+        <to-activity-id>edit_details_after_enroll</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

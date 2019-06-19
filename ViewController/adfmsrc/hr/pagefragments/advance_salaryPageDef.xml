@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="advance_salaryPageDef"
+                Package="hr.pagefragments">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="PrlAdvanceSalaryView1" RangeSize="25" DataControl="PRLAMDataControl"
+                  id="PrlAdvanceSalaryView1Iterator"/>
+        <iterator Binds="Departments1" RangeSize="25" DataControl="DashboardDataControl" id="Departments1Iterator"/>
+    </executables>
+    <bindings>
+        <action IterBinding="PrlAdvanceSalaryView1Iterator" id="CreateInsert6" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action id="Rollback" DataControl="PRLAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+        <action id="Commit" DataControl="PRLAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+        <action IterBinding="PrlAdvanceSalaryView1Iterator" id="Delete2" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <tree IterBinding="PrlAdvanceSalaryView1Iterator" id="PrlAdvanceSalaryView1">
+            <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlAdvanceSalaryView"
+                            Name="PrlAdvanceSalaryView10">
+                <AttrNames>
+                    <Item Value="EmployeeName"/>
+                    <Item Value="AdvSalaryDate"/>
+                    <Item Value="Amount"/>
+                    <Item Value="DeductionMonth"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <list IterBinding="PrlAdvanceSalaryView1Iterator" StaticList="false" Uses="LOV_DeductionMonth"
+              id="DeductionMonth" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <listOfValues IterBinding="PrlAdvanceSalaryView1Iterator" StaticList="false" Uses="LOV_EmployeeId"
+                      id="EmployeeId3"/>
+        <attributeValues IterBinding="PrlAdvanceSalaryView1Iterator" id="Amount1">
+            <AttrNames>
+                <Item Value="Amount"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="PrlAdvanceSalaryView1Iterator" id="AdvSalaryDate">
+            <AttrNames>
+                <Item Value="AdvSalaryDate"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="PrlAdvanceSalaryView1Iterator" id="EmployeeName3">
+            <AttrNames>
+                <Item Value="EmployeeName"/>
+            </AttrNames>
+        </attributeValues>
+    </bindings>
+</pageDefinition>

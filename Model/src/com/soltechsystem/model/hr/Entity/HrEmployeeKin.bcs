@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.hr.Entity.HrEmployeeKin
+
+package com.soltechsystem.model.hr.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="KinId")
+def KinId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("HR_EMPLOYEE_KIN_SEQ",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

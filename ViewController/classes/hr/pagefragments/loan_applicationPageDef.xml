@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="loan_applicationPageDef"
+                Package="hr.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PrlLoanView1" RangeSize="25" DataControl="PRLAMDataControl" id="PrlLoanView1Iterator"/>
+  </executables>
+  <bindings>
+  <action id="Commit" DataControl="PRLAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+  <action id="Rollback" DataControl="PRLAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  <action IterBinding="PrlLoanView1Iterator" id="CreateInsert5" RequiresUpdateModel="true" Action="createInsertRow"/>
+  <tree IterBinding="PrlLoanView1Iterator" id="PrlLoanView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlLoanView" Name="PrlLoanView10">
+        <AttrNames>
+          <Item Value="EmployeeName"/>
+          <Item Value="LoanDate"/>
+          <Item Value="LoanType"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="InstallmentCount"/>
+          <Item Value="LoanAmount"/>
+          <Item Value="LoanId"/>
+          <Item Value="StopDeduction"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="PrlLoanView1Iterator" StaticList="false" Uses="LOV_EmployeeId" id="EmployeeId2"/>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="EmployeeName2">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PrlLoanView1Iterator" StaticList="false" Uses="LOV_LoanType" id="LoanType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="LoanDate">
+      <AttrNames>
+        <Item Value="LoanDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="LoanAmount">
+      <AttrNames>
+        <Item Value="LoanAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="InstallmentCount">
+      <AttrNames>
+        <Item Value="InstallmentCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="InstallmentAmount">
+      <AttrNames>
+        <Item Value="InstallmentAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="PrlLoanView1Iterator" id="StopDeduction" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="StopDeduction"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

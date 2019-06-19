@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="payroll_master_defPageDef"
+                Package="prl.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PrlAllowenceDeductionView1" RangeSize="25" DataControl="PRLAMDataControl"
+              id="PrlAllowenceDeductionView1Iterator" Refresh="default"/>
+    <iterator Binds="PrlGradeHeaderView1" RangeSize="25" DataControl="PRLAMDataControl"
+              id="PrlGradeHeaderView1Iterator"/>
+    <iterator Binds="PrlGradeLinesView1" RangeSize="25" DataControl="PRLAMDataControl" id="PrlGradeLinesView1Iterator"/>
+    <iterator Binds="PrlSpecialAllowDeductView1" RangeSize="25" DataControl="PRLAMDataControl"
+              id="PrlSpecialAllowDeductView1Iterator"/>
+    <iterator Binds="HrEmployeeLeavesView1" RangeSize="25" DataControl="PRLAMDataControl"
+              id="HrEmployeeLeavesView1Iterator"/>
+    <iterator Binds="PrlLoanView1" RangeSize="25" DataControl="PRLAMDataControl" id="PrlLoanView1Iterator"/>
+    <searchRegion Criteria="LoanSearch" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PrlLoanView1Iterator" id="LoanSearchQuery"/>
+    <iterator Binds="PrlAdvanceSalaryView1" RangeSize="25" DataControl="PRLAMDataControl"
+              id="PrlAdvanceSalaryView1Iterator"/>
+    <searchRegion Criteria="AdvanceSalarySearch" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PrlAdvanceSalaryView1Iterator" id="AdvanceSalarySearchQuery"/>
+    <iterator Binds="HrEmpOvertimeView1" RangeSize="25" DataControl="PRLAMDataControl" id="HrEmpOvertimeView1Iterator"/>
+    <iterator Binds="PrlSalaryPeriodHeaderView1" RangeSize="25" DataControl="PRLAMDataControl"
+              id="PrlSalaryPeriodHeaderView1Iterator"/>
+    <iterator Binds="PrlTaxSlabView1" RangeSize="25" DataControl="PRLAMDataControl" id="PrlTaxSlabView1Iterator"/>
+    <searchRegion Criteria="HrEmployeeLeavesViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" Binds="HrEmployeeLeavesView1Iterator"
+                  id="HrEmployeeLeavesViewCriteriaQuery"/>
+    <searchRegion Criteria="HrEmpOvertimeViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="HrEmpOvertimeView1Iterator" id="HrEmpOvertimeViewCriteriaQuery"/>
+    <iterator Binds="PrlBanksView1" RangeSize="25" DataControl="PRLAMDataControl" id="PrlBanksView1Iterator"/>
+    <iterator Binds="ReportParameterFormVO1" RangeSize="25" DataControl="SysAMDataControl"
+              id="ReportParameterFormVO1Iterator"/>
+    <searchRegion Criteria="PrlSpecialAllowDeductViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PrlSpecialAllowDeductView1Iterator" id="PrlSpecialAllowDeductViewCriteriaQuery"/>
+    <iterator Binds="PayrollRunParamForm1" RangeSize="25" DataControl="PRLAMDataControl"
+              id="PayrollRunParamForm1Iterator"/>
+    <iterator Binds="PayrollRunOption1" RangeSize="25" DataControl="PRLAMDataControl" id="PayrollRunOption1Iterator"/>
+    <iterator Binds="PrlSalaryPeriodLinesView1" RangeSize="25" DataControl="PRLAMDataControl"
+              id="PrlSalaryPeriodLinesView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="PrlAllowenceDeductionView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <attributeValues IterBinding="PrlGradeHeaderView1Iterator" id="GradeName">
+      <AttrNames>
+        <Item Value="GradeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlGradeHeaderView1Iterator" id="MinSalary">
+      <AttrNames>
+        <Item Value="MinSalary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlGradeHeaderView1Iterator" id="MaxSalary">
+      <AttrNames>
+        <Item Value="MaxSalary"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PrlGradeHeaderView1Iterator" StaticList="false" Uses="LOV_IncrementType" id="IncrementType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PrlGradeHeaderView1Iterator" id="Val">
+      <AttrNames>
+        <Item Value="Val"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlGradeHeaderView1Iterator" id="GrossSalary">
+      <AttrNames>
+        <Item Value="GrossSalary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlGradeHeaderView1Iterator" id="BasicSalary">
+      <AttrNames>
+        <Item Value="BasicSalary"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PrlGradeHeaderView1Iterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="PrlGradeHeaderView1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PrlGradeHeaderView1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="PrlGradeLinesView1Iterator" id="CreateInsert2" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="PrlSpecialAllowDeductView1Iterator" id="PrlSpecialAllowDeductView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlSpecialAllowDeductView"
+                      Name="PrlSpecialAllowDeductView10">
+        <AttrNames>
+          <Item Value="EmployeeName"/>
+          <Item Value="EmployeeDepartment"/>
+          <Item Value="EmployeeDesignation"/>
+          <Item Value="EmployeeGrade"/>
+          
+          <Item Value="AdjustmentType"/>
+          <Item Value="Amount"/>
+          <Item Value="AllowDeductDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="PrlSpecialAllowDeductView1Iterator" StaticList="false" Uses="LOV_EmployeeId"
+                  id="EmployeeId"/>
+    <attributeValues IterBinding="PrlSpecialAllowDeductView1Iterator" id="EmployeeName">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlSpecialAllowDeductView1Iterator" id="EmployeeDepartment">
+      <AttrNames>
+        <Item Value="EmployeeDepartment"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlSpecialAllowDeductView1Iterator" id="EmployeeDesignation">
+      <AttrNames>
+        <Item Value="EmployeeDesignation"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlSpecialAllowDeductView1Iterator" id="EmployeeGrade">
+      <AttrNames>
+        <Item Value="EmployeeGrade"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PrlSpecialAllowDeductView1Iterator" StaticList="false" Uses="LOV_AdjustmentType"
+          id="AdjustmentType" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PrlSpecialAllowDeductView1Iterator" id="Amount">
+      <AttrNames>
+        <Item Value="Amount"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="PRLAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action IterBinding="PrlSpecialAllowDeductView1Iterator" id="CreateInsert3"
+            InstanceName="PRLAMDataControl.PrlSpecialAllowDeductView1" DataControl="PRLAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="PrlSpecialAllowDeductView1Iterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="PrlSpecialAllowDeductView1Iterator" id="AllowDeductDate">
+      <AttrNames>
+        <Item Value="AllowDeductDate"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="HrEmployeeLeavesView1Iterator" StaticList="false" Uses="LOV_EmployeeId"
+                  id="EmployeeId1"/>
+    <attributeValues IterBinding="HrEmployeeLeavesView1Iterator" id="EmployeeName1">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeLeavesView1Iterator" id="EmployeeDepartment1">
+      <AttrNames>
+        <Item Value="EmployeeDepartment"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeLeavesView1Iterator" id="EmployeeDesignation1">
+      <AttrNames>
+        <Item Value="EmployeeDesignation"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeLeavesView1Iterator" id="EmployeeGrade1">
+      <AttrNames>
+        <Item Value="EmployeeGrade"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeLeavesView1Iterator" id="TotalLeaves">
+      <AttrNames>
+        <Item Value="TotalLeaves"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeLeavesView1Iterator" id="FromDate">
+      <AttrNames>
+        <Item Value="FromDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeeLeavesView1Iterator" id="ToDate">
+      <AttrNames>
+        <Item Value="ToDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="HrEmployeeLeavesView1Iterator" StaticList="false" Uses="LOV_LeaveType" id="LeaveType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <action IterBinding="HrEmployeeLeavesView1Iterator" id="CreateInsert4" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="HrEmployeeLeavesView1Iterator" id="HrEmployeeLeavesView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.HrEmployeeLeavesView"
+                      Name="HrEmployeeLeavesView10">
+        <AttrNames>
+          <Item Value="EmployeeName"/>
+          <Item Value="EmployeeDepartment"/>
+          <Item Value="EmployeeDesignation"/>
+          <Item Value="EmployeeGrade"/>
+          <Item Value="TotalLeaves"/>
+          <Item Value="FromDate"/>
+          <Item Value="ToDate"/>
+          <Item Value="LeaveType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="PrlLoanView1Iterator" StaticList="false" Uses="LOV_EmployeeId" id="EmployeeId2"/>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="EmployeeName2">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PrlLoanView1Iterator" StaticList="false" Uses="LOV_LoanType" id="LoanType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="LoanDate">
+      <AttrNames>
+        <Item Value="LoanDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="LoanAmount">
+      <AttrNames>
+        <Item Value="LoanAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="InstallmentCount">
+      <AttrNames>
+        <Item Value="InstallmentCount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlLoanView1Iterator" id="InstallmentAmount">
+      <AttrNames>
+        <Item Value="InstallmentAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="PrlLoanView1Iterator" id="StopDeduction" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="StopDeduction"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <action IterBinding="PrlLoanView1Iterator" id="CreateInsert5" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="PrlLoanView1Iterator" id="PrlLoanView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlLoanView" Name="PrlLoanView10">
+        <AttrNames>
+          <Item Value="EmployeeName"/>
+          <Item Value="LoanDate"/>
+          <Item Value="LoanType"/>
+          <Item Value="InstallmentAmount"/>
+          <Item Value="InstallmentCount"/>
+          <Item Value="LoanAmount"/>
+          <Item Value="LoanId"/>
+          <Item Value="StopDeduction"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="PrlAdvanceSalaryView1Iterator" StaticList="false" Uses="LOV_EmployeeId"
+                  id="EmployeeId3"/>
+    <attributeValues IterBinding="PrlAdvanceSalaryView1Iterator" id="Amount1">
+      <AttrNames>
+        <Item Value="Amount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlAdvanceSalaryView1Iterator" id="AdvSalaryDate">
+      <AttrNames>
+        <Item Value="AdvSalaryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlAdvanceSalaryView1Iterator" id="EmployeeName3">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="PrlAdvanceSalaryView1Iterator" id="PrlAdvanceSalaryView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlAdvanceSalaryView"
+                      Name="PrlAdvanceSalaryView10">
+        <AttrNames>
+          <Item Value="EmployeeName"/>
+          <Item Value="AdvSalaryDate"/>
+          <Item Value="Amount"/>
+          <Item Value="DeductionMonth"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PrlAdvanceSalaryView1Iterator" id="CreateInsert6" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="HrEmpOvertimeView1Iterator" id="HrEmpOvertimeView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmpOvertimeView" Name="HrEmpOvertimeView10">
+        <AttrNames>
+          <Item Value="EmployeeName"/>
+          <Item Value="EmployeeDepartment"/>
+          <Item Value="OvertimeDate"/>
+          <Item Value="OvertimeHours"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="HrEmpOvertimeView1Iterator" StaticList="false" Uses="LOV_EmployeeId" id="EmployeeId4"/>
+    <attributeValues IterBinding="HrEmpOvertimeView1Iterator" id="EmployeeName4">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmpOvertimeView1Iterator" id="OvertimeDate">
+      <AttrNames>
+        <Item Value="OvertimeDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmpOvertimeView1Iterator" id="OvertimeHours">
+      <AttrNames>
+        <Item Value="OvertimeHours"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmpOvertimeView1Iterator" id="EmployeeDepartment2">
+      <AttrNames>
+        <Item Value="EmployeeDepartment"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" DataControl="PRLAMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action IterBinding="HrEmpOvertimeView1Iterator" id="CreateInsert7" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="CommitHR" DataControl="HRAMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="PrlSalaryPeriodHeaderView1Iterator" id="PeriodYear">
+      <AttrNames>
+        <Item Value="PeriodYear"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlSalaryPeriodHeaderView1Iterator" id="PeriodYearEnd">
+      <AttrNames>
+        <Item Value="PeriodYearEnd"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlSalaryPeriodHeaderView1Iterator" id="PeriodYearStart">
+      <AttrNames>
+        <Item Value="PeriodYearStart"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PrlSalaryPeriodHeaderView1Iterator" id="CreateInsert8" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="PrlSalaryPeriodHeaderView1Iterator" id="Next1" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PrlSalaryPeriodHeaderView1Iterator" id="Previous1" RequiresUpdateModel="true"
+            Action="previous"/>
+    <tree IterBinding="PrlTaxSlabView1Iterator" id="PrlTaxSlabView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlTaxSlabView" Name="PrlTaxSlabView10">
+        <AttrNames>
+          <Item Value="SalaryFrom"/>
+          <Item Value="SalaryTo"/>
+          <Item Value="Tax"/>
+          <Item Value="IncomeDeduct"/>
+          <Item Value="Excess"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PrlTaxSlabView1Iterator" id="CreateInsert9" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="PrlLoanView1Iterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="PrlAdvanceSalaryView1Iterator" id="Delete2" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="PrlAdvanceSalaryView1Iterator" id="Execute" RequiresUpdateModel="true"
+            Action="iteratorExecute"/>
+    <action IterBinding="HrEmployeeLeavesView1Iterator" id="Delete3" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="HrEmployeeLeavesView1Iterator" id="Execute1" RequiresUpdateModel="true"
+            Action="iteratorExecute"/>
+    <action IterBinding="HrEmpOvertimeView1Iterator" id="Execute2" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="PrlLoanView1Iterator" id="Execute3" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action IterBinding="PrlSpecialAllowDeductView1Iterator" id="Execute4" RequiresUpdateModel="true"
+            Action="iteratorExecute"/>
+    <tree IterBinding="PrlBanksView1Iterator" id="PrlBanksView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlBanksView" Name="PrlBanksView10">
+        <AttrNames>
+          <Item Value="BankName"/>
+          <Item Value="BankAddress"/>
+          <Item Value="BankBranchCode"/>
+          <Item Value="BankBranchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PrlBanksView1Iterator" id="Delete4" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="PrlBanksView1Iterator" id="CreateInsert11" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <attributeValues IterBinding="PrlBanksView1Iterator" id="BankName">
+      <AttrNames>
+        <Item Value="BankName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlBanksView1Iterator" id="BankBranchCode">
+      <AttrNames>
+        <Item Value="BankBranchCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlBanksView1Iterator" id="BankBranchName">
+      <AttrNames>
+        <Item Value="BankBranchName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlBanksView1Iterator" id="BankAddress">
+      <AttrNames>
+        <Item Value="BankAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ReportParameterFormVO1Iterator" StaticList="false" Uses="LOV_ReportId" id="ReportId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ReportParameterFormVO1Iterator" id="DateFrom">
+      <AttrNames>
+        <Item Value="DateFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParameterFormVO1Iterator" id="DateTo">
+      <AttrNames>
+        <Item Value="DateTo"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ReportParameterFormVO1Iterator" StaticList="false" Uses="LOV_EmployeeType" id="EmployeeType1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ReportParameterFormVO1Iterator" StaticList="false" Uses="LOV_Department" id="Department1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ReportParameterFormVO1Iterator" StaticList="false" Uses="LOV_Designation" id="Designation1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ReportParameterFormVO1Iterator" StaticList="false" Uses="LOV_PaymentMode" id="PaymentMode"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ReportParameterFormVO1Iterator" StaticList="false" Uses="LOV_AllowenceDeduction"
+          id="AllowenceDeduction" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="ReportParameterFormVO1Iterator" id="GrossPayFrom">
+      <AttrNames>
+        <Item Value="GrossPayFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParameterFormVO1Iterator" StaticList="false" Uses="LOV_EmployeeId"
+                  id="EmployeeId6"/>
+    <attributeValues IterBinding="ReportParameterFormVO1Iterator" id="reportName">
+      <AttrNames>
+        <Item Value="reportName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PrlAdvanceSalaryView1Iterator" StaticList="false" Uses="LOV_DeductionMonth" id="DeductionMonth"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="PayrollRunParamForm1Iterator" StaticList="false" Uses="LOV_Department" id="Department"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="PayrollRunParamForm1Iterator" StaticList="false" Uses="LOV_Designation" id="Designation"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="PayrollRunParamForm1Iterator" StaticList="false" Uses="LOV_EmployeeType" id="EmployeeType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PayrollRunParamForm1Iterator" id="EmployeeName5">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="PayrollRunParamForm1Iterator" StaticList="false" Uses="LOV_Employee" id="Employee"/>
+    <list IterBinding="PayrollRunOption1Iterator" ListOperMode="navigation" ListIter="PayrollRunOption1Iterator"
+          id="PayrollRunOption1" DTSupportsMRU="false" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="OptionName"/>
+      </AttrNames>
+    </list>
+    <button IterBinding="PrlAllowenceDeductionView1Iterator" id="Special" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Special"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="PrlSalaryPeriodHeaderView1Iterator" id="PeriodId">
+      <AttrNames>
+        <Item Value="PeriodId"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="generateSalPeriod" RequiresUpdateModel="true" Action="invokeMethod" MethodName="generateSalPeriod"
+                  IsViewObjectMethod="false" DataControl="PRLAMDataControl"
+                  InstanceName="bindings.generateSalPeriod.dataControl.dataProvider">
+      <NamedData NDName="d1" NDValue="#{bindings.PeriodYearStart.inputValue}" NDType="java.sql.Date"/>
+      <NamedData NDName="headerID" NDValue="#{bindings.PeriodId.inputValue}" NDType="int"/>
+    </methodAction>
+    <tree IterBinding="PrlSalaryPeriodLinesView1Iterator" id="PrlSalaryPeriodLinesView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlSalaryPeriodLinesView"
+                      Name="PrlSalaryPeriodLinesView10">
+        <AttrNames>
+          <Item Value="MonthDesc"/>
+          <Item Value="StartDate"/>
+          <Item Value="Active" Binds="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="PrlSalaryPeriodLinesView1Iterator" id="Active" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <methodAction id="generateSalary" RequiresUpdateModel="true" Action="invokeMethod" MethodName="generateSalary"
+                  IsViewObjectMethod="false" DataControl="PRLAMDataControl"
+                  InstanceName="bindings.generateSalary.dataControl.dataProvider"
+                  ReturnName="data.PRLAMDataControl.methodResults.generateSalary_generateSalary_dataControl_dataProvider_generateSalary_result">
+      <NamedData NDName="pFrom" NDType="java.sql.Date"/>
+      <NamedData NDName="activeMonthID" NDType="int"/>
+      <NamedData NDName="pEmpType" NDType="int"/>
+      <NamedData NDName="pDepartmentID" NDType="int"/>
+      <NamedData NDName="pJobID" NDType="int"/>
+      <NamedData NDName="pOrgID" NDType="int"/>
+      <NamedData NDName="branch" NDType="int"/>
+      <NamedData NDName="pEmpID" NDType="int"/>
+    </methodAction>
+    <methodAction id="payrollExist" RequiresUpdateModel="true" Action="invokeMethod" MethodName="payrollExist"
+                  IsViewObjectMethod="false" DataControl="PRLAMDataControl"
+                  InstanceName="bindings.payrollExist.dataControl.dataProvider"
+                  ReturnName="data.PRLAMDataControl.methodResults.payrollExist_payrollExist_dataControl_dataProvider_payrollExist_result"/>
+    <tree IterBinding="PrlAllowenceDeductionView1Iterator" id="PrlAllowenceDeductionView11">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlAllowenceDeductionView"
+                      Name="PrlAllowenceDeductionView110">
+        <AttrNames>
+          <Item Value="AllowDeductId"/>
+          <Item Value="ValueType"/>
+          <Item Value="Val"/>
+          <Item Value="AllowenceDeductionName"/>
+          <Item Value="DeductionType"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="UpdatedBy"/>
+          <Item Value="UpdationDate"/>
+          <Item Value="VersionNumber"/>
+          <Item Value="LineType"/>
+          <Item Value="Special" Binds="Special"/>
+          <Item Value="Thevalue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="PrlGradeLinesView1Iterator" id="PrlGradeLinesView1">
+      <nodeDefinition DefName="com.soltechsystem.model.prl.ViewObject.PrlGradeLinesView" Name="PrlGradeLinesView10">
+        <AttrNames>
+          <Item Value="AllowenceDeductionId"/>
+          <Item Value="Val"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PrlGradeLinesView1Iterator" id="Delete5" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

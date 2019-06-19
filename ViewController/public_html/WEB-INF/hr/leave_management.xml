@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="leave_management">
+    <default-activity>leave_management_view</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__6">
+      <managed-bean-name>LeaveManagementBean</managed-bean-name>
+      <managed-bean-class>com.soltechsystem.view.leaves_management.LeaveManagement</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <router id="check_session">
+      <case id="__1">
+        <expression>#{sessionScope.username != null}</expression>
+        <outcome>YES</outcome>
+      </case>
+      <case id="__2">
+        <expression>#{sessionScope.username == null}</expression>
+        <outcome>NO</outcome>
+      </case>
+      <default-outcome>NO</default-outcome>
+    </router>
+    <url-view id="Login">
+      <url>login</url>
+    </url-view>
+    <view id="leave_management_view">
+      <page>/hr/pagefragments/leave_management.jsff</page>
+    </view>
+    <view id="leave_application">
+      <page>/hr/pagefragments/leave_application.jsff</page>
+    </view>
+    <view id="approve_leaves">
+      <page>/hr/pagefragments/approve_leaves.jsff</page>
+    </view>
+    <view id="admin_notifications">
+      <page>/hr/pagefragments/admin_notifications.jsff</page>
+    </view>
+    <view id="leave_balance">
+      <page>/hr/pagefragments/leave_balance.jsff</page>
+    </view>
+    <view id="loan_application">
+      <page>/hr/pagefragments/loan_application.jsff</page>
+    </view>
+    <view id="advance_salary">
+      <page>/hr/pagefragments/advance_salary.jsff</page>
+    </view>
+    <view id="daily_attendance_register">
+      <page>/hr/pagefragments/daily_attendance_register.jsff</page>
+    </view>
+    <control-flow-rule id="__3">
+      <from-activity-id>check_session</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>NO</from-outcome>
+        <to-activity-id>Login</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>YES</from-outcome>
+        <to-activity-id>leave_management_view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>leave_management_view</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>apply_leave</from-outcome>
+        <to-activity-id>leave_application</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>approve</from-outcome>
+        <to-activity-id>approve_leaves</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome>admin_notifications</from-outcome>
+        <to-activity-id>admin_notifications</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome>balances</from-outcome>
+        <to-activity-id>leave_balance</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__20">
+        <from-outcome>loan</from-outcome>
+        <to-activity-id>loan_application</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__23">
+        <from-outcome>advance</from-outcome>
+        <to-activity-id>advance_salary</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome>daily_atd</from-outcome>
+        <to-activity-id>daily_attendance_register</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>leave_application</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>leave_management_view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>approve_leaves</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>leave_management_view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id>admin_notifications</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>leave_management_view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id>leave_balance</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>leave_management_view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id>loan_application</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>leave_management_view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__24">
+      <from-activity-id>advance_salary</from-activity-id>
+      <control-flow-case id="__25">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>leave_management_view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id>daily_attendance_register</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>leave_management_view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

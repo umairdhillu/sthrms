@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="untitled1PageDef"
+                Package="com.soltechsystem.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Departments1" RangeSize="5" DataControl="DashboardDataControl" id="Departments1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Departments1Iterator" id="Departments1">
+      <nodeDefinition DefName="com.soltechsystem.model.dashboard.VO.Departments" Name="Departments10">
+        <AttrNames>
+          <Item Value="DepartmentName"/>
+          <Item Value="DepartmentId"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="Employees">
+            <Properties>
+              <CustomProperties>
+                <Property Name="hierarchyType" Value="children"/>
+              </CustomProperties>
+            </Properties>
+          </Item>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.soltechsystem.model.dashboard.VO.Employees" Name="Departments11">
+        <AttrNames>
+          <Item Value="JoiningDate"/>
+          <Item Value="Gender"/>
+          <Item Value="EmployeeId"/>
+          <Item Value="EmployeeName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="LeafEmployee">
+            <Properties>
+              <CustomProperties>
+                <Property Name="hierarchyType" Value="children"/>
+              </CustomProperties>
+            </Properties>
+          </Item>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.soltechsystem.model.dashboard.VO.LeafEmployee" Name="Departments12">
+        <AttrNames>
+          <Item Value="JoiningDate"/>
+          <Item Value="Gender"/>
+          <Item Value="EmployeeId"/>
+          <Item Value="EmployeeName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

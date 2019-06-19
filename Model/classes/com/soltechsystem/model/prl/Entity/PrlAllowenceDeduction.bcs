@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.prl.Entity.PrlAllowenceDeduction
+
+package com.soltechsystem.model.prl.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="AllowDeductId")
+def AllowDeductId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("prl_allowence_deduction_Seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

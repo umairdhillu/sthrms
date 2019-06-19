@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+.a{
+    display:table-cell;
+    vertical-align:middle;
+    text-align: center;
+    float:none;
+    line-height:normal;
+    width:18rem;
+    height:2.5rem;
+    color:White;
+    background-color:#1E90FF;
+}
+
+.form_back{
+    background-color: white;
+    width:22rem;
+}
+
+.collapse_panel af|panelBox::header-element {
+    color: #0572CE; 
+}

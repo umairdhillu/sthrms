@@ -1,0 +1,700 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelTabbed position="above" id="pt1" styleClass="AFStretchWidth">
+      <af:showDetailItem id="vacancy" text="Vacancy" disclosed="true">
+        <af:panelBox id="pb1" showDisclosure="false">
+          <f:facet name="toolbar">
+            <af:button id="b3" icon="/images/add.png" action="#{RecruitmentBean.showRecruitmentPopup}"/>
+          </f:facet>
+          <af:table value="#{bindings.HrVacanciesView1.collectionModel}" var="row"
+                    rows="#{bindings.HrVacanciesView1.rangeSize}"
+                    emptyText="#{bindings.HrVacanciesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.HrVacanciesView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.HrVacanciesView1.collectionModel.makeCurrent}" rowSelection="single"
+                    fetchSize="#{bindings.HrVacanciesView1.rangeSize}" id="t1" partialTriggers="b5"
+                    binding="#{RecruitmentBean.recruitmentTable}">
+            <af:column headerText="#{bindings.HrVacanciesView1.hints.VacancyId.label}" id="c1" rendered="false">
+              <af:outputText value="#{row.VacancyId}" shortDesc="#{bindings.HrVacanciesView1.hints.VacancyId.tooltip}"
+                             id="ot1">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.HrVacanciesView1.hints.VacancyId.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column id="c11">
+              <af:panelGroupLayout id="pgl3" layout="horizontal">
+                <af:button id="b4" icon="/images/view.png" action="#{RecruitmentBean.editVacancy}"/>
+                <af:button actionListener="#{bindings.Delete.execute}"
+                           disabled="#{!bindings.Delete.enabled}" id="b5" icon="/images/delete.png"/>
+              </af:panelGroupLayout>
+            </af:column>
+            <af:column headerText="Vacancy Title" id="c2">
+              <af:outputText value="#{row.VacancyTitle}"
+                             shortDesc="#{bindings.HrVacanciesView1.hints.VacancyTitle.tooltip}" id="ot2"/>
+            </af:column>
+            <af:column headerText="#{bindings.HrVacanciesView1.hints.Department.label}" id="c3">
+              <af:selectOneChoice value="#{row.bindings.Department.inputValue}" label="#{row.bindings.Department.label}"
+                                  required="#{bindings.HrVacanciesView1.hints.Department.mandatory}"
+                                  shortDesc="#{bindings.HrVacanciesView1.hints.Department.tooltip}" readOnly="true"
+                                  id="soc1">
+                <f:selectItems value="#{row.bindings.Department.items}" id="si1"/>
+                <f:validator binding="#{row.bindings.Department.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column headerText="#{bindings.HrVacanciesView1.hints.Designation.label}" id="c4">
+              <af:selectOneChoice value="#{row.bindings.Designation.inputValue}"
+                                  label="#{row.bindings.Designation.label}"
+                                  required="#{bindings.HrVacanciesView1.hints.Designation.mandatory}"
+                                  shortDesc="#{bindings.HrVacanciesView1.hints.Designation.tooltip}" readOnly="true"
+                                  id="soc2">
+                <f:selectItems value="#{row.bindings.Designation.items}" id="si2"/>
+                <f:validator binding="#{row.bindings.Designation.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column headerText="Vacancy Date" id="c5">
+              <af:outputText value="#{row.VacancyDate}"
+                             shortDesc="#{bindings.HrVacanciesView1.hints.VacancyDate.tooltip}" id="ot3">
+                <af:convertDateTime pattern="#{bindings.HrVacanciesView1.hints.VacancyDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="Required Date" id="c6">
+              <af:outputText value="#{row.RequiredDate}"
+                             shortDesc="#{bindings.HrVacanciesView1.hints.RequiredDate.tooltip}" id="ot4">
+                <af:convertDateTime pattern="#{bindings.HrVacanciesView1.hints.RequiredDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="Total Seats" id="c7">
+              <af:outputText value="#{row.NoOfPosts}" shortDesc="#{bindings.HrVacanciesView1.hints.NoOfPosts.tooltip}"
+                             id="ot5">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.HrVacanciesView1.hints.NoOfPosts.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="#{bindings.HrVacanciesView1.hints.Experience.label}" id="c8">
+              <af:outputText value="#{row.Experience}" shortDesc="#{bindings.HrVacanciesView1.hints.Experience.tooltip}"
+                             id="ot6">
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.HrVacanciesView1.hints.Experience.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="#{bindings.HrVacanciesView1.hints.Qualification.label}" id="c9">
+              <af:outputText value="#{row.Qualification}"
+                             shortDesc="#{bindings.HrVacanciesView1.hints.Qualification.tooltip}" id="ot7"/>
+            </af:column>
+            <af:column headerText="Duties and Responsibilities" id="c10" width="200">
+              <af:outputText value="#{row.DutiesAndResponsibilities}"
+                             shortDesc="#{bindings.HrVacanciesView1.hints.DutiesAndResponsibilities.tooltip}" id="ot8"/>
+            </af:column>
+          </af:table>
+        </af:panelBox>
+      </af:showDetailItem>
+      <af:showDetailItem text="Job Applications" id="sdi1">
+        <af:panelBox id="pb2" showDisclosure="false">
+          <f:facet name="toolbar">
+            <af:button id="b6" icon="/images/add.png" action="#{RecruitmentBean.showApplicationPopup}"/>
+          </f:facet>
+          <af:table value="#{bindings.HrApplicationsView1.collectionModel}" var="row"
+                    rows="#{bindings.HrApplicationsView1.rangeSize}"
+                    emptyText="#{bindings.HrApplicationsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.HrApplicationsView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.HrApplicationsView1.collectionModel.makeCurrent}"
+                    rowSelection="single" fetchSize="#{bindings.HrApplicationsView1.rangeSize}" id="t2"
+                    binding="#{RecruitmentBean.applicationTable}" partialTriggers="b10">
+            <af:column id="c24" width="490">
+              <af:panelGroupLayout id="pgl5" layout="horizontal">
+                <af:button id="b9" icon="/images/view.png" action="#{RecruitmentBean.viewApplication}"/>
+                <af:button actionListener="#{bindings.Delete1.execute}"
+                           disabled="#{!bindings.Delete1.enabled}" id="b10" icon="/images/delete.png"/>
+                <af:button text="View CV" id="b12">
+                  <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                </af:button>
+                <af:button text="Interview Call" id="b13"/>
+                <af:button text="Questionnaire" id="b20" action="#{RecruitmentBean.showQuestionnaire}"/>
+                <af:button text="Orientation" id="b25" action="#{RecruitmentBean.showOrientation}"/>
+                <af:button text="Evaluation" id="b16" action="#{RecruitmentBean.newEvaluation}"/>
+              </af:panelGroupLayout>
+              <af:popup childCreation="deferred" id="p1">
+                <af:panelWindow id="pw3">
+                  <af:inlineFrame id="if2" source="/image#{bindings.CV_URL.inputValue}"/>
+                </af:panelWindow>
+              </af:popup>
+            </af:column>
+            <af:column headerText="Applicant Name" id="c12">
+              <af:panelGroupLayout id="pgl7">
+                <af:image source="/images/star.png" id="i1" rendered="#{row.ShortList eq 'Y'}"/>
+                <af:outputText value="#{row.ApplicantName}"
+                               shortDesc="#{bindings.HrApplicationsView1.hints.ApplicantName.tooltip}" id="ot9"
+                               inlineStyle="margin-top:5px;"/>
+              </af:panelGroupLayout>
+            </af:column>
+            <af:column headerText="Applicant Contact" id="c13">
+              <af:outputText value="#{row.ApplicantContact}"
+                             shortDesc="#{bindings.HrApplicationsView1.hints.ApplicantContact.tooltip}" id="ot10"/>
+            </af:column>
+            <af:column headerText="Applicant Email" id="c14">
+              <af:outputText value="#{row.ApplicantEmail}"
+                             shortDesc="#{bindings.HrApplicationsView1.hints.ApplicantEmail.tooltip}" id="ot11"/>
+            </af:column>
+            <af:column headerText="Applicant Phone#" id="c15">
+              <af:outputText value="#{row.ApplicantPhone}"
+                             shortDesc="#{bindings.HrApplicationsView1.hints.ApplicantPhone.tooltip}" id="ot12"/>
+            </af:column>
+            <af:column headerText="Applicant Mobile#" id="c16">
+              <af:outputText value="#{row.ApplicantMobile}"
+                             shortDesc="#{bindings.HrApplicationsView1.hints.ApplicantMobile.tooltip}" id="ot13"/>
+            </af:column>
+            <af:column headerText="Applicant Degree" id="c17">
+              <af:selectOneChoice value="#{row.bindings.ApplicantDegree.inputValue}"
+                                  label="#{row.bindings.ApplicantDegree.label}"
+                                  required="#{bindings.HrApplicationsView1.hints.ApplicantDegree.mandatory}"
+                                  shortDesc="#{bindings.HrApplicationsView1.hints.ApplicantDegree.tooltip}"
+                                  readOnly="true" id="soc5">
+                <f:selectItems value="#{row.bindings.ApplicantDegree.items}" id="si5"/>
+                <f:validator binding="#{row.bindings.ApplicantDegree.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column headerText="Vacancy" id="c18">
+              <af:selectOneChoice value="#{row.bindings.VacancyId.inputValue}" label="#{row.bindings.VacancyId.label}"
+                                  required="#{bindings.HrApplicationsView1.hints.VacancyId.mandatory}"
+                                  shortDesc="#{bindings.HrApplicationsView1.hints.VacancyId.tooltip}" readOnly="true"
+                                  id="soc6">
+                <f:selectItems value="#{row.bindings.VacancyId.items}" id="si6"/>
+                <f:validator binding="#{row.bindings.VacancyId.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column headerText="Source" id="c19">
+              <af:selectOneChoice value="#{row.bindings.ApplicationSource.inputValue}"
+                                  label="#{row.bindings.ApplicationSource.label}"
+                                  required="#{bindings.HrApplicationsView1.hints.ApplicationSource.mandatory}"
+                                  shortDesc="#{bindings.HrApplicationsView1.hints.ApplicationSource.tooltip}"
+                                  readOnly="true" id="soc7">
+                <f:selectItems value="#{row.bindings.ApplicationSource.items}" id="si7"/>
+                <f:validator binding="#{row.bindings.ApplicationSource.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column headerText="Referred By" id="c20">
+              <af:outputText value="#{row.ReferredBy}"
+                             shortDesc="#{bindings.HrApplicationsView1.hints.ReferredBy.tooltip}" id="ot14"/>
+            </af:column>
+            <af:column headerText="Expected Salary" id="c21">
+              <af:outputText value="#{row.ExpectedSalary}"
+                             shortDesc="#{bindings.HrApplicationsView1.hints.ExpectedSalary.tooltip}" id="ot15">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.HrApplicationsView1.hints.ExpectedSalary.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="Proposed Salary" id="c22">
+              <af:outputText value="#{row.ProposedSalary}"
+                             shortDesc="#{bindings.HrApplicationsView1.hints.ProposedSalary.tooltip}" id="ot16">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.HrApplicationsView1.hints.ProposedSalary.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="Availability" id="c23">
+              <af:outputText value="#{row.ApplicantAvailability}"
+                             shortDesc="#{bindings.HrApplicationsView1.hints.ApplicantAvailability.tooltip}" id="ot17">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.HrApplicationsView1.hints.ApplicantAvailability.format}"/>
+              </af:outputText>
+            </af:column>
+          </af:table>
+        </af:panelBox>
+      </af:showDetailItem>
+      <af:showDetailItem text="Questionnaire" id="sdi2">
+        <af:panelBox id="pb3" showDisclosure="false">
+          <f:facet name="toolbar">
+            <af:button actionListener="#{bindings.CreateInsert3.execute}"
+                       disabled="#{!bindings.CreateInsert3.enabled}" id="b19" icon="/images/add.png"/>
+          </f:facet>
+          <af:table value="#{bindings.QuestionnaireView1.collectionModel}" var="row"
+                    rows="#{bindings.QuestionnaireView1.rangeSize}"
+                    emptyText="#{bindings.QuestionnaireView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.QuestionnaireView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.QuestionnaireView1.collectionModel.makeCurrent}" rowSelection="single"
+                    fetchSize="#{bindings.QuestionnaireView1.rangeSize}" id="t3" partialTriggers="::b19">
+            <af:column headerText="#{bindings.QuestionnaireView1.hints.Question.label}" id="c25" width="1000">
+              <af:panelGroupLayout id="pgl10" layout="horizontal">
+                <af:inputText value="#{row.bindings.Question.inputValue}"
+                              label="#{bindings.QuestionnaireView1.hints.Question.label}"
+                              required="#{bindings.QuestionnaireView1.hints.Question.mandatory}"
+                              columns="150"
+                              maximumLength="#{bindings.QuestionnaireView1.hints.Question.precision}"
+                              shortDesc="#{bindings.QuestionnaireView1.hints.Question.tooltip}" id="it26">
+                  <f:validator binding="#{row.bindings.Question.validator}"/>
+                </af:inputText>
+                <af:outputText value="?" id="ot18" inlineStyle="font-weight:bold; font-size:20px"/>
+              </af:panelGroupLayout>
+            </af:column>
+          </af:table>
+        </af:panelBox>
+      </af:showDetailItem>
+      <af:showDetailItem text="Define Orientation" id="sdi3">
+        <af:panelBox id="pb4" showDisclosure="false">
+          <f:facet name="toolbar">
+            <af:button actionListener="#{bindings.CreateInsert4.execute}" text="New Orientation Head"
+                       disabled="#{!bindings.CreateInsert4.enabled}" id="b23"/>
+          </f:facet>
+          <af:table value="#{bindings.OrientationHeadView1.collectionModel}" var="row"
+                    rows="#{bindings.OrientationHeadView1.rangeSize}"
+                    emptyText="#{bindings.OrientationHeadView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.OrientationHeadView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.OrientationHeadView1.collectionModel.makeCurrent}"
+                    rowSelection="single" fetchSize="#{bindings.OrientationHeadView1.rangeSize}"
+                    filterModel="#{bindings.OrientationHeadView1Query.queryDescriptor}" filterVisible="true"
+                    queryListener="#{bindings.OrientationHeadView1Query.processQuery}" varStatus="vs" id="t5"
+                    partialTriggers="::b23">
+            <af:column sortProperty="#{bindings.OrientationHeadView1.hints.Head.name}" filterable="true"
+                       headerText="#{bindings.OrientationHeadView1.hints.Head.label}" id="c28" width="500">
+              <af:inputText value="#{row.bindings.Head.inputValue}"
+                            label="#{bindings.OrientationHeadView1.hints.Head.label}"
+                            required="#{bindings.OrientationHeadView1.hints.Head.mandatory}"
+                            columns="#{bindings.OrientationHeadView1.hints.Head.displayWidth}"
+                            maximumLength="#{bindings.OrientationHeadView1.hints.Head.precision}"
+                            shortDesc="#{bindings.OrientationHeadView1.hints.Head.tooltip}" id="it29">
+                <f:validator binding="#{row.bindings.Head.validator}"/>
+              </af:inputText>
+            </af:column>
+          </af:table>
+          <af:table value="#{bindings.OrientationLinesView1.collectionModel}" var="row"
+                    rows="#{bindings.OrientationLinesView1.rangeSize}"
+                    emptyText="#{bindings.OrientationLinesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.OrientationLinesView1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.OrientationLinesView1.collectionModel.makeCurrent}"
+                    rowSelection="single" fetchSize="#{bindings.OrientationLinesView1.rangeSize}" id="t6"
+                    partialTriggers="b24">
+            <af:column headerText="#{bindings.OrientationLinesView1.hints.Line.label}" id="c29" width="500">
+              <af:inputText value="#{row.bindings.Line.inputValue}"
+                            label="#{bindings.OrientationLinesView1.hints.Line.label}"
+                            required="#{bindings.OrientationLinesView1.hints.Line.mandatory}"
+                            columns="#{bindings.OrientationLinesView1.hints.Line.displayWidth}"
+                            maximumLength="#{bindings.OrientationLinesView1.hints.Line.precision}"
+                            shortDesc="#{bindings.OrientationLinesView1.hints.Line.tooltip}" id="it30">
+                <f:validator binding="#{row.bindings.Line.validator}"/>
+              </af:inputText>
+              <f:facet name="header">
+                <af:button actionListener="#{bindings.CreateInsert5.execute}" text="Add Lines"
+                           disabled="#{!bindings.CreateInsert5.enabled}" id="b24"/>
+              </f:facet>
+            </af:column>
+          </af:table>
+        </af:panelBox>
+      </af:showDetailItem>
+    </af:panelTabbed>
+    <af:popup childCreation="deferred" id="popVacancy" binding="#{RecruitmentBean.recruitmentPopup}">
+      <af:panelWindow id="pw1">
+        <af:panelFormLayout id="pfl1">
+          <af:inputText value="#{bindings.VacancyId.inputValue}" label="Vacancy ID"
+                        required="#{bindings.VacancyId.hints.mandatory}"
+                        columns="#{bindings.VacancyId.hints.displayWidth}"
+                        maximumLength="#{bindings.VacancyId.hints.precision}"
+                        shortDesc="#{bindings.VacancyId.hints.tooltip}" id="it1" disabled="true">
+            <f:validator binding="#{bindings.VacancyId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.VacancyId.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.VacancyTitle.inputValue}" label="Vacancy Title"
+                        required="#{bindings.VacancyTitle.hints.mandatory}"
+                        columns="#{bindings.VacancyTitle.hints.displayWidth}"
+                        maximumLength="#{bindings.VacancyTitle.hints.precision}"
+                        shortDesc="#{bindings.VacancyTitle.hints.tooltip}" id="it2">
+            <f:validator binding="#{bindings.VacancyTitle.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.Department.inputValue}" label="#{bindings.Department.label}"
+                              required="#{bindings.Department.hints.mandatory}"
+                              shortDesc="#{bindings.Department.hints.tooltip}" id="soc3">
+            <f:selectItems value="#{bindings.Department.items}" id="si3"/>
+            <f:validator binding="#{bindings.Department.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.Designation.inputValue}" label="#{bindings.Designation.label}"
+                              required="#{bindings.Designation.hints.mandatory}"
+                              shortDesc="#{bindings.Designation.hints.tooltip}" id="soc4">
+            <f:selectItems value="#{bindings.Designation.items}" id="si4"/>
+            <f:validator binding="#{bindings.Designation.validator}"/>
+          </af:selectOneChoice>
+          <af:inputDate value="#{bindings.VacancyDate.inputValue}" label="Vacancy Date"
+                        required="#{bindings.VacancyDate.hints.mandatory}"
+                        columns="#{bindings.VacancyDate.hints.displayWidth}"
+                        shortDesc="#{bindings.VacancyDate.hints.tooltip}" id="id1">
+            <f:validator binding="#{bindings.VacancyDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.VacancyDate.format}"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.RequiredDate.inputValue}" label="Required Date"
+                        required="#{bindings.RequiredDate.hints.mandatory}"
+                        columns="#{bindings.RequiredDate.hints.displayWidth}"
+                        shortDesc="#{bindings.RequiredDate.hints.tooltip}" id="id2">
+            <f:validator binding="#{bindings.RequiredDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.RequiredDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.NoOfPosts.inputValue}" label="Total Seats"
+                        required="#{bindings.NoOfPosts.hints.mandatory}"
+                        columns="#{bindings.NoOfPosts.hints.displayWidth}"
+                        maximumLength="#{bindings.NoOfPosts.hints.precision}"
+                        shortDesc="#{bindings.NoOfPosts.hints.tooltip}" id="it3">
+            <f:validator binding="#{bindings.NoOfPosts.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.NoOfPosts.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Experience.inputValue}" label="#{bindings.Experience.hints.label}"
+                        required="#{bindings.Experience.hints.mandatory}"
+                        columns="#{bindings.Experience.hints.displayWidth}"
+                        maximumLength="#{bindings.Experience.hints.precision}"
+                        shortDesc="#{bindings.Experience.hints.tooltip}" id="it4">
+            <f:validator binding="#{bindings.Experience.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Experience.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Qualification.inputValue}" label="#{bindings.Qualification.hints.label}"
+                        required="#{bindings.Qualification.hints.mandatory}"
+                        columns="#{bindings.Qualification.hints.displayWidth}"
+                        maximumLength="#{bindings.Qualification.hints.precision}"
+                        shortDesc="#{bindings.Qualification.hints.tooltip}" id="it5">
+            <f:validator binding="#{bindings.Qualification.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.DutiesAndResponsibilities.inputValue}"
+                        label="Duties And Responsibilities"
+                        required="#{bindings.DutiesAndResponsibilities.hints.mandatory}"
+                        columns="#{bindings.DutiesAndResponsibilities.hints.displayWidth}"
+                        maximumLength="#{bindings.DutiesAndResponsibilities.hints.precision}"
+                        shortDesc="#{bindings.DutiesAndResponsibilities.hints.tooltip}" id="it6">
+            <f:validator binding="#{bindings.DutiesAndResponsibilities.validator}"/>
+          </af:inputText>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl2">
+              <af:button id="b1" icon="/images/check.png" action="#{RecruitmentBean.saveVacancy}"/>
+              <af:button id="b2" icon="/images/cancel.png" action="#{RecruitmentBean.cancelVacancyAndExit}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" id="pApplication" binding="#{RecruitmentBean.applicationPopup}">
+      <af:panelWindow id="pw2">
+        <af:panelFormLayout id="pfl2">
+          <af:panelGroupLayout id="pgl8" layout="horizontal">
+            <af:selectBooleanCheckbox value="#{bindings.ShortList.inputValue}" label="Short List"
+                                      shortDesc="#{bindings.ShortList.hints.tooltip}" id="sbc1"/>
+            <af:button text="Interview Call" id="b14"/>
+          </af:panelGroupLayout>
+          <af:inputText value="#{bindings.ApplicantName.inputValue}" label="Applicant Name"
+                        required="#{bindings.ApplicantName.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.ApplicantName.hints.precision}"
+                        shortDesc="#{bindings.ApplicantName.hints.tooltip}" id="it7">
+            <f:validator binding="#{bindings.ApplicantName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ApplicantContact.inputValue}" label="Contact"
+                        required="#{bindings.ApplicantContact.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.ApplicantContact.hints.precision}"
+                        shortDesc="#{bindings.ApplicantContact.hints.tooltip}" id="it8">
+            <f:validator binding="#{bindings.ApplicantContact.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ApplicantEmail.inputValue}" label="Email"
+                        required="#{bindings.ApplicantEmail.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.ApplicantEmail.hints.precision}"
+                        shortDesc="#{bindings.ApplicantEmail.hints.tooltip}" id="it9">
+            <f:validator binding="#{bindings.ApplicantEmail.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ApplicantPhone.inputValue}" label="Applicant Phone#"
+                        required="#{bindings.ApplicantPhone.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.ApplicantPhone.hints.precision}"
+                        shortDesc="#{bindings.ApplicantPhone.hints.tooltip}" id="it10">
+            <f:validator binding="#{bindings.ApplicantPhone.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ApplicantMobile.inputValue}" label="Applicant Mobile"
+                        required="#{bindings.ApplicantMobile.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.ApplicantMobile.hints.precision}"
+                        shortDesc="#{bindings.ApplicantMobile.hints.tooltip}" id="it11">
+            <f:validator binding="#{bindings.ApplicantMobile.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.ApplicantDegree.inputValue}" label="Applicant Degree"
+                              required="#{bindings.ApplicantDegree.hints.mandatory}"
+                              shortDesc="#{bindings.ApplicantDegree.hints.tooltip}" id="soc8">
+            <f:selectItems value="#{bindings.ApplicantDegree.items}" id="si8"/>
+            <f:validator binding="#{bindings.ApplicantDegree.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.VacancyId1.inputValue}" label="Vacancy"
+                              required="#{bindings.VacancyId1.hints.mandatory}"
+                              shortDesc="#{bindings.VacancyId1.hints.tooltip}" id="soc9">
+            <f:selectItems value="#{bindings.VacancyId1.items}" id="si9"/>
+            <f:validator binding="#{bindings.VacancyId1.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.ApplicationSource.inputValue}"
+                              label="Source"
+                              required="#{bindings.ApplicationSource.hints.mandatory}"
+                              shortDesc="#{bindings.ApplicationSource.hints.tooltip}" id="soc10">
+            <f:selectItems value="#{bindings.ApplicationSource.items}" id="si10"/>
+            <f:validator binding="#{bindings.ApplicationSource.validator}"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.ReferredBy.inputValue}" label="Referred By"
+                        required="#{bindings.ReferredBy.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.ReferredBy.hints.precision}"
+                        shortDesc="#{bindings.ReferredBy.hints.tooltip}" id="it12">
+            <f:validator binding="#{bindings.ReferredBy.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ExpectedSalary.inputValue}" label="Expected Salary"
+                        required="#{bindings.ExpectedSalary.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.ExpectedSalary.hints.precision}"
+                        shortDesc="#{bindings.ExpectedSalary.hints.tooltip}" id="it13">
+            <f:validator binding="#{bindings.ExpectedSalary.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.ExpectedSalary.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ProposedSalary.inputValue}" label="Proposed Salary"
+                        required="#{bindings.ProposedSalary.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.ProposedSalary.hints.precision}"
+                        shortDesc="#{bindings.ProposedSalary.hints.tooltip}" id="it14">
+            <f:validator binding="#{bindings.ProposedSalary.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.ProposedSalary.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ApplicantAvailability.inputValue}"
+                        label="Availability"
+                        required="#{bindings.ApplicantAvailability.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.ApplicantAvailability.hints.precision}"
+                        shortDesc="#{bindings.ApplicantAvailability.hints.tooltip}" id="it15">
+            <f:validator binding="#{bindings.ApplicantAvailability.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.ApplicantAvailability.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.InterviewRemarks.inputValue}" label="Interview Remarks"
+                        required="#{bindings.InterviewRemarks.hints.mandatory}"
+                        columns="45"
+                        maximumLength="#{bindings.InterviewRemarks.hints.precision}"
+                        shortDesc="#{bindings.InterviewRemarks.hints.tooltip}" id="it16" rows="6">
+            <f:validator binding="#{bindings.InterviewRemarks.validator}"/>
+          </af:inputText>
+          <af:panelGroupLayout id="pgl6" layout="horizontal">
+            <af:inputFile label="CV" id="if1" maximumFiles="5" value="#{backingBeanScope.RecruitmentFiles.cvFiles}"/>
+            <af:button text="Upload CV" id="b11" action="#{backingBeanScope.RecruitmentFiles.uploadCV}"/>
+          </af:panelGroupLayout>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl4" layout="horizontal">
+              <af:button id="b7" icon="/images/check.png" action="#{RecruitmentBean.saveApplication}"/>
+              <af:button id="b8" icon="/images/cancel.png" action="#{RecruitmentBean.cancelApplication}"/>
+              <af:button actionListener="#{bindings.Commit.execute}" text="Commit" id="b15"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="disabled" id="p2" binding="#{RecruitmentBean.questionnairePopup}">
+      <af:panelWindow id="pw5">
+        <af:table value="#{bindings.HrApplicationQuestionnaireView2.collectionModel}" var="row"
+                  rows="#{bindings.HrApplicationQuestionnaireView2.rangeSize}"
+                  emptyText="#{bindings.HrApplicationQuestionnaireView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.HrApplicationQuestionnaireView2.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.HrApplicationQuestionnaireView2.collectionModel.makeCurrent}"
+                  rowSelection="single" fetchSize="#{bindings.HrApplicationQuestionnaireView2.rangeSize}" id="t4">
+          <af:column headerText="#{bindings.HrApplicationQuestionnaireView2.hints.Question.label}" id="c26"
+                     width="600">
+            <af:inputText value="#{row.bindings.Question.inputValue} ?"
+                          label="#{bindings.HrApplicationQuestionnaireView2.hints.Question.label}"
+                          required="#{bindings.HrApplicationQuestionnaireView2.hints.Question.mandatory}"
+                          columns="150"
+                          maximumLength="#{bindings.HrApplicationQuestionnaireView2.hints.Question.precision}"
+                          shortDesc="#{bindings.HrApplicationQuestionnaireView2.hints.Question.tooltip}" id="it27"
+                          readOnly="true">
+              <f:validator binding="#{row.bindings.Question.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column headerText="#{bindings.HrApplicationQuestionnaireView2.hints.Answer.label}" id="c27" width="600">
+            <af:inputText value="#{row.bindings.Answer.inputValue}"
+                          label="#{bindings.HrApplicationQuestionnaireView2.hints.Answer.label}"
+                          required="#{bindings.HrApplicationQuestionnaireView2.hints.Answer.mandatory}"
+                          columns="#{bindings.HrApplicationQuestionnaireView2.hints.Answer.displayWidth}"
+                          maximumLength="#{bindings.HrApplicationQuestionnaireView2.hints.Answer.precision}"
+                          shortDesc="#{bindings.HrApplicationQuestionnaireView2.hints.Answer.tooltip}" id="it28">
+              <f:validator binding="#{row.bindings.Answer.validator}"/>
+            </af:inputText>
+          </af:column>
+        </af:table>
+        <af:panelGroupLayout id="pgl11" layout="horizontal">
+          <af:button id="b21" icon="/images/check.png" action="#{RecruitmentBean.saveAnswers}"/>
+          <af:button id="b22" icon="/images/cancel.png" action="#{RecruitmentBean.cancelAnswers}"/>
+        </af:panelGroupLayout>
+      </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" id="pInterview" binding="#{RecruitmentBean.interviewPopup}">
+      <af:panelWindow id="pw4">
+        <af:panelFormLayout id="pfl3">
+          <af:inputText value="#{bindings.InterviewEvaluationId.inputValue}"
+                        label="#{bindings.InterviewEvaluationId.hints.label}"
+                        required="#{bindings.InterviewEvaluationId.hints.mandatory}"
+                        columns="#{bindings.InterviewEvaluationId.hints.displayWidth}"
+                        maximumLength="#{bindings.InterviewEvaluationId.hints.precision}"
+                        shortDesc="#{bindings.InterviewEvaluationId.hints.tooltip}" id="it17" rendered="false">
+            <f:validator binding="#{bindings.InterviewEvaluationId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.InterviewEvaluationId.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ApplicationId.inputValue}" label="#{bindings.ApplicationId.hints.label}"
+                        required="#{bindings.ApplicationId.hints.mandatory}"
+                        columns="#{bindings.ApplicationId.hints.displayWidth}"
+                        maximumLength="#{bindings.ApplicationId.hints.precision}"
+                        shortDesc="#{bindings.ApplicationId.hints.tooltip}" id="it18" rendered="false">
+            <f:validator binding="#{bindings.ApplicationId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.ApplicationId.format}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.InterviewDate.inputValue}" label="Interview Date"
+                        required="#{bindings.InterviewDate.hints.mandatory}"
+                        columns="#{bindings.InterviewDate.hints.displayWidth}"
+                        shortDesc="#{bindings.InterviewDate.hints.tooltip}" id="id3">
+            <f:validator binding="#{bindings.InterviewDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.InterviewDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.InterviewVenue.inputValue}" label="Interview Venue"
+                        required="#{bindings.InterviewVenue.hints.mandatory}"
+                        columns="30"
+                        maximumLength="#{bindings.InterviewVenue.hints.precision}"
+                        shortDesc="#{bindings.InterviewVenue.hints.tooltip}" id="it19">
+            <f:validator binding="#{bindings.InterviewVenue.validator}"/>
+          </af:inputText>
+          <af:selectOneRadio value="#{bindings.Recommendations.inputValue}"
+                             label="Recommendations after completion of interview"
+                             required="#{bindings.Recommendations.hints.mandatory}"
+                             shortDesc="#{bindings.Recommendations.hints.tooltip}" id="sor1" layout="horizontal">
+            <f:selectItems value="#{bindings.Recommendations.items}" id="si11"/>
+            <f:validator binding="#{bindings.Recommendations.validator}"/>
+          </af:selectOneRadio>
+          <af:selectOneRadio value="#{bindings.SpecificJobKnowledge.inputValue}"
+                             label="Knowledge of specific job skill and application"
+                             required="#{bindings.SpecificJobKnowledge.hints.mandatory}"
+                             shortDesc="#{bindings.SpecificJobKnowledge.hints.tooltip}" id="sor2" layout="horizontal">
+            <f:selectItems value="#{bindings.SpecificJobKnowledge.items}" id="si12"/>
+            <f:validator binding="#{bindings.SpecificJobKnowledge.validator}"/>
+          </af:selectOneRadio>
+          <af:selectOneRadio value="#{bindings.RelatedJobExperience.inputValue}"
+                             label="Related Job Experience"
+                             required="#{bindings.RelatedJobExperience.hints.mandatory}"
+                             shortDesc="#{bindings.RelatedJobExperience.hints.tooltip}" id="sor3" layout="horizontal">
+            <f:selectItems value="#{bindings.RelatedJobExperience.items}" id="si13"/>
+            <f:validator binding="#{bindings.RelatedJobExperience.validator}"/>
+          </af:selectOneRadio>
+          <af:selectOneRadio value="#{bindings.Dynamism.inputValue}" label="Initiative / Dynamism"
+                             required="#{bindings.Dynamism.hints.mandatory}"
+                             shortDesc="#{bindings.Dynamism.hints.tooltip}" id="sor4" layout="horizontal">
+            <f:selectItems value="#{bindings.Dynamism.items}" id="si14"/>
+            <f:validator binding="#{bindings.Dynamism.validator}"/>
+          </af:selectOneRadio>
+          <af:selectOneRadio value="#{bindings.CommunicationSkills.inputValue}"
+                             label="Communication / Listening Skills"
+                             required="#{bindings.CommunicationSkills.hints.mandatory}"
+                             shortDesc="#{bindings.CommunicationSkills.hints.tooltip}" id="sor5" layout="horizontal">
+            <f:selectItems value="#{bindings.CommunicationSkills.items}" id="si15"/>
+            <f:validator binding="#{bindings.CommunicationSkills.validator}"/>
+          </af:selectOneRadio>
+          <af:selectOneRadio value="#{bindings.ConfidenceLevel.inputValue}" label="Confidence Level"
+                             required="#{bindings.ConfidenceLevel.hints.mandatory}"
+                             shortDesc="#{bindings.ConfidenceLevel.hints.tooltip}" id="sor6" layout="horizontal">
+            <f:selectItems value="#{bindings.ConfidenceLevel.items}" id="si16"/>
+            <f:validator binding="#{bindings.ConfidenceLevel.validator}"/>
+          </af:selectOneRadio>
+          <af:selectOneRadio value="#{bindings.Apperance.inputValue}" label="#{bindings.Apperance.label}"
+                             required="#{bindings.Apperance.hints.mandatory}"
+                             shortDesc="#{bindings.Apperance.hints.tooltip}" id="sor7" layout="horizontal">
+            <f:selectItems value="#{bindings.Apperance.items}" id="si17"/>
+            <f:validator binding="#{bindings.Apperance.validator}"/>
+          </af:selectOneRadio>
+          <af:inputText value="#{bindings.Strengths.inputValue}" label="#{bindings.Strengths.hints.label}"
+                        required="#{bindings.Strengths.hints.mandatory}"
+                        columns="40"
+                        maximumLength="#{bindings.Strengths.hints.precision}"
+                        shortDesc="#{bindings.Strengths.hints.tooltip}" id="it20" rows="4">
+            <f:validator binding="#{bindings.Strengths.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Weakness.inputValue}" label="#{bindings.Weakness.hints.label}"
+                        required="#{bindings.Weakness.hints.mandatory}"
+                        columns="40"
+                        maximumLength="#{bindings.Weakness.hints.precision}"
+                        shortDesc="#{bindings.Weakness.hints.tooltip}" id="it21" rows="4">
+            <f:validator binding="#{bindings.Weakness.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.AdditionalComments.inputValue}"
+                        label="#{bindings.AdditionalComments.hints.label}"
+                        required="#{bindings.AdditionalComments.hints.mandatory}"
+                        columns="40"
+                        maximumLength="#{bindings.AdditionalComments.hints.precision}"
+                        shortDesc="#{bindings.AdditionalComments.hints.tooltip}" id="it22" rows="4">
+            <f:validator binding="#{bindings.AdditionalComments.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CreatedBy.inputValue}" label="#{bindings.CreatedBy.hints.label}"
+                        required="#{bindings.CreatedBy.hints.mandatory}"
+                        columns="#{bindings.CreatedBy.hints.displayWidth}"
+                        maximumLength="#{bindings.CreatedBy.hints.precision}"
+                        shortDesc="#{bindings.CreatedBy.hints.tooltip}" id="it23" rendered="false">
+            <f:validator binding="#{bindings.CreatedBy.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.CreatedBy.format}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.CreationDate.inputValue}" label="#{bindings.CreationDate.hints.label}"
+                        required="#{bindings.CreationDate.hints.mandatory}"
+                        columns="#{bindings.CreationDate.hints.displayWidth}"
+                        shortDesc="#{bindings.CreationDate.hints.tooltip}" id="id4" rendered="false">
+            <f:validator binding="#{bindings.CreationDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.CreationDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.UpdatedBy.inputValue}" label="#{bindings.UpdatedBy.hints.label}"
+                        required="#{bindings.UpdatedBy.hints.mandatory}"
+                        columns="#{bindings.UpdatedBy.hints.displayWidth}"
+                        maximumLength="#{bindings.UpdatedBy.hints.precision}"
+                        shortDesc="#{bindings.UpdatedBy.hints.tooltip}" id="it24" rendered="false">
+            <f:validator binding="#{bindings.UpdatedBy.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.UpdatedBy.format}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.UpdationDate.inputValue}" label="#{bindings.UpdationDate.hints.label}"
+                        required="#{bindings.UpdationDate.hints.mandatory}"
+                        columns="#{bindings.UpdationDate.hints.displayWidth}"
+                        shortDesc="#{bindings.UpdationDate.hints.tooltip}" id="id5" rendered="false">
+            <f:validator binding="#{bindings.UpdationDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.UpdationDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.VersionNumber.inputValue}" label="#{bindings.VersionNumber.hints.label}"
+                        required="#{bindings.VersionNumber.hints.mandatory}"
+                        columns="#{bindings.VersionNumber.hints.displayWidth}"
+                        maximumLength="#{bindings.VersionNumber.hints.precision}"
+                        shortDesc="#{bindings.VersionNumber.hints.tooltip}" id="it25" rendered="false">
+            <f:validator binding="#{bindings.VersionNumber.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.VersionNumber.format}"/>
+          </af:inputText>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl9" layout="horizontal">
+              <af:button id="b17" icon="/images/check.png" action="#{RecruitmentBean.saveEvaluation}"/>
+              <af:button id="b18" icon="/images/cancel.png" action="#{RecruitmentBean.cancelEvaluation}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" id="p3" binding="#{RecruitmentBean.orientationPopup}">
+      <af:panelWindow id="pw6">
+        <af:panelBox id="pb5" showDisclosure="false">
+          <f:facet name="toolbar">
+            <af:button id="b26" icon="/images/check.png" action="#{RecruitmentBean.saveOrientation}"/>
+          </f:facet>
+          <af:treeTable value="#{bindings.HrApplicantOrientationHeadView2.treeModel}" var="node"
+                        selectionListener="#{bindings.HrApplicantOrientationHeadView2.treeModel.makeCurrent}"
+                        rowSelection="single" id="tt1">
+            <f:facet name="nodeStamp">
+              <af:column id="c30" width="150">
+                <af:outputText value="#{node.Head}" id="ot19" inlineStyle="font-weight:bold"/>
+              </af:column>
+            </f:facet>
+            <f:facet name="pathStamp">
+              <af:outputText value="#{node}" id="ot20"/>
+            </f:facet>
+            <af:column id="c31" headerText="Line" width="500">
+              <af:outputText id="ot21" value="#{node.Line}"/>
+            </af:column>
+            <af:column id="c32">
+              <af:selectBooleanCheckbox value="#{node.OrientationDone}" label="#{bindings.OrientationDone.label}"
+                                        shortDesc="#{bindings.OrientationDone.hints.tooltip}" id="sbc2"
+                                        rendered="#{node.Line ne null}"/>
+            </af:column>
+          </af:treeTable>
+        </af:panelBox>
+      </af:panelWindow>
+    </af:popup>
+  </af:panelGroupLayout>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:RecruitmentBean-->
+</ui:composition>

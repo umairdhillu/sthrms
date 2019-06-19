@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="payroll_runPageDef"
+                Package="prl.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PrlPayrollRunView1" RangeSize="25" DataControl="PRLAMDataControl" id="PrlPayrollRunView1Iterator"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="PrlPayrollRunView1Iterator" StaticList="false" Uses="LOV_EmployeeId" id="EmployeeId"/>
+    <attributeValues IterBinding="PrlPayrollRunView1Iterator" id="SalaryMonth">
+      <AttrNames>
+        <Item Value="SalaryMonth"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PrlPayrollRunView1Iterator" StaticList="false" Uses="LOV_Department" id="Department"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="PrlPayrollRunView1Iterator" StaticList="false" Uses="LOV_Designation" id="Designation"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="PrlPayrollRunView1Iterator" id="EmployeeName">
+      <AttrNames>
+        <Item Value="EmployeeName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlPayrollRunView1Iterator" id="EmployeeDepartment">
+      <AttrNames>
+        <Item Value="EmployeeDepartment"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PrlPayrollRunView1Iterator" id="EmployeeDesignation">
+      <AttrNames>
+        <Item Value="EmployeeDesignation"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PrlPayrollRunView1Iterator" StaticList="false" Uses="LOV_EmployeeType" id="EmployeeType"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

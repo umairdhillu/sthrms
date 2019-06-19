@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HrEmployeeAddressView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="HRAM_CountryList1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.CountryList"
+    AMUsageName="HRAM"
+    ViewInstanceName="CountryList1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_AddressTypeList1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.AddressTypeList"
+    AMUsageName="HRAM"
+    ViewInstanceName="AddressTypeList1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_StateList1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.StateList"
+    AMUsageName="HRAM"
+    ViewInstanceName="StateList1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_CityList1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.CityList"
+    AMUsageName="HRAM"
+    ViewInstanceName="CityList1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_DivisionList1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.DivisionList"
+    AMUsageName="HRAM"
+    ViewInstanceName="DivisionList1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_District1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.District"
+    AMUsageName="HRAM"
+    ViewInstanceName="District1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HRAM_Tehsil1_1"
+    ViewObjectName="com.soltechsystem.model.hr.LOV.Tehsil"
+    AMUsageName="HRAM"
+    ViewInstanceName="Tehsil1"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Country"
+    ListVOName="HRAM_CountryList1_1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Country"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="CountryListCriteria"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_AddressType"
+    ListVOName="HRAM_AddressTypeList1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="AddressType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_StateProvince"
+    ListVOName="HRAM_StateList1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="StateProvince"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_City"
+    ListVOName="HRAM_CityList1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="City"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Division"
+    ListVOName="HRAM_DivisionList1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Division"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_District"
+    ListVOName="HRAM_District1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="District"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Tehsil"
+    ListVOName="HRAM_Tehsil1_1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Tehsil"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValue"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="HrEmployeeAddress"
+    Entity="com.soltechsystem.model.hr.Entity.HrEmployeeAddress"/>
+  <ViewAttribute
+    Name="AddressId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AddressId"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="ADDRESS_ID"/>
+  <ViewAttribute
+    Name="AddressType"
+    PrecisionRule="true"
+    EntityAttrName="AddressType"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="ADDRESS_TYPE"
+    LOVName="LOV_AddressType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployeeId"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="EMPLOYEE_ID"/>
+  <ViewAttribute
+    Name="HouseNumber"
+    PrecisionRule="true"
+    EntityAttrName="HouseNumber"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="HOUSE_NUMBER"/>
+  <ViewAttribute
+    Name="Street"
+    PrecisionRule="true"
+    EntityAttrName="Street"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="STREET"/>
+  <ViewAttribute
+    Name="SectorBlock"
+    PrecisionRule="true"
+    EntityAttrName="SectorBlock"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="SECTOR_BLOCK"/>
+  <ViewAttribute
+    Name="Area"
+    PrecisionRule="true"
+    EntityAttrName="Area"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="AREA"/>
+  <ViewAttribute
+    Name="Zipcode"
+    PrecisionRule="true"
+    EntityAttrName="Zipcode"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="ZIPCODE"/>
+  <ViewAttribute
+    Name="PoBoxNumber"
+    PrecisionRule="true"
+    EntityAttrName="PoBoxNumber"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="PO_BOX_NUMBER"/>
+  <ViewAttribute
+    Name="Country"
+    PrecisionRule="true"
+    EntityAttrName="Country"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="COUNTRY"
+    LOVName="LOV_Country">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StateProvince"
+    PrecisionRule="true"
+    EntityAttrName="StateProvince"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="STATE_PROVINCE"
+    LOVName="LOV_StateProvince">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="City"
+    PrecisionRule="true"
+    EntityAttrName="City"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="CITY"
+    LOVName="LOV_City">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Division"
+    PrecisionRule="true"
+    EntityAttrName="Division"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="DIVISION"
+    LOVName="LOV_Division">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="District"
+    PrecisionRule="true"
+    EntityAttrName="District"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="DISTRICT"
+    LOVName="LOV_District">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Tehsil"
+    PrecisionRule="true"
+    EntityAttrName="Tehsil"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="TEHSIL"
+    LOVName="LOV_Tehsil">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UnionCouncil"
+    PrecisionRule="true"
+    EntityAttrName="UnionCouncil"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="UNION_COUNCIL"/>
+  <ViewAttribute
+    Name="PoliceStation"
+    PrecisionRule="true"
+    EntityAttrName="PoliceStation"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="POLICE_STATION"/>
+  <ViewAttribute
+    Name="Attrib1"
+    PrecisionRule="true"
+    EntityAttrName="Attrib1"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="ATTRIB1"/>
+  <ViewAttribute
+    Name="Attrib2"
+    PrecisionRule="true"
+    EntityAttrName="Attrib2"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="ATTRIB2"/>
+  <ViewAttribute
+    Name="Attrib3"
+    PrecisionRule="true"
+    EntityAttrName="Attrib3"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="ATTRIB3"/>
+  <ViewAttribute
+    Name="Attrib4"
+    PrecisionRule="true"
+    EntityAttrName="Attrib4"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="ATTRIB4"/>
+  <ViewAttribute
+    Name="Attrib5"
+    PrecisionRule="true"
+    EntityAttrName="Attrib5"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="ATTRIB5"/>
+  <ViewAttribute
+    Name="Col1"
+    PrecisionRule="true"
+    EntityAttrName="Col1"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="COL1"/>
+  <ViewAttribute
+    Name="Col2"
+    PrecisionRule="true"
+    EntityAttrName="Col2"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="COL2"/>
+  <ViewAttribute
+    Name="Col3"
+    PrecisionRule="true"
+    EntityAttrName="Col3"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="COL3"/>
+  <ViewAttribute
+    Name="Col4"
+    PrecisionRule="true"
+    EntityAttrName="Col4"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="COL4"/>
+  <ViewAttribute
+    Name="Col5"
+    PrecisionRule="true"
+    EntityAttrName="Col5"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="COL5"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="UPDATED_BY"/>
+  <ViewAttribute
+    Name="UpdationDate"
+    PrecisionRule="true"
+    EntityAttrName="UpdationDate"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="UPDATION_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="VersionNumber"
+    PrecisionRule="true"
+    EntityAttrName="VersionNumber"
+    EntityUsage="HrEmployeeAddress"
+    AliasName="VERSION_NUMBER"/>
+  <ViewAttribute
+    Name="CompleteAddress"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    Expression="(SELECT house_number||' '||street||' '||sector_block||' '||state_province||' '||country FROM HR_EMPLOYEE_ADDRESS
+where address_id = HrEmployeeAddress.address_id)"/>
+</ViewObject>

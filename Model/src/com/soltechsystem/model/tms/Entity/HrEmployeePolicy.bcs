@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.tms.Entity.HrEmployeePolicy
+
+package com.soltechsystem.model.tms.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="PolicyId")
+def PolicyId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("hr_employee_policy_Seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="employeesPageDef"
+                Package="hr.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="HrEmployeesView1" RangeSize="11" DataControl="HRAMDataControl" id="HrEmployeesView1Iterator"/>
+    <searchRegion Criteria="HrEmployeesViewCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="HrEmployeesView1Iterator" id="HrEmployeesViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="HrEmployeesView1Iterator" id="HrEmployeesView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.HrEmployeesView" Name="HrEmployeesView10">
+        <AttrNames>
+          <Item Value="EmployeeCode"/>
+          <Item Value="FirstName"/>
+          <Item Value="MiddleName"/>
+          <Item Value="LastName"/>
+          <Item Value="DepartmentName"/>
+          <Item Value="JobTitle"/>
+          <Item Value="ManagerFirstName"/>
+          <Item Value="ManagerLastName"/>
+          <Item Value="ManagerMiddleName"/>
+          
+          <Item Value="MobilePhone"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ManagerFirstName">
+      <AttrNames>
+        <Item Value="ManagerFirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ManagerEmployeeID">
+      <AttrNames>
+        <Item Value="ManagerEmployeeID"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ManagerLastName">
+      <AttrNames>
+        <Item Value="ManagerLastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="ManagerMiddleName">
+      <AttrNames>
+        <Item Value="ManagerMiddleName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="DepartmentName">
+      <AttrNames>
+        <Item Value="DepartmentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HrEmployeesView1Iterator" id="DepartmentId1">
+      <AttrNames>
+        <Item Value="DepartmentId1"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

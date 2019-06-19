@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProfileHeaderLinesLink"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.soltechsystem.model.sys.ViewLink.ProfileHeaderLinesLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="SysProfileAssignmentHeaderView"
+    Cardinality="1"
+    Source="true"
+    Owner="com.soltechsystem.model.sys.vo.SysProfileAssignmentHeaderView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="SysProfileAssignmentHeaderView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.soltechsystem.model.sys.vo.SysProfileAssignmentHeaderView.AssignmentHeaderId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SysProfileAssignmentLinesView"
+    Cardinality="-1"
+    Owner="com.soltechsystem.model.sys.vo.SysProfileAssignmentLinesView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="SysProfileAssignmentLinesView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.soltechsystem.model.sys.vo.SysProfileAssignmentLinesView.AssignmentHeaderId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.soltechsystem.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

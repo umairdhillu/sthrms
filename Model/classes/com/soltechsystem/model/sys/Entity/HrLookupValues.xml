@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HrLookupValues"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="HR_LOOKUP_VALUES"
+  AliasName="HrLookupValues"
+  BindingStyle="OracleName"
+  RowClass="com.soltechsystem.model.sys.Entity.HrLookupValuesImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="LookupId"
+    IsNotNull="true"
+    ColumnName="LOOKUP_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="HR_LOOKUP_VALUES"
+    PrimaryKey="true">
+    <TransientExpression
+      Name="ExpressionScript"
+      trustMode="trusted"
+      CodeSourceName="HrLookupValuesRow"/>
+  </Attribute>
+  <Attribute
+    Name="LookupValue"
+    Precision="100"
+    ColumnName="LOOKUP_VALUE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="HR_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="HR_LOOKUP_VALUES"/>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="HR_LOOKUP_VALUES"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="UpdatedBy"
+    ColumnName="UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="HR_LOOKUP_VALUES"/>
+  <Attribute
+    Name="UpdationDate"
+    ColumnName="UPDATION_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="HR_LOOKUP_VALUES"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="VersionNumber"
+    ColumnName="VERSION_NUMBER"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="HR_LOOKUP_VALUES"
+    ChangeIndicator="true"
+    HistoryColumn="VersionHistory"/>
+  <Attribute
+    Name="LookupContext"
+    ColumnName="LOOKUP_CONTEXT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="HR_LOOKUP_VALUES"/>
+  <Attribute
+    Name="ValueDescription"
+    Precision="500"
+    ColumnName="VALUE_DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="HR_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Enabled"
+    Precision="1"
+    ColumnName="ENABLED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="HR_LOOKUP_VALUES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="SysC0010149"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0010149"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.soltechsystem.model.sys.Entity.HrLookupValues.LookupId"/>
+    </AttrArray>
+  </Key>
+</Entity>

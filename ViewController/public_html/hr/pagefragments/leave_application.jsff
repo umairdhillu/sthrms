@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelBox id="pb1" showDisclosure="false">
+            <f:facet name="toolbar">
+                <af:panelGroupLayout id="pgl4" layout="horizontal">
+                    <af:button text="Back" id="b6" action="back"/>
+                    <af:button id="b1" icon="/images/new.png" action="#{LeaveManagementBean.newLeave}"/>
+                </af:panelGroupLayout>
+            </f:facet>
+            <af:table value="#{bindings.EmployeeLeavesView1.collectionModel}" var="row"
+                      rows="#{bindings.EmployeeLeavesView1.rangeSize}"
+                      emptyText="#{bindings.EmployeeLeavesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.EmployeeLeavesView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.EmployeeLeavesView1.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.EmployeeLeavesView1.rangeSize}" id="t1"
+                      partialTriggers="b5 ::b3 ::b2" binding="#{LeaveManagementBean.leavesTable}">
+                <af:column id="c8">
+                    <af:panelGroupLayout id="pgl3" layout="horizontal">
+                        <af:button id="b4" action="#{LeaveManagementBean.editLeavePopup}" icon="/images/view.png"/>
+                        <af:button actionListener="#{bindings.Delete.execute}" disabled="#{!bindings.Delete.enabled}"
+                                   id="b5" icon="/images/delete.png"/>
+                    </af:panelGroupLayout>
+                </af:column>
+                <af:column headerText="#{bindings.EmployeeLeavesView1.hints.LeaveType.label}" id="c1">
+                    <af:selectOneChoice value="#{row.bindings.LeaveType.inputValue}"
+                                        label="#{row.bindings.LeaveType.label}"
+                                        required="#{bindings.EmployeeLeavesView1.hints.LeaveType.mandatory}"
+                                        shortDesc="#{bindings.EmployeeLeavesView1.hints.LeaveType.tooltip}"
+                                        readOnly="true" id="soc1">
+                        <f:selectItems value="#{row.bindings.LeaveType.items}" id="si1"/>
+                        <f:validator binding="#{row.bindings.LeaveType.validator}"/>
+                    </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.EmployeeLeavesView1.hints.LeaveStatus.label}" id="c2">
+                    <af:outputText value="#{row.LeaveStatus}"
+                                   shortDesc="#{bindings.EmployeeLeavesView1.hints.LeaveStatus.tooltip}" id="ot1"/>
+                </af:column>
+                <af:column headerText="#{bindings.EmployeeLeavesView1.hints.LeaveFrom.label}" id="c3">
+                    <af:outputText value="#{row.LeaveFrom}"
+                                   shortDesc="#{bindings.EmployeeLeavesView1.hints.LeaveFrom.tooltip}" id="ot2">
+                        <af:convertDateTime pattern="#{bindings.EmployeeLeavesView1.hints.LeaveFrom.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="#{bindings.EmployeeLeavesView1.hints.LeaveTo.label}" id="c4">
+                    <af:outputText value="#{row.LeaveTo}"
+                                   shortDesc="#{bindings.EmployeeLeavesView1.hints.LeaveTo.tooltip}" id="ot3">
+                        <af:convertDateTime pattern="#{bindings.EmployeeLeavesView1.hints.LeaveTo.format}"/>
+                    </af:outputText>
+                </af:column>
+                <af:column headerText="#{bindings.EmployeeLeavesView1.hints.Department.label}" id="c5">
+                    <af:outputText value="#{row.Department}"
+                                   shortDesc="#{bindings.EmployeeLeavesView1.hints.Department.tooltip}" id="ot4"/>
+                </af:column>
+                <af:column headerText="#{bindings.EmployeeLeavesView1.hints.Designation.label}" id="c6">
+                    <af:outputText value="#{row.Designation}"
+                                   shortDesc="#{bindings.EmployeeLeavesView1.hints.Designation.tooltip}" id="ot5"/>
+                </af:column>
+                <af:column headerText="#{bindings.EmployeeLeavesView1.hints.EmployeeName.label}" id="c7">
+                    <af:outputText value="#{row.EmployeeName}"
+                                   shortDesc="#{bindings.EmployeeLeavesView1.hints.EmployeeName.tooltip}" id="ot6"/>
+                </af:column>
+            </af:table>
+        </af:panelBox>
+        <af:popup childCreation="deferred" id="pleavesApply" binding="#{LeaveManagementBean.leavesPopup}">
+            <af:panelWindow id="pw1" modal="true">
+                <af:panelFormLayout id="pfl1">
+                    <af:inputText value="#{bindings.LeaveStatus.inputValue}" label="#{bindings.LeaveStatus.hints.label}"
+                                  required="#{bindings.LeaveStatus.hints.mandatory}"
+                                  columns="#{bindings.LeaveStatus.hints.displayWidth}"
+                                  maximumLength="#{bindings.LeaveStatus.hints.precision}"
+                                  shortDesc="#{bindings.LeaveStatus.hints.tooltip}" id="it6" disabled="true">
+                        <f:validator binding="#{bindings.LeaveStatus.validator}"/>
+                    </af:inputText>
+                    <af:selectOneChoice value="#{bindings.LeaveType.inputValue}" label="#{bindings.LeaveType.label}"
+                                        required="#{bindings.LeaveType.hints.mandatory}"
+                                        shortDesc="#{bindings.LeaveType.hints.tooltip}" id="soc2">
+                        <f:selectItems value="#{bindings.LeaveType.items}" id="si2"/>
+                        <f:validator binding="#{bindings.LeaveType.validator}"/>
+                    </af:selectOneChoice>
+                    <af:inputDate value="#{bindings.LeaveFrom.inputValue}" label="#{bindings.LeaveFrom.hints.label}"
+                                  required="#{bindings.LeaveFrom.hints.mandatory}"
+                                  columns="#{bindings.LeaveFrom.hints.displayWidth}"
+                                  shortDesc="#{bindings.LeaveFrom.hints.tooltip}" id="id3">
+                        <f:validator binding="#{bindings.LeaveFrom.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.LeaveFrom.format}"/>
+                    </af:inputDate>
+                    <af:inputDate value="#{bindings.LeaveTo.inputValue}" label="#{bindings.LeaveTo.hints.label}"
+                                  required="#{bindings.LeaveTo.hints.mandatory}"
+                                  columns="#{bindings.LeaveTo.hints.displayWidth}"
+                                  shortDesc="#{bindings.LeaveTo.hints.tooltip}" id="id4">
+                        <f:validator binding="#{bindings.LeaveTo.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.LeaveTo.format}"/>
+                    </af:inputDate>
+                    <af:inputText value="#{bindings.Department.inputValue}" label="#{bindings.Department.hints.label}"
+                                  required="#{bindings.Department.hints.mandatory}"
+                                  columns="25"
+                                  maximumLength="#{bindings.Department.hints.precision}"
+                                  shortDesc="#{bindings.Department.hints.tooltip}" id="it7" disabled="true">
+                        <f:validator binding="#{bindings.Department.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Designation.inputValue}" label="#{bindings.Designation.hints.label}"
+                                  required="#{bindings.Designation.hints.mandatory}"
+                                  columns="25"
+                                  maximumLength="#{bindings.Designation.hints.precision}"
+                                  shortDesc="#{bindings.Designation.hints.tooltip}" id="it8" disabled="true">
+                        <f:validator binding="#{bindings.Designation.validator}"/>
+                    </af:inputText>
+                    <af:panelLabelAndMessage label="Employee" id="plam1">
+                        <af:inputText value="#{bindings.EmployeeName.inputValue}"
+                                      required="#{bindings.EmployeeName.hints.mandatory}" columns="25"
+                                      maximumLength="#{bindings.EmployeeName.hints.precision}"
+                                      shortDesc="#{bindings.EmployeeName.hints.tooltip}" id="it9" disabled="true">
+                            <f:validator binding="#{bindings.EmployeeName.validator}"/>
+                        </af:inputText>
+                        <f:facet name="end">
+                            <af:inputListOfValues id="employeeIdId"
+                                                  popupTitle="Search and Select: #{bindings.EmployeeId.hints.label}"
+                                                  value="#{bindings.EmployeeId.inputValue}"
+                                                  model="#{bindings.EmployeeId.listOfValuesModel}"
+                                                  required="#{bindings.EmployeeId.hints.mandatory}"
+                                                  columns="#{bindings.EmployeeId.hints.displayWidth}"
+                                                  shortDesc="#{bindings.EmployeeId.hints.tooltip}">
+                                <f:validator binding="#{bindings.EmployeeId.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId.format}"/>
+                            </af:inputListOfValues>
+                        </f:facet>
+                    </af:panelLabelAndMessage>
+                    <f:facet name="footer">
+                        <af:panelGroupLayout id="pgl2" layout="horizontal">
+                            <af:button id="b2" icon="/images/check.png" action="#{LeaveManagementBean.saveLeave}"/>
+                            <af:button id="b3" icon="/images/cancel.png" action="#{LeaveManagementBean.cancelLeave}"/>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:panelFormLayout>
+            </af:panelWindow>
+        </af:popup>
+    </af:panelGroupLayout>
+</ui:composition>

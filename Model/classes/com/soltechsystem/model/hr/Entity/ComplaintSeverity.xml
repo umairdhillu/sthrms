@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ComplaintSeverity"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="COMPLAINT_SEVERITY"
+  AliasName="ComplaintSeverity"
+  BindingStyle="OracleName"
+  RowClass="com.soltechsystem.model.hr.Entity.ComplaintSeverityImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="SeverityId"
+    IsNotNull="true"
+    ColumnName="SEVERITY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="COMPLAINT_SEVERITY"
+    PrimaryKey="true">
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="ComplaintSeverityRow"/>
+  </Attribute>
+  <Attribute
+    Name="Severity"
+    Precision="100"
+    ColumnName="SEVERITY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COMPLAINT_SEVERITY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="COMPLAINT_SEVERITY"/>
+  <Attribute
+    Name="UpdatedBy"
+    ColumnName="UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="COMPLAINT_SEVERITY"/>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="COMPLAINT_SEVERITY"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="UpdationDate"
+    ColumnName="UPDATION_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="COMPLAINT_SEVERITY"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="VersionNumber"
+    ColumnName="VERSION_NUMBER"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="COMPLAINT_SEVERITY"
+    HistoryColumn="VersionHistory"
+    ChangeIndicator="true"/>
+  <Key
+    Name="SysC0011209"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0011209"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.soltechsystem.model.hr.Entity.ComplaintSeverity.SeverityId"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.prl.Entity.PrlLoan
+
+package com.soltechsystem.model.prl.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="LoanId")
+def LoanId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("prl_loan_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

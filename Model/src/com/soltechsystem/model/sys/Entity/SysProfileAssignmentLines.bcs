@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.sys.Entity.SysProfileAssignmentLines
+
+package com.soltechsystem.model.sys.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="AssignmentLineId")
+def AssignmentLineId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("sys_profile_asgt_lines_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

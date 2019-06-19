@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.prl.Entity.PrlAdvanceSalary
+
+package com.soltechsystem.model.prl.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="AdvSalaryId")
+def AdvSalaryId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("prl_advance_salary_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

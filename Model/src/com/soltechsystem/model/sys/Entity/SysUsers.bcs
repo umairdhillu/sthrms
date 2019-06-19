@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.sys.Entity.SysUsers
+
+package com.soltechsystem.model.sys.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="UserId")
+def UserId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("SYS_USERS_SEQ",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

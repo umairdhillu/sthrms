@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.hr.Entity.ComplaintSeverity
+
+package com.soltechsystem.model.hr.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="SeverityId")
+def SeverityId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("compaint_severity_Seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

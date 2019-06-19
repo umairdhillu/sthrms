@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="daily_attendance_registerPageDef" Package="hr.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SubordinateDailyAttendance1" RangeSize="25" DataControl="LeaveManagementAMDataControl"
+              id="SubordinateDailyAttendance1Iterator"/>
+    <searchRegion Criteria="SubordinateDailyAttendanceCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SubordinateDailyAttendance1Iterator" id="SubordinateDailyAttendanceCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SubordinateDailyAttendance1Iterator" id="SubordinateDailyAttendance1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.LeaveManagement.ViewObject.SubordinateDailyAttendance"
+                      Name="SubordinateDailyAttendance10">
+        <AttrNames>
+          <Item Value="EmployeeName"/>
+          <Item Value="ShiftStart"/>
+          <Item Value="ShiftEnd"/>
+          <Item Value="InTime"/>
+          <Item Value="OutTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="logSubordinateDailyAtd" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="logSubordinateDailyAtd" IsViewObjectMethod="false"
+                  DataControl="LeaveManagementAMDataControl"
+                  InstanceName="bindings.logSubordinateDailyAtd.dataControl.dataProvider">
+      <NamedData NDName="action" NDType="java.lang.String"/>
+      <NamedData NDName="atdID" NDType="int"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

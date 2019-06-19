@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="setup.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/oracle/templates/tabletFirstTemplate.jspx" id="pt1">
+                <f:facet name="header"/>
+                <f:facet name="status">
+                    <af:panelGroupLayout id="pgl2" layout="horizontal">
+                        <af:panelGroupLayout id="pgl1" layout="horizontal">
+                            <af:button text="Undo" id="b3" icon="/images/undo.png"
+                                       actionListener="#{bindings.Rollback.execute}" styleClass="AFAppNavbarButton"/>
+                            <af:button actionListener="#{bindings.Commit.execute}" text="Save" id="b1"
+                                       styleClass="AFAppNavbarButton" icon="/images/saveall.png"/>
+                            <af:button text="Home" id="b2" action="goto_main_menu" styleClass="AFAppNavbarButton"
+                                       icon="/images/home.png"/>
+                        </af:panelGroupLayout>
+                        <af:menuBar id="mb1">
+                            <af:menu text="Welcome:#{sessionScope.username}" id="m2">
+                                <af:commandMenuItem text="Logout" id="cmi1"
+                                                    actionListener="#{backingBeanScope.LoginSetupBean.logout}"/>
+                            </af:menu>
+                        </af:menuBar>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="appNav"/>
+                <f:facet name="globalLinks"/>
+                <f:facet name="center">
+                    <af:region value="#{bindings.tfsetup1.regionModel}" id="r1"/>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:attribute name="brandingMaxWidth" value="1280px"/>
+                <f:attribute name="endWidth" value="0px"/>
+                <f:attribute name="startWidth" value="0px"/>
+                <f:attribute name="showAppNavbar" value="false"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

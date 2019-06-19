@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.sys.Entity.SysUserRoleAsgt
+
+package com.soltechsystem.model.sys.Entity
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="AssignmentId")
+def AssignmentId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("sys_user_role_asgt_seq",adf.object.getDBTransaction())).getSequenceNumber()
+}
+

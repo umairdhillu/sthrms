@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="main_menuPageDef"
+                Package="com.soltechsystem.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="VOMainMenu1" RangeSize="25" DataControl="SysAMDataControl" id="VOMainMenu1Iterator"/>
+    <taskFlow id="tf_main_menu1" taskFlowId="/WEB-INF/sys/tf_main_menu.xml#tf_main_menu" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="VOMainMenu1Iterator" id="VOMainMenu1">
+      <nodeDefinition DefName="com.soltechsystem.model.sys.vo.VOMainMenu" Name="VOMainMenu10">
+        <AttrNames>
+          <Item Value="UserId"/>
+          <Item Value="AssignmentLineId"/>
+          <Item Value="ProfileValue"/>
+          <Item Value="ProfileId"/>
+          <Item Value="N"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

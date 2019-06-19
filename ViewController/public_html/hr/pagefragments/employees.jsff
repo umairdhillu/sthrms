@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:resource type="javascript">
+      function handleTableDoubleClick(evt) {
+        //var table = evt.getSource();
+        //AdfCustomEvent.queue(table, "TableDoubleClickEvent",{}, true);         
+        //evt.cancel();
+      }
+    </af:resource>
+    <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:panelBox id="pb2" icon="/images/find.png" disclosed="false">
+            <f:facet name="toolbar"/>
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.HrEmployeesViewCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.HrEmployeesViewCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.HrEmployeesViewCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.HrEmployeesViewCriteriaQuery.processQueryOperation}"
+                      displayMode="simple" saveQueryMode="hidden" rows="4" maxColumns="2"/>
+        </af:panelBox>
+        <af:panelBox text="Employees" id="pb1" showDisclosure="false">
+            <f:facet name="toolbar">
+                <af:panelGroupLayout id="pgl1">
+                    <af:button id="b1" icon="/images/new.png" action="new_employee"/>
+                    <af:button text="Departments and Jobs" id="b3" action="jobs_departments_view"/>
+                    <af:button text="Complain Setup" id="b4" action="complaint_setup"/>
+                </af:panelGroupLayout>
+            </f:facet>
+            <af:table value="#{bindings.HrEmployeesView1.collectionModel}" var="row"
+                      rows="#{bindings.HrEmployeesView1.rangeSize}"
+                      emptyText="#{bindings.HrEmployeesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" selectedRowKeys="#{bindings.HrEmployeesView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.HrEmployeesView1.collectionModel.makeCurrent}" rowSelection="single"
+                      fetchSize="#{bindings.HrEmployeesView1.rangeSize}" id="t1" autoHeightRows="10"
+                      styleClass="AFStretchWidth" contentDelivery="immediate">
+                <af:column headerText="Employee Code" id="c1">
+                    <af:outputText value="#{row.EmployeeCode}"
+                                   shortDesc="#{bindings.HrEmployeesView1.hints.EmployeeCode.tooltip}" id="ot1"/>
+                </af:column>
+                <af:column headerText="Employee Name" id="c2" width="150">
+                    <af:outputText value="#{row.FirstName} #{row.LastName}"
+                                   shortDesc="#{bindings.HrEmployeesView1.hints.FirstName.tooltip}" id="ot2"/>
+                </af:column>
+                <af:column headerText="Department Name" id="c5" width="150">
+                    <af:outputText value="#{row.DepartmentName}"
+                                   shortDesc="#{bindings.HrEmployeesView1.hints.DepartmentName.tooltip}" id="ot5"/>
+                </af:column>
+                <af:column headerText="Designation" id="c6" width="150">
+                    <af:outputText value="#{row.JobTitle}"
+                                   shortDesc="#{bindings.HrEmployeesView1.hints.JobTitle.tooltip}" id="ot6"/>
+                </af:column>
+                <af:column headerText="Reporting To" id="c7" width="150">
+                    <af:outputText value="#{row.ManagerFirstName} #{row.ManagerLastName}"
+                                   shortDesc="#{bindings.HrEmployeesView1.hints.ManagerFirstName.tooltip}" id="ot7"/>
+                </af:column>
+                <af:column headerText="Employee Phone Number" id="c10" width="150">
+                    <af:outputText value="#{row.MobilePhone}"
+                                   shortDesc="#{bindings.HrEmployeesView1.hints.MobilePhone.tooltip}" id="ot3"/>
+                </af:column>
+                <af:column id="c3">
+                    <af:button id="b2" icon="/images/edit.png" action="edit_selected"/>
+                </af:column>
+                <af:clientListener method="handleTableDoubleClick" type="dblClick"/>
+                 
+                <af:serverListener type="TableDoubleClickEvent"
+                                   method="#{backingBeanScope.EmployeeBackingBean.employeeTableDoubleClickHandler}"/>
+            </af:table>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                      binding="#{backingBeanScope.EmployeeBackingBean.editEmployeePopup}">
+                <af:panelWindow id="pw1" inlineStyle="width:500px">
+                    <af:panelFormLayout id="pfl1">
+                        <af:inputText value="#{bindings.ManagerFirstName.inputValue}"
+                                      label="#{bindings.ManagerFirstName.hints.label}"
+                                      required="#{bindings.ManagerFirstName.hints.mandatory}"
+                                      columns="#{bindings.ManagerFirstName.hints.displayWidth}"
+                                      maximumLength="#{bindings.ManagerFirstName.hints.precision}"
+                                      shortDesc="#{bindings.ManagerFirstName.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.ManagerFirstName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.ManagerEmployeeID.inputValue}"
+                                      label="#{bindings.ManagerEmployeeID.hints.label}"
+                                      required="#{bindings.ManagerEmployeeID.hints.mandatory}"
+                                      columns="#{bindings.ManagerEmployeeID.hints.displayWidth}"
+                                      maximumLength="#{bindings.ManagerEmployeeID.hints.precision}"
+                                      shortDesc="#{bindings.ManagerEmployeeID.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.ManagerEmployeeID.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.ManagerEmployeeID.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.ManagerLastName.inputValue}"
+                                      label="#{bindings.ManagerLastName.hints.label}"
+                                      required="#{bindings.ManagerLastName.hints.mandatory}"
+                                      columns="#{bindings.ManagerLastName.hints.displayWidth}"
+                                      maximumLength="#{bindings.ManagerLastName.hints.precision}"
+                                      shortDesc="#{bindings.ManagerLastName.hints.tooltip}" id="it3">
+                            <f:validator binding="#{bindings.ManagerLastName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.ManagerMiddleName.inputValue}"
+                                      label="#{bindings.ManagerMiddleName.hints.label}"
+                                      required="#{bindings.ManagerMiddleName.hints.mandatory}"
+                                      columns="#{bindings.ManagerMiddleName.hints.displayWidth}"
+                                      maximumLength="#{bindings.ManagerMiddleName.hints.precision}"
+                                      shortDesc="#{bindings.ManagerMiddleName.hints.tooltip}" id="it4">
+                            <f:validator binding="#{bindings.ManagerMiddleName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.DepartmentName.inputValue}"
+                                      label="#{bindings.DepartmentName.hints.label}"
+                                      required="#{bindings.DepartmentName.hints.mandatory}"
+                                      columns="#{bindings.DepartmentName.hints.displayWidth}"
+                                      maximumLength="#{bindings.DepartmentName.hints.precision}"
+                                      shortDesc="#{bindings.DepartmentName.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.DepartmentName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.DepartmentId1.inputValue}"
+                                      label="#{bindings.DepartmentId1.hints.label}"
+                                      required="#{bindings.DepartmentId1.hints.mandatory}"
+                                      columns="#{bindings.DepartmentId1.hints.displayWidth}"
+                                      maximumLength="#{bindings.DepartmentId1.hints.precision}"
+                                      shortDesc="#{bindings.DepartmentId1.hints.tooltip}" id="it6">
+                            <f:validator binding="#{bindings.DepartmentId1.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentId1.format}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:panelWindow>
+            </af:popup>
+        </af:panelBox>
+    </af:panelGroupLayout>
+</ui:composition>

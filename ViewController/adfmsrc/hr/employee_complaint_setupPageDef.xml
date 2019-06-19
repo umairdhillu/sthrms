@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="employee_complaint_setupPageDef" Package="hr">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ComplaintSeverityView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="ComplaintSeverityView1Iterator"/>
+    <iterator Binds="ComplaintTypesView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="ComplaintTypesView1Iterator"/>
+    <iterator Binds="ComplaintActionView1" RangeSize="25" DataControl="HRAMDataControl"
+              id="ComplaintActionView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ComplaintSeverityView1Iterator" id="Severity">
+      <AttrNames>
+        <Item Value="Severity"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ComplaintSeverityView1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="ComplaintSeverityView1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <tree IterBinding="ComplaintTypesView1Iterator" id="ComplaintTypesView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.ComplaintTypesView" Name="ComplaintTypesView10">
+        <AttrNames>
+          <Item Value="ComplaintType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ComplaintTypesView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="ComplaintActionView1Iterator" id="ComplaintActionView1">
+      <nodeDefinition DefName="com.soltechsystem.model.hr.ViewObject.ComplaintActionView" Name="ComplaintActionView10">
+        <AttrNames>
+          <Item Value="SeverityId"/>
+          <Item Value="Occurance"/>
+          <Item Value="ActionText"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ComplaintActionView1Iterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

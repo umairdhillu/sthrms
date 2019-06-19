@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="payroll_run_payroll_run_CreateInsertPageDef" Package="prl" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="PrlPayrollRunView1" RangeSize="25" DataControl="PRLAMDataControl" id="PrlPayrollRunView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="PrlPayrollRunView1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,1262 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl30" layout="vertical">
+    <af:panelTabbed position="above" id="pt1" styleClass="AFStretchWidth">
+      <af:showDetailItem id="allow_deduct" text="Payroll Setup" disclosed="true" icon="/images/action.png">
+        <af:panelTabbed position="above" id="pt2" dimensionsFrom="disclosedChild">
+          <af:showDetailItem id="sdi1" text="Allow/Deduct" disclosed="true">
+            <af:panelBox text="Allowence/Deduction" id="pb1" showDisclosure="false">
+              <f:facet name="toolbar">
+                <af:button actionListener="#{bindings.CreateInsert.execute}"
+                           disabled="#{!bindings.CreateInsert.enabled}" id="b1" icon="/images/new.png"/>
+              </f:facet>
+              <af:table value="#{bindings.PrlAllowenceDeductionView11.collectionModel}" var="row"
+                        rows="#{bindings.PrlAllowenceDeductionView11.rangeSize}"
+                        emptyText="#{bindings.PrlAllowenceDeductionView11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.PrlAllowenceDeductionView11.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.PrlAllowenceDeductionView11.collectionModel.makeCurrent}"
+                        rowSelection="single" fetchSize="#{bindings.PrlAllowenceDeductionView11.rangeSize}" id="t11"
+                        partialTriggers="::b1" contentDelivery="immediate">
+                <af:column headerText="Value Type" id="c58">
+                  <af:selectOneChoice value="#{row.bindings.ValueType.inputValue}"
+                                      label="#{row.bindings.ValueType.label}"
+                                      required="#{bindings.PrlAllowenceDeductionView11.hints.ValueType.mandatory}"
+                                      shortDesc="#{bindings.PrlAllowenceDeductionView11.hints.ValueType.tooltip}"
+                                      id="soc14">
+                    <f:selectItems value="#{row.bindings.ValueType.items}" id="si23"/>
+                    <f:validator binding="#{row.bindings.ValueType.validator}"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="Value" id="c59">
+                  <af:inputText value="#{row.bindings.Thevalue.inputValue}"
+                                required="#{bindings.PrlAllowenceDeductionView11.hints.Thevalue.mandatory}"
+                                columns="#{bindings.PrlAllowenceDeductionView11.hints.Thevalue.displayWidth}"
+                                maximumLength="#{bindings.PrlAllowenceDeductionView11.hints.Thevalue.precision}"
+                                shortDesc="#{bindings.PrlAllowenceDeductionView11.hints.Thevalue.tooltip}" id="it1">
+                    <f:validator binding="#{row.bindings.Thevalue.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PrlAllowenceDeductionView11.hints.Thevalue.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="Name"
+                           id="c60">
+                  <af:inputText value="#{row.bindings.AllowenceDeductionName.inputValue}"
+                                label="#{bindings.PrlAllowenceDeductionView11.hints.AllowenceDeductionName.label}"
+                                required="#{bindings.PrlAllowenceDeductionView11.hints.AllowenceDeductionName.mandatory}"
+                                columns="#{bindings.PrlAllowenceDeductionView11.hints.AllowenceDeductionName.displayWidth}"
+                                maximumLength="#{bindings.PrlAllowenceDeductionView11.hints.AllowenceDeductionName.precision}"
+                                shortDesc="#{bindings.PrlAllowenceDeductionView11.hints.AllowenceDeductionName.tooltip}"
+                                id="it33">
+                    <f:validator binding="#{row.bindings.AllowenceDeductionName.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="Deduction Type" id="c61">
+                  <af:selectOneChoice value="#{row.bindings.DeductionType.inputValue}"
+                                      label="#{row.bindings.DeductionType.label}"
+                                      required="#{bindings.PrlAllowenceDeductionView11.hints.DeductionType.mandatory}"
+                                      shortDesc="#{bindings.PrlAllowenceDeductionView11.hints.DeductionType.tooltip}"
+                                      id="soc23">
+                    <f:selectItems value="#{row.bindings.DeductionType.items}" id="si24"/>
+                    <f:validator binding="#{row.bindings.DeductionType.validator}"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="Line Type" id="c67">
+                  <af:selectOneChoice value="#{row.bindings.LineType.inputValue}" label="#{row.bindings.LineType.label}"
+                                      required="#{bindings.PrlAllowenceDeductionView11.hints.LineType.mandatory}"
+                                      shortDesc="#{bindings.PrlAllowenceDeductionView11.hints.LineType.tooltip}"
+                                      id="soc24">
+                    <f:selectItems value="#{row.bindings.LineType.items}" id="si25"/>
+                    <f:validator binding="#{row.bindings.LineType.validator}"/>
+                  </af:selectOneChoice>
+                </af:column>
+                <af:column headerText="#{bindings.PrlAllowenceDeductionView11.hints.Special.label}" id="c68">
+                  <af:selectBooleanCheckbox value="#{row.bindings.Special.inputValue}"
+                                            label="#{row.bindings.Special.label}"
+                                            shortDesc="#{bindings.PrlAllowenceDeductionView11.hints.Special.tooltip}"
+                                            id="sbc1"/>
+                </af:column>
+              </af:table>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem id="sdi2" text="Grades">
+            <af:panelGroupLayout id="pgl1" layout="vertical">
+              <af:panelBox text="Grade" id="pb2" showDisclosure="false">
+                <f:facet name="toolbar">
+                  <af:panelGroupLayout id="pgl2">
+                    <af:button actionListener="#{bindings.CreateInsert1.execute}"
+                               disabled="#{!bindings.CreateInsert1.enabled}" id="b2" icon="/images/new.png"/>
+                    <af:button actionListener="#{bindings.Previous.execute}" disabled="#{!bindings.Previous.enabled}"
+                               partialSubmit="true" id="b4" icon="/images/shuttle_left.png"/>
+                    <af:button actionListener="#{bindings.Next.execute}" disabled="#{!bindings.Next.enabled}"
+                               partialSubmit="true" id="b3" icon="/images/shuttle_right.png"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <af:panelFormLayout id="pfl1" labelAlignment="top" maxColumns="3" rows="3">
+                  <af:inputText value="#{bindings.GradeName.inputValue}" label="Grade Name"
+                                required="#{bindings.GradeName.hints.mandatory}" columns="25"
+                                maximumLength="#{bindings.GradeName.hints.precision}"
+                                shortDesc="#{bindings.GradeName.hints.tooltip}" id="it3">
+                    <f:validator binding="#{bindings.GradeName.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.MinSalary.inputValue}" label="Minimum Salary"
+                                required="#{bindings.MinSalary.hints.mandatory}" columns="25"
+                                maximumLength="#{bindings.MinSalary.hints.precision}"
+                                shortDesc="#{bindings.MinSalary.hints.tooltip}" id="it4">
+                    <f:validator binding="#{bindings.MinSalary.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.MinSalary.format}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.MaxSalary.inputValue}" label="Maximum Salary"
+                                required="#{bindings.MaxSalary.hints.mandatory}" columns="25"
+                                maximumLength="#{bindings.MaxSalary.hints.precision}"
+                                shortDesc="#{bindings.MaxSalary.hints.tooltip}" id="it5">
+                    <f:validator binding="#{bindings.MaxSalary.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.MaxSalary.format}"/>
+                  </af:inputText>
+                  <af:selectOneChoice value="#{bindings.IncrementType.inputValue}" label="Increment Type"
+                                      required="#{bindings.IncrementType.hints.mandatory}"
+                                      shortDesc="#{bindings.IncrementType.hints.tooltip}" id="soc4"
+                                      contentStyle="width:150px">
+                    <f:selectItems value="#{bindings.IncrementType.items}" id="si4"/>
+                    <f:validator binding="#{bindings.IncrementType.validator}"/>
+                  </af:selectOneChoice>
+                  <af:inputText value="#{bindings.Val.inputValue}" label="Increment Value"
+                                required="#{bindings.Val.hints.mandatory}" columns="25"
+                                maximumLength="#{bindings.Val.hints.precision}"
+                                shortDesc="#{bindings.Val.hints.tooltip}" id="it6">
+                    <f:validator binding="#{bindings.Val.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Val.format}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.GrossSalary.inputValue}" label="Gross Salary"
+                                required="#{bindings.GrossSalary.hints.mandatory}" columns="25"
+                                maximumLength="#{bindings.GrossSalary.hints.precision}"
+                                shortDesc="#{bindings.GrossSalary.hints.tooltip}" id="it7">
+                    <f:validator binding="#{bindings.GrossSalary.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.GrossSalary.format}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.BasicSalary.inputValue}" label="Basic Salary"
+                                required="#{bindings.BasicSalary.hints.mandatory}" columns="25"
+                                maximumLength="#{bindings.BasicSalary.hints.precision}"
+                                shortDesc="#{bindings.BasicSalary.hints.tooltip}" id="it8">
+                    <f:validator binding="#{bindings.BasicSalary.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.BasicSalary.format}"/>
+                  </af:inputText>
+                </af:panelFormLayout>
+              </af:panelBox>
+              <af:panelBox text="Grade Details" id="pb3" showDisclosure="false">
+                <f:facet name="toolbar">
+                  <af:button actionListener="#{bindings.CreateInsert2.execute}"
+                             disabled="#{!bindings.CreateInsert2.enabled}" id="b5" icon="/images/add.png"/>
+                </f:facet>
+                <af:table value="#{bindings.PrlGradeLinesView1.collectionModel}" var="row"
+                          rows="#{bindings.PrlGradeLinesView1.rangeSize}"
+                          emptyText="#{bindings.PrlGradeLinesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.PrlGradeLinesView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PrlGradeLinesView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.PrlGradeLinesView1.rangeSize}" id="t1"
+                          partialTriggers="::b5 b23">
+                  <af:column headerText="Allowence Deduction" id="c1"
+                             width="200">
+                    <af:selectOneChoice value="#{row.bindings.AllowenceDeductionId.inputValue}"
+                                        label="#{row.bindings.AllowenceDeductionId.label}"
+                                        required="#{bindings.PrlGradeLinesView1.hints.AllowenceDeductionId.mandatory}"
+                                        shortDesc="#{bindings.PrlGradeLinesView1.hints.AllowenceDeductionId.tooltip}"
+                                        id="soc1">
+                      <f:selectItems value="#{row.bindings.AllowenceDeductionId.items}" id="si1"/>
+                      <f:validator binding="#{row.bindings.AllowenceDeductionId.validator}"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="Value" id="c2">
+                    <af:inputText value="#{row.bindings.Val.inputValue}"
+                                  label="#{bindings.PrlGradeLinesView1.hints.Val.label}"
+                                  required="#{bindings.PrlGradeLinesView1.hints.Val.mandatory}"
+                                  columns="#{bindings.PrlGradeLinesView1.hints.Val.displayWidth}"
+                                  maximumLength="#{bindings.PrlGradeLinesView1.hints.Val.precision}"
+                                  shortDesc="#{bindings.PrlGradeLinesView1.hints.Val.tooltip}" id="it2">
+                      <f:validator binding="#{row.bindings.Val.validator}"/>
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.PrlGradeLinesView1.hints.Val.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column id="c3">
+                    <af:button actionListener="#{bindings.Delete5.execute}"
+                               disabled="#{!bindings.Delete5.enabled}" id="b23" icon="/images/delete.png"/>
+                  </af:column>
+                </af:table>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:showDetailItem>
+          <af:showDetailItem text="Salary Periods" id="sdi5">
+            <af:panelBox id="pb11" showDisclosure="false">
+              <f:facet name="toolbar">
+                <af:panelGroupLayout id="pgl9" layout="horizontal">
+                  <af:button actionListener="#{bindings.CreateInsert8.execute}"
+                             disabled="#{!bindings.CreateInsert8.enabled}" id="b16" icon="/images/new.png"/>
+                  <af:button actionListener="#{bindings.Previous1.execute}" disabled="#{!bindings.Previous1.enabled}"
+                             partialSubmit="true" id="b18" icon="/images/shuttle_left.png"/>
+                  <af:button actionListener="#{bindings.Next1.execute}" disabled="#{!bindings.Next1.enabled}"
+                             partialSubmit="true" id="b17" icon="/images/shuttle_right.png"/>
+                </af:panelGroupLayout>
+              </f:facet>
+              <af:panelFormLayout id="pfl7">
+                <af:inputText value="#{bindings.PeriodYear.inputValue}" label="Period Year"
+                              required="#{bindings.PeriodYear.hints.mandatory}" columns="35"
+                              maximumLength="#{bindings.PeriodYear.hints.precision}"
+                              shortDesc="#{bindings.PeriodYear.hints.tooltip}" id="it25">
+                  <f:validator binding="#{bindings.PeriodYear.validator}"/>
+                </af:inputText>
+                <af:inputDate value="#{bindings.PeriodYearStart.inputValue}" label="Period Start Date"
+                              required="#{bindings.PeriodYearStart.hints.mandatory}" columns="32"
+                              shortDesc="#{bindings.PeriodYearStart.hints.tooltip}" id="id8">
+                  <f:validator binding="#{bindings.PeriodYearStart.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.PeriodYearStart.format}"/>
+                </af:inputDate>
+                <af:inputDate value="#{bindings.PeriodYearEnd.inputValue}" label="Period End Date"
+                              required="#{bindings.PeriodYearEnd.hints.mandatory}" columns="32"
+                              shortDesc="#{bindings.PeriodYearEnd.hints.tooltip}" id="id7">
+                  <f:validator binding="#{bindings.PeriodYearEnd.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.PeriodYearEnd.format}"/>
+                </af:inputDate>
+                <f:facet name="footer">
+                  <af:button text="Generate" id="b15" action="#{backingBeanScope.PayrollBean.generateSalaryPeriod}"/>
+                </f:facet>
+              </af:panelFormLayout>
+              <af:table value="#{bindings.PrlSalaryPeriodLinesView1.collectionModel}" var="row"
+                        rows="#{bindings.PrlSalaryPeriodLinesView1.rangeSize}"
+                        emptyText="#{bindings.PrlSalaryPeriodLinesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.PrlSalaryPeriodLinesView1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.PrlSalaryPeriodLinesView1.collectionModel.makeCurrent}"
+                        rowSelection="single" fetchSize="#{bindings.PrlSalaryPeriodLinesView1.rangeSize}" id="t8">
+                <af:column headerText="Month" id="c39">
+                  <af:inputText value="#{row.bindings.MonthDesc.inputValue}"
+                                label="#{bindings.PrlSalaryPeriodLinesView1.hints.MonthDesc.label}"
+                                required="#{bindings.PrlSalaryPeriodLinesView1.hints.MonthDesc.mandatory}"
+                                columns="#{bindings.PrlSalaryPeriodLinesView1.hints.MonthDesc.displayWidth}"
+                                maximumLength="#{bindings.PrlSalaryPeriodLinesView1.hints.MonthDesc.precision}"
+                                shortDesc="#{bindings.PrlSalaryPeriodLinesView1.hints.MonthDesc.tooltip}" id="it22">
+                    <f:validator binding="#{row.bindings.MonthDesc.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="Start Date" id="c40">
+                  <af:inputDate value="#{row.bindings.StartDate.inputValue}"
+                                label="#{bindings.PrlSalaryPeriodLinesView1.hints.StartDate.label}"
+                                required="#{bindings.PrlSalaryPeriodLinesView1.hints.StartDate.mandatory}"
+                                columns="#{bindings.PrlSalaryPeriodLinesView1.hints.StartDate.displayWidth}"
+                                shortDesc="#{bindings.PrlSalaryPeriodLinesView1.hints.StartDate.tooltip}" id="id9">
+                    <f:validator binding="#{row.bindings.StartDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.PrlSalaryPeriodLinesView1.hints.StartDate.format}"/>
+                  </af:inputDate>
+                </af:column>
+                <af:column headerText="#{bindings.PrlSalaryPeriodLinesView1.hints.Active.label}" id="c41" align="center"
+                           width="35">
+                  <af:selectBooleanCheckbox value="#{row.bindings.Active.inputValue}"
+                                            label="#{row.bindings.Active.label}"
+                                            shortDesc="#{bindings.PrlSalaryPeriodLinesView1.hints.Active.tooltip}"
+                                            id="sbc3"/>
+                </af:column>
+              </af:table>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem text="Tax Slabs" id="sdi8">
+            <af:panelBox id="pb12" showDisclosure="false">
+              <f:facet name="toolbar">
+                <af:button actionListener="#{bindings.CreateInsert9.execute}"
+                           disabled="#{!bindings.CreateInsert9.enabled}" id="b19" icon="/images/new.png"/>
+              </f:facet>
+              <af:table value="#{bindings.PrlTaxSlabView1.collectionModel}" var="row"
+                        rows="#{bindings.PrlTaxSlabView1.rangeSize}"
+                        emptyText="#{bindings.PrlTaxSlabView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        rowBandingInterval="0" fetchSize="#{bindings.PrlTaxSlabView1.rangeSize}" id="t9"
+                        partialTriggers="::b19">
+                <af:column headerText="Salary From" id="c43">
+                  <af:inputText value="#{row.bindings.SalaryFrom.inputValue}"
+                                label="#{bindings.PrlTaxSlabView1.hints.SalaryFrom.label}"
+                                required="#{bindings.PrlTaxSlabView1.hints.SalaryFrom.mandatory}"
+                                columns="#{bindings.PrlTaxSlabView1.hints.SalaryFrom.displayWidth}"
+                                maximumLength="#{bindings.PrlTaxSlabView1.hints.SalaryFrom.precision}"
+                                shortDesc="#{bindings.PrlTaxSlabView1.hints.SalaryFrom.tooltip}" id="it28">
+                    <f:validator binding="#{row.bindings.SalaryFrom.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PrlTaxSlabView1.hints.SalaryFrom.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="Deduct Income" id="c44">
+                  <af:inputText value="#{row.bindings.SalaryTo.inputValue}"
+                                label="#{bindings.PrlTaxSlabView1.hints.SalaryTo.label}"
+                                required="#{bindings.PrlTaxSlabView1.hints.SalaryTo.mandatory}"
+                                columns="#{bindings.PrlTaxSlabView1.hints.SalaryTo.displayWidth}"
+                                maximumLength="#{bindings.PrlTaxSlabView1.hints.SalaryTo.precision}"
+                                shortDesc="#{bindings.PrlTaxSlabView1.hints.SalaryTo.tooltip}" id="it29">
+                    <f:validator binding="#{row.bindings.SalaryTo.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.PrlTaxSlabView1.hints.SalaryTo.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.PrlTaxSlabView1.hints.Tax.label}" id="c45">
+                  <af:inputText value="#{row.bindings.Tax.inputValue}"
+                                label="#{bindings.PrlTaxSlabView1.hints.Tax.label}"
+                                required="#{bindings.PrlTaxSlabView1.hints.Tax.mandatory}"
+                                columns="#{bindings.PrlTaxSlabView1.hints.Tax.displayWidth}"
+                                maximumLength="#{bindings.PrlTaxSlabView1.hints.Tax.precision}"
+                                shortDesc="#{bindings.PrlTaxSlabView1.hints.Tax.tooltip}" id="it30">
+                    <f:validator binding="#{row.bindings.Tax.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.PrlTaxSlabView1.hints.Tax.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.PrlTaxSlabView1.hints.IncomeDeduct.label}" id="c46">
+                  <af:inputText value="#{row.bindings.IncomeDeduct.inputValue}"
+                                label="#{bindings.PrlTaxSlabView1.hints.IncomeDeduct.label}"
+                                required="#{bindings.PrlTaxSlabView1.hints.IncomeDeduct.mandatory}"
+                                columns="#{bindings.PrlTaxSlabView1.hints.IncomeDeduct.displayWidth}"
+                                maximumLength="#{bindings.PrlTaxSlabView1.hints.IncomeDeduct.precision}"
+                                shortDesc="#{bindings.PrlTaxSlabView1.hints.IncomeDeduct.tooltip}" id="it31">
+                    <f:validator binding="#{row.bindings.IncomeDeduct.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PrlTaxSlabView1.hints.IncomeDeduct.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.PrlTaxSlabView1.hints.Excess.label}" id="c47">
+                  <af:inputText value="#{row.bindings.Excess.inputValue}"
+                                label="#{bindings.PrlTaxSlabView1.hints.Excess.label}"
+                                required="#{bindings.PrlTaxSlabView1.hints.Excess.mandatory}"
+                                columns="#{bindings.PrlTaxSlabView1.hints.Excess.displayWidth}"
+                                maximumLength="#{bindings.PrlTaxSlabView1.hints.Excess.precision}"
+                                shortDesc="#{bindings.PrlTaxSlabView1.hints.Excess.tooltip}" id="it32">
+                    <f:validator binding="#{row.bindings.Excess.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.PrlTaxSlabView1.hints.Excess.format}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+            </af:panelBox>
+          </af:showDetailItem>
+          <af:showDetailItem text="Banks" id="sdi11">
+            <af:panelBox id="pb17" showDisclosure="false">
+              <f:facet name="toolbar">
+                <af:button disabled="#{!bindings.CreateInsert11.enabled}" id="b48" icon="/images/new.png"
+                           action="#{backingBeanScope.PayrollBean.showBankPopup}"/>
+              </f:facet>
+              <af:table value="#{bindings.PrlBanksView1.collectionModel}" var="row"
+                        rows="#{bindings.PrlBanksView1.rangeSize}"
+                        emptyText="#{bindings.PrlBanksView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        rowBandingInterval="0" selectedRowKeys="#{bindings.PrlBanksView1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.PrlBanksView1.collectionModel.makeCurrent}" rowSelection="single"
+                        fetchSize="#{bindings.PrlBanksView1.rangeSize}" id="t10" partialTriggers="::b48 b37 ::b49 ::b50"
+                        binding="#{backingBeanScope.PayrollBean.bankTable}">
+                <af:column headerText="Bank Name" id="c53">
+                  <af:outputText value="#{row.BankName}" shortDesc="#{bindings.PrlBanksView1.hints.BankName.tooltip}"
+                                 id="ot34"/>
+                </af:column>
+                <af:column headerText="Branch Name" id="c56">
+                  <af:outputText value="#{row.BankBranchName}"
+                                 shortDesc="#{bindings.PrlBanksView1.hints.BankBranchName.tooltip}" id="ot37"/>
+                </af:column>
+                <af:column headerText="Branch Code" id="c55">
+                  <af:outputText value="#{row.BankBranchCode}"
+                                 shortDesc="#{bindings.PrlBanksView1.hints.BankBranchCode.tooltip}" id="ot36"/>
+                </af:column>
+                <af:column headerText="Address" id="c54" width="250">
+                  <af:outputText value="#{row.BankAddress}"
+                                 shortDesc="#{bindings.PrlBanksView1.hints.BankAddress.tooltip}" id="ot35"/>
+                </af:column>
+                <af:column id="c57" headerText="Actions" align="center">
+                  <af:panelGroupLayout id="pgl27">
+                    <af:button actionListener="#{bindings.Delete4.execute}" disabled="#{!bindings.Delete4.enabled}"
+                               id="b37" icon="/images/delete.png"/>
+                    <af:button id="b47" icon="/images/edit.png" action="#{backingBeanScope.PayrollBean.editBank}"/>
+                  </af:panelGroupLayout>
+                </af:column>
+              </af:table>
+            </af:panelBox>
+          </af:showDetailItem>
+        </af:panelTabbed>
+      </af:showDetailItem>
+      <af:showDetailItem id="grades" text="Payroll Transactions">
+        <af:panelTabbed position="above" id="pt3" dimensionsFrom="disclosedChild">
+          <af:showDetailItem id="Adjustment" text="Adjustment">
+            <af:panelGroupLayout id="pgl18" layout="vertical">
+              <af:panelBox id="pb14" icon="/images/find.png" disclosed="false">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl19" layout="horizontal">
+                  <af:query id="qryId3" headerText="Search" disclosed="true"
+                            value="#{bindings.PrlSpecialAllowDeductViewCriteriaQuery.queryDescriptor}"
+                            model="#{bindings.PrlSpecialAllowDeductViewCriteriaQuery.queryModel}"
+                            queryListener="#{bindings.PrlSpecialAllowDeductViewCriteriaQuery.processQuery}"
+                            queryOperationListener="#{bindings.PrlSpecialAllowDeductViewCriteriaQuery.processQueryOperation}"
+                            displayMode="simple" saveQueryMode="hidden"/>
+                  <af:button actionListener="#{bindings.Execute4.execute}" text="Search"
+                             disabled="#{!bindings.Execute4.enabled}" id="b46"/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:panelBox id="pb4" showDisclosure="false">
+                <f:facet name="toolbar">
+                  <af:panelGroupLayout id="pgl4">
+                    <af:button id="b7" icon="/images/new.png"
+                               action="#{backingBeanScope.PayrollBean.showMonthlyAdjustPopup}"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <af:table value="#{bindings.PrlSpecialAllowDeductView1.collectionModel}" var="row"
+                          rows="#{bindings.PrlSpecialAllowDeductView1.rangeSize}"
+                          emptyText="#{bindings.PrlSpecialAllowDeductView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.PrlSpecialAllowDeductView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PrlSpecialAllowDeductView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.PrlSpecialAllowDeductView1.rangeSize}" id="t3"
+                          binding="#{backingBeanScope.PayrollBean.monthlyAdjustTable}"
+                          partialTriggers="::b46 ::b7 b8 ::b36 ::b6">
+                  <af:column headerText="Employee Name" id="c9" width="200">
+                    <af:outputText value="#{row.EmployeeName}"
+                                   shortDesc="#{bindings.PrlSpecialAllowDeductView1.hints.EmployeeName.tooltip}"
+                                   id="ot1"/>
+                  </af:column>
+                  <af:column headerText="Employee Department" id="c10" width="200">
+                    <af:outputText value="#{row.EmployeeDepartment}"
+                                   shortDesc="#{bindings.PrlSpecialAllowDeductView1.hints.EmployeeDepartment.tooltip}"
+                                   id="ot2"/>
+                  </af:column>
+                  <af:column headerText="Employee Designation" id="c11" width="200">
+                    <af:outputText value="#{row.EmployeeDesignation}"
+                                   shortDesc="#{bindings.PrlSpecialAllowDeductView1.hints.EmployeeDesignation.tooltip}"
+                                   id="ot3"/>
+                  </af:column>
+                  <af:column headerText="Grade" id="c12">
+                    <af:outputText value="#{row.EmployeeGrade}"
+                                   shortDesc="#{bindings.PrlSpecialAllowDeductView1.hints.EmployeeGrade.tooltip}"
+                                   id="ot4"/>
+                  </af:column>
+                  <af:column headerText="Allow/Deduct Date" id="c13">
+                    <af:outputText value="#{row.AllowDeductDate}"
+                                   shortDesc="#{bindings.PrlSpecialAllowDeductView1.hints.AllowDeductDate.tooltip}"
+                                   id="ot7">
+                      <af:convertDateTime pattern="#{bindings.PrlSpecialAllowDeductView1.hints.AllowDeductDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="Adjustment For" id="c14">
+                    <af:selectOneChoice value="#{row.bindings.AdjustmentType.inputValue}"
+                                        label="#{row.bindings.AdjustmentType.label}"
+                                        required="#{bindings.PrlSpecialAllowDeductView1.hints.AdjustmentType.mandatory}"
+                                        shortDesc="#{bindings.PrlSpecialAllowDeductView1.hints.AdjustmentType.tooltip}"
+                                        readOnly="true" id="soc7">
+                      <f:selectItems value="#{row.bindings.AdjustmentType.items}" id="si7"/>
+                      <f:validator binding="#{row.bindings.AdjustmentType.validator}"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="#{bindings.PrlSpecialAllowDeductView1.hints.Amount.label}" id="c15" width="50">
+                    <af:outputText value="#{row.Amount}"
+                                   shortDesc="#{bindings.PrlSpecialAllowDeductView1.hints.Amount.tooltip}" id="ot5">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PrlSpecialAllowDeductView1.hints.Amount.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column id="c50" headerText="Actions">
+                    <af:panelGroupLayout id="pgl14">
+                      <af:button id="b32" icon="/images/edit.png"
+                                 action="#{backingBeanScope.PayrollBean.editMonthlyAdjustment}"/>
+                      <af:button actionListener="#{bindings.Delete.execute}" disabled="#{!bindings.Delete.enabled}"
+                                 id="b8" icon="/images/delete.png"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                </af:table>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:showDetailItem>
+          <af:showDetailItem text="Loan" id="sdi7">
+            <af:panelGroupLayout id="pgl6" layout="vertical">
+              <af:panelBox id="pb7" icon="/images/find.png" disclosed="false">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl26" layout="horizontal">
+                  <af:query id="qryId1" headerText="Search" value="#{bindings.LoanSearchQuery.queryDescriptor}"
+                            model="#{bindings.LoanSearchQuery.queryModel}"
+                            queryListener="#{bindings.LoanSearchQuery.processQuery}"
+                            queryOperationListener="#{bindings.LoanSearchQuery.processQueryOperation}"
+                            displayMode="simple" saveQueryMode="hidden"/>
+                  <af:button actionListener="#{bindings.Execute3.execute}" text="Search"
+                             disabled="#{!bindings.Execute3.enabled}" id="b45"/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:panelBox id="pb6" showDisclosure="false">
+                <f:facet name="toolbar">
+                  <af:button disabled="#{!bindings.CreateInsert5.enabled}" id="b10" icon="/images/new.png"
+                             action="#{backingBeanScope.PayrollBean.showLoanPopup}"/>
+                </f:facet>
+                <af:table value="#{bindings.PrlLoanView1.collectionModel}" var="row"
+                          rows="#{bindings.PrlLoanView1.rangeSize}"
+                          emptyText="#{bindings.PrlLoanView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" selectedRowKeys="#{bindings.PrlLoanView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PrlLoanView1.collectionModel.makeCurrent}" rowSelection="single"
+                          fetchSize="#{bindings.PrlLoanView1.rangeSize}" id="t5"
+                          partialTriggers="::b34 ::b45 ::b10 ::t7:b27 b25"
+                          binding="#{backingBeanScope.PayrollBean.loanTable}">
+                  <af:column headerText="Employee Name" id="c24" width="200">
+                    <af:outputText value="#{row.EmployeeName}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.EmployeeName.tooltip}" id="ot17"/>
+                  </af:column>
+                  <af:column headerText="Loan Date" id="c25">
+                    <af:outputText value="#{row.LoanDate}" shortDesc="#{bindings.PrlLoanView1.hints.LoanDate.tooltip}"
+                                   id="ot18">
+                      <af:convertDateTime pattern="#{bindings.PrlLoanView1.hints.LoanDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="Loan Type" id="c26">
+                    <af:selectOneChoice value="#{row.bindings.LoanType.inputValue}"
+                                        label="#{row.bindings.LoanType.label}"
+                                        required="#{bindings.PrlLoanView1.hints.LoanType.mandatory}"
+                                        shortDesc="#{bindings.PrlLoanView1.hints.LoanType.tooltip}" readOnly="true"
+                                        id="soc11">
+                      <f:selectItems value="#{row.bindings.LoanType.items}" id="si11"/>
+                      <f:validator binding="#{row.bindings.LoanType.validator}"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column headerText="Installment Amount" id="c27" width="50">
+                    <af:outputText value="#{row.InstallmentAmount}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.InstallmentAmount.tooltip}" id="ot19">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PrlLoanView1.hints.InstallmentAmount.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="No. Of Installments" id="c28" width="50">
+                    <af:outputText value="#{row.InstallmentCount}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.InstallmentCount.tooltip}" id="ot20">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PrlLoanView1.hints.InstallmentCount.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="Loan Amount" id="c29" width="50">
+                    <af:outputText value="#{row.LoanAmount}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.LoanAmount.tooltip}" id="ot21">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PrlLoanView1.hints.LoanAmount.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="Stop Deduction" id="c31">
+                    <af:outputText value="#{row.StopDeduction}"
+                                   shortDesc="#{bindings.PrlLoanView1.hints.StopDeduction.tooltip}" id="ot23"/>
+                  </af:column>
+                  <af:column id="c51">
+                    <af:panelGroupLayout id="pgl16">
+                      <af:button id="b35" icon="/images/edit.png" action="#{backingBeanScope.PayrollBean.editLoan}"/>
+                      <af:button actionListener="#{bindings.Delete1.execute}" disabled="#{!bindings.Delete1.enabled}"
+                                 id="b25" icon="/images/delete.png"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                </af:table>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:showDetailItem>
+          <af:showDetailItem text="Advance Salary" id="sdi4">
+            <af:panelGroupLayout id="pgl7" layout="vertical">
+              <af:panelBox id="pb8" icon="/images/find.png" disclosed="false">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl25" layout="horizontal">
+                  <af:query id="qryId2" headerText="Search" disclosed="true"
+                            value="#{bindings.AdvanceSalarySearchQuery.queryDescriptor}"
+                            model="#{bindings.AdvanceSalarySearchQuery.queryModel}"
+                            queryListener="#{bindings.AdvanceSalarySearchQuery.processQuery}"
+                            queryOperationListener="#{bindings.AdvanceSalarySearchQuery.processQueryOperation}"
+                            displayMode="simple" saveQueryMode="hidden"/>
+                  <af:button actionListener="#{bindings.Execute.execute}" text="Search"
+                             disabled="#{!bindings.Execute.enabled}" id="b44"/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:panelBox id="pb9" showDisclosure="false">
+                <f:facet name="toolbar">
+                  <af:button disabled="#{!bindings.CreateInsert6.enabled}" id="b11" icon="/images/new.png"
+                             action="#{backingBeanScope.PayrollBean.showAdvSalaryPopup}"/>
+                </f:facet>
+                <af:table value="#{bindings.PrlAdvanceSalaryView1.collectionModel}" var="row"
+                          rows="#{bindings.PrlAdvanceSalaryView1.rangeSize}"
+                          emptyText="#{bindings.PrlAdvanceSalaryView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.PrlAdvanceSalaryView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.PrlAdvanceSalaryView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.PrlAdvanceSalaryView1.rangeSize}" id="t6"
+                          partialTriggers="::b29 ::b30 ::b11 b28 b31"
+                          binding="#{backingBeanScope.PayrollBean.advSalaryTable}">
+                  <af:column headerText="#{bindings.PrlAdvanceSalaryView1.hints.EmployeeName.label}" id="c30"
+                             width="200">
+                    <af:outputText value="#{row.EmployeeName}"
+                                   shortDesc="#{bindings.PrlAdvanceSalaryView1.hints.EmployeeName.tooltip}" id="ot24"/>
+                  </af:column>
+                  <af:column headerText="#{bindings.PrlAdvanceSalaryView1.hints.AdvSalaryDate.label}" id="c32">
+                    <af:outputText value="#{row.AdvSalaryDate}"
+                                   shortDesc="#{bindings.PrlAdvanceSalaryView1.hints.AdvSalaryDate.tooltip}" id="ot25">
+                      <af:convertDateTime pattern="#{bindings.PrlAdvanceSalaryView1.hints.AdvSalaryDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.PrlAdvanceSalaryView1.hints.Amount.label}" id="c33">
+                    <af:outputText value="#{row.Amount}"
+                                   shortDesc="#{bindings.PrlAdvanceSalaryView1.hints.Amount.tooltip}" id="ot26">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PrlAdvanceSalaryView1.hints.Amount.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="#{bindings.PrlAdvanceSalaryView1.hints.DeductionMonth.label}" id="c34">
+                    <af:outputText value="#{row.DeductionMonth}"
+                                   shortDesc="#{bindings.PrlAdvanceSalaryView1.hints.DeductionMonth.tooltip}" id="ot27">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PrlAdvanceSalaryView1.hints.DeductionMonth.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column id="c49" headerText="Actions" align="center">
+                    <af:panelGroupLayout id="pgl12">
+                      <af:button actionListener="#{bindings.Delete2.execute}" disabled="#{!bindings.Delete2.enabled}"
+                                 id="b28" icon="/images/delete.png"/>
+                      <af:button id="b31" icon="/images/edit.png"
+                                 action="#{backingBeanScope.PayrollBean.editAdvSalary}"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                </af:table>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:showDetailItem>
+          <af:showDetailItem text="Leaves" id="sdi3">
+            <af:panelGroupLayout id="pgl5" layout="vertical">
+              <af:panelBox id="pb15" icon="/images/find.png" disclosed="false">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl22" layout="horizontal">
+                  <af:query id="qryId4" headerText="Search" disclosed="true"
+                            value="#{bindings.HrEmployeeLeavesViewCriteriaQuery.queryDescriptor}"
+                            model="#{bindings.HrEmployeeLeavesViewCriteriaQuery.queryModel}"
+                            queryListener="#{bindings.HrEmployeeLeavesViewCriteriaQuery.processQuery}"
+                            queryOperationListener="#{bindings.HrEmployeeLeavesViewCriteriaQuery.processQueryOperation}"
+                            saveQueryMode="hidden" displayMode="simple"/>
+                  <af:button actionListener="#{bindings.Execute1.execute}" text="Search"
+                             disabled="#{!bindings.Execute1.enabled}" id="b42"/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:panelBox id="pb5" showDisclosure="false">
+                <f:facet name="toolbar">
+                  <af:button disabled="#{!bindings.CreateInsert4.enabled}" id="b9" icon="/images/new.png"
+                             action="#{backingBeanScope.PayrollBean.showLeavesPopup}"/>
+                </f:facet>
+                <af:table value="#{bindings.HrEmployeeLeavesView1.collectionModel}" var="row"
+                          rows="#{bindings.HrEmployeeLeavesView1.rangeSize}"
+                          emptyText="#{bindings.HrEmployeeLeavesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.HrEmployeeLeavesView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.HrEmployeeLeavesView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.HrEmployeeLeavesView1.rangeSize}" id="t4"
+                          partialTriggers="::b42 ::b9 b40 ::b39" binding="#{backingBeanScope.PayrollBean.leavesTable}">
+                  <af:column headerText="Name" id="c16" width="150">
+                    <af:outputText value="#{row.EmployeeName}"
+                                   shortDesc="#{bindings.HrEmployeeLeavesView1.hints.EmployeeName.tooltip}" id="ot9"/>
+                  </af:column>
+                  <af:column headerText="Department" id="c17">
+                    <af:outputText value="#{row.EmployeeDepartment}"
+                                   shortDesc="#{bindings.HrEmployeeLeavesView1.hints.EmployeeDepartment.tooltip}"
+                                   id="ot10"/>
+                  </af:column>
+                  <af:column headerText="Designation" id="c18">
+                    <af:outputText value="#{row.EmployeeDesignation}"
+                                   shortDesc="#{bindings.HrEmployeeLeavesView1.hints.EmployeeDesignation.tooltip}"
+                                   id="ot11"/>
+                  </af:column>
+                  <af:column headerText="Grade" id="c19">
+                    <af:outputText value="#{row.EmployeeGrade}"
+                                   shortDesc="#{bindings.HrEmployeeLeavesView1.hints.EmployeeGrade.tooltip}" id="ot12"/>
+                  </af:column>
+                  <af:column headerText="Total Leaves" id="c20">
+                    <af:outputText value="#{row.TotalLeaves}"
+                                   shortDesc="#{bindings.HrEmployeeLeavesView1.hints.TotalLeaves.tooltip}" id="ot13">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.HrEmployeeLeavesView1.hints.TotalLeaves.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="From Date" id="c21">
+                    <af:outputText value="#{row.FromDate}"
+                                   shortDesc="#{bindings.HrEmployeeLeavesView1.hints.FromDate.tooltip}" id="ot14">
+                      <af:convertDateTime pattern="#{bindings.HrEmployeeLeavesView1.hints.FromDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="To Date" id="c22">
+                    <af:outputText value="#{row.ToDate}"
+                                   shortDesc="#{bindings.HrEmployeeLeavesView1.hints.ToDate.tooltip}" id="ot15">
+                      <af:convertDateTime pattern="#{bindings.HrEmployeeLeavesView1.hints.ToDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="Type" id="c23">
+                    <af:selectOneChoice value="#{row.bindings.LeaveType.inputValue}"
+                                        label="#{row.bindings.LeaveType.label}"
+                                        required="#{bindings.HrEmployeeLeavesView1.hints.LeaveType.mandatory}"
+                                        shortDesc="#{bindings.HrEmployeeLeavesView1.hints.LeaveType.tooltip}"
+                                        readOnly="true" id="soc8">
+                      <f:selectItems value="#{row.bindings.LeaveType.items}" id="si8"/>
+                      <f:validator binding="#{row.bindings.LeaveType.validator}"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column id="c52" headerText="Action" align="center">
+                    <af:panelGroupLayout id="pgl21" layout="horizontal">
+                      <af:button id="b41" icon="/images/edit.png" action="#{backingBeanScope.PayrollBean.editLeaves}"/>
+                      <af:button actionListener="#{bindings.Delete3.execute}" disabled="#{!bindings.Delete3.enabled}"
+                                 id="b40" icon="/images/delete.png"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                </af:table>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:showDetailItem>
+          <af:showDetailItem text="Overtime" id="sdi6">
+            <af:panelGroupLayout id="pgl23" layout="vertical">
+              <af:panelBox id="pb16" disclosed="false" icon="/images/find.png">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl24">
+                  <af:query id="qryId5" headerText="Search" disclosed="true"
+                            value="#{bindings.HrEmpOvertimeViewCriteriaQuery.queryDescriptor}"
+                            model="#{bindings.HrEmpOvertimeViewCriteriaQuery.queryModel}"
+                            queryListener="#{bindings.HrEmpOvertimeViewCriteriaQuery.processQuery}"
+                            queryOperationListener="#{bindings.HrEmpOvertimeViewCriteriaQuery.processQueryOperation}"
+                            displayMode="simple" saveQueryMode="hidden"/>
+                  <af:button actionListener="#{bindings.Execute2.execute}" text="Search"
+                             disabled="#{!bindings.Execute2.enabled}" id="b43"/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:panelBox id="pb10" showDisclosure="false">
+                <f:facet name="toolbar">
+                  <af:button disabled="#{!bindings.CreateInsert7.enabled}" id="b14" icon="/images/new.png"
+                             action="#{backingBeanScope.PayrollBean.openOvertimePopup}"/>
+                </f:facet>
+                <af:table value="#{bindings.HrEmpOvertimeView1.collectionModel}" var="row"
+                          rows="#{bindings.HrEmpOvertimeView1.rangeSize}"
+                          emptyText="#{bindings.HrEmpOvertimeView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.HrEmpOvertimeView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.HrEmpOvertimeView1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.HrEmpOvertimeView1.rangeSize}" id="t7"
+                          partialTriggers="::b43 ::b14 b27 ::b13"
+                          binding="#{backingBeanScope.PayrollBean.overtimeTable}">
+                  <af:column headerText="Employee Name" id="c35" width="200">
+                    <af:outputText value="#{row.EmployeeName}"
+                                   shortDesc="#{bindings.HrEmpOvertimeView1.hints.EmployeeName.tooltip}" id="ot28"/>
+                  </af:column>
+                  <af:column headerText="Department" id="c36" width="200">
+                    <af:outputText value="#{row.EmployeeDepartment}"
+                                   shortDesc="#{bindings.HrEmpOvertimeView1.hints.EmployeeDepartment.tooltip}"
+                                   id="ot29"/>
+                  </af:column>
+                  <af:column headerText="Date" id="c37">
+                    <af:outputText value="#{row.OvertimeDate}"
+                                   shortDesc="#{bindings.HrEmpOvertimeView1.hints.OvertimeDate.tooltip}" id="ot30">
+                      <af:convertDateTime pattern="#{bindings.HrEmpOvertimeView1.hints.OvertimeDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column headerText="Overtime Hours" id="c38">
+                    <af:outputText value="#{row.OvertimeHours}"
+                                   shortDesc="#{bindings.HrEmpOvertimeView1.hints.OvertimeHours.tooltip}" id="ot31">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.HrEmpOvertimeView1.hints.OvertimeHours.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column id="c48" headerText="Actions" align="center">
+                    <af:panelGroupLayout id="pgl11" layout="horizontal">
+                      <af:button id="b26" icon="/images/edit.png"
+                                 action="#{backingBeanScope.PayrollBean.editOvertime}"/>
+                      <af:button actionListener="#{bindings.Delete1.execute}" disabled="#{!bindings.Delete1.enabled}"
+                                 id="b27" icon="/images/delete.png"/>
+                    </af:panelGroupLayout>
+                  </af:column>
+                </af:table>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:showDetailItem>
+          <af:showDetailItem text="Payroll Run" id="sdi9">
+            <af:panelBox id="pb13" showDisclosure="false">
+              <f:facet name="toolbar"/>
+              <af:panelBox id="pb19" showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout id="pgl10" layout="horizontal">
+                  <af:selectOneRadio value="#{bindings.PayrollRunOption1.inputValue}" label="Select"
+                                     required="#{bindings.PayrollRunOption1.hints.mandatory}"
+                                     shortDesc="#{bindings.PayrollRunOption1.hints.tooltip}" id="sor1" autoSubmit="true"
+                                     contentStyle="font-size:15px; font-weight:bolder">
+                    <f:selectItems value="#{bindings.PayrollRunOption1.items}" id="si14"/>
+                    <f:validator binding="#{bindings.PayrollRunOption1.validator}"/>
+                  </af:selectOneRadio>
+                  <af:button text="Run Payroll" id="b20" icon="/images/run.png"
+                             action="#{backingBeanScope.PayrollBean.generate}"/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:panelBox id="pb20" showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:panelFormLayout id="pfl8" labelAlignment="top">
+                  <af:selectOneChoice value="#{bindings.EmployeeType.inputValue}" label="#{bindings.EmployeeType.label}"
+                                      required="#{bindings.EmployeeType.hints.mandatory}"
+                                      shortDesc="#{bindings.EmployeeType.hints.tooltip}" id="soc22"
+                                      contentStyle="width:375px;font-size:15px; height:40px;"
+                                      labelStyle="font-size:15px"
+                                      disabled="#{bindings.PayrollRunOption1.inputValue ne 'Employee Type'}">
+                    <f:selectItems value="#{bindings.EmployeeType.items}" id="si22"/>
+                    <f:validator binding="#{bindings.EmployeeType.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.Designation.inputValue}" label="#{bindings.Designation.label}"
+                                      required="#{bindings.Designation.hints.mandatory}"
+                                      shortDesc="#{bindings.Designation.hints.tooltip}" id="soc13"
+                                      contentStyle="width:375px;font-size:15px; height:40px;"
+                                      labelStyle="font-size:15px"
+                                      disabled="#{bindings.PayrollRunOption1.inputValue ne 'Designation'}">
+                    <f:selectItems value="#{bindings.Designation.items}" id="si13"/>
+                    <f:validator binding="#{bindings.Designation.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.Department.inputValue}" label="Department"
+                                      required="#{bindings.Department.hints.mandatory}"
+                                      shortDesc="#{bindings.Department.hints.tooltip}" id="soc12"
+                                      contentStyle="width:375px;font-size:15px; height:40px;"
+                                      labelStyle="font-size:15px"
+                                      disabled="#{bindings.PayrollRunOption1.inputValue ne 'Department'}">
+                    <f:selectItems value="#{bindings.Department.items}" id="si12"/>
+                    <f:validator binding="#{bindings.Department.validator}"/>
+                  </af:selectOneChoice>
+                  <af:panelLabelAndMessage label="#{bindings.Employee.hints.label}" id="plam6"
+                                           labelStyle="font-size:18px">
+                    <af:inputListOfValues id="employeeId"
+                                          popupTitle="Search and Select: #{bindings.Employee.hints.label}"
+                                          value="#{bindings.Employee.inputValue}"
+                                          model="#{bindings.Employee.listOfValuesModel}"
+                                          required="#{bindings.Employee.hints.mandatory}" columns="35"
+                                          shortDesc="#{bindings.Employee.hints.tooltip}" inlineStyle="margin-left:-15px"
+                                          contentStyle="font-size:15px; height:40px" labelStyle="font-size:15px"
+                                          disabled="#{bindings.PayrollRunOption1.inputValue ne 'Employee'}">
+                      <f:validator binding="#{bindings.Employee.validator}"/>
+                      <af:convertNumber groupingUsed="false" pattern="#{bindings.Employee.format}"/>
+                    </af:inputListOfValues>
+                    <f:facet name="end">
+                      <af:outputText value="#{bindings.EmployeeName5.inputValue}" id="ot33"
+                                     inlineStyle="font-weight:bolder; font-size:18px"/>
+                    </f:facet>
+                  </af:panelLabelAndMessage>
+                  <f:facet name="footer"/>
+                </af:panelFormLayout>
+              </af:panelBox>
+            </af:panelBox>
+            <f:facet name="toolbar"/>
+          </af:showDetailItem>
+        </af:panelTabbed>
+      </af:showDetailItem>
+      <af:showDetailItem text="Payroll Reports" id="sdi10">
+        <af:panelBox id="pb18">
+          <f:facet name="toolbar">
+            <af:button text="Run" id="b24" action="#{backingBeanScope.PayrollBean.runReport}"/>
+          </f:facet>
+          <af:panelFormLayout id="pfl10">
+            <af:selectOneChoice value="#{bindings.ReportId.inputValue}" label="#{bindings.ReportId.label}"
+                                required="#{bindings.ReportId.hints.mandatory}"
+                                shortDesc="#{bindings.ReportId.hints.tooltip}" id="soc15" contentStyle="width:250px"
+                                binding="#{backingBeanScope.PayrollBean.reportBind}" autoSubmit="true">
+              <f:selectItems value="#{bindings.ReportId.items}" id="si15"/>
+              <f:validator binding="#{bindings.ReportId.validator}"/>
+            </af:selectOneChoice>
+            <af:inputDate value="#{bindings.DateFrom.inputValue}" label="#{bindings.DateFrom.hints.label}"
+                          required="#{bindings.DateFrom.hints.mandatory}" columns="35"
+                          shortDesc="#{bindings.DateFrom.hints.tooltip}" id="id11"
+                          binding="#{backingBeanScope.PayrollBean.dateFrom}">
+              <f:validator binding="#{bindings.DateFrom.validator}"/>
+              <af:convertDateTime pattern="#{bindings.DateFrom.format}"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.DateTo.inputValue}" label="#{bindings.DateTo.hints.label}"
+                          required="#{bindings.DateTo.hints.mandatory}" columns="35"
+                          shortDesc="#{bindings.DateTo.hints.tooltip}" id="id12"
+                          binding="#{backingBeanScope.PayrollBean.dateTo}">
+              <f:validator binding="#{bindings.DateTo.validator}"/>
+              <af:convertDateTime pattern="#{bindings.DateTo.format}"/>
+            </af:inputDate>
+            <af:selectOneChoice value="#{bindings.EmployeeType1.inputValue}" label="#{bindings.EmployeeType1.label}"
+                                required="#{bindings.EmployeeType1.hints.mandatory}"
+                                shortDesc="#{bindings.EmployeeType1.hints.tooltip}" id="soc16"
+                                binding="#{backingBeanScope.PayrollBean.employeeType}">
+              <f:selectItems value="#{bindings.EmployeeType1.items}" id="si16"/>
+              <f:validator binding="#{bindings.EmployeeType1.validator}"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.Department1.inputValue}" label="#{bindings.Department1.label}"
+                                required="#{bindings.Department1.hints.mandatory}"
+                                shortDesc="#{bindings.Department1.hints.tooltip}" id="soc17" contentStyle="width:250px"
+                                binding="#{backingBeanScope.PayrollBean.departmentType}">
+              <f:selectItems value="#{bindings.Department1.items}" id="si17"/>
+              <f:validator binding="#{bindings.Department1.validator}"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.Designation1.inputValue}" label="#{bindings.Designation1.label}"
+                                required="#{bindings.Designation1.hints.mandatory}"
+                                shortDesc="#{bindings.Designation1.hints.tooltip}" id="soc18" contentStyle="width:250px"
+                                binding="#{backingBeanScope.PayrollBean.designation}">
+              <f:selectItems value="#{bindings.Designation1.items}" id="si18"/>
+              <f:validator binding="#{bindings.Designation1.validator}"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.PaymentMode.inputValue}" label="#{bindings.PaymentMode.label}"
+                                required="#{bindings.PaymentMode.hints.mandatory}"
+                                shortDesc="#{bindings.PaymentMode.hints.tooltip}" id="soc19" contentStyle="width:250px"
+                                binding="#{backingBeanScope.PayrollBean.paymentMode}">
+              <f:selectItems value="#{bindings.PaymentMode.items}" id="si19"/>
+              <f:validator binding="#{bindings.PaymentMode.validator}"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.AllowenceDeduction.inputValue}"
+                                label="#{bindings.AllowenceDeduction.label}"
+                                required="#{bindings.AllowenceDeduction.hints.mandatory}"
+                                shortDesc="#{bindings.AllowenceDeduction.hints.tooltip}" id="soc20"
+                                contentStyle="width:250px" binding="#{backingBeanScope.PayrollBean.allowenceDeduction}">
+              <f:selectItems value="#{bindings.AllowenceDeduction.items}" id="si20"/>
+              <f:validator binding="#{bindings.AllowenceDeduction.validator}"/>
+            </af:selectOneChoice>
+            <af:inputText value="#{bindings.GrossPayFrom.inputValue}" label="#{bindings.GrossPayFrom.hints.label}"
+                          required="#{bindings.GrossPayFrom.hints.mandatory}" columns="35"
+                          maximumLength="#{bindings.GrossPayFrom.hints.precision}"
+                          shortDesc="#{bindings.GrossPayFrom.hints.tooltip}" id="it40"
+                          binding="#{backingBeanScope.PayrollBean.grossPayFrom}">
+              <f:validator binding="#{bindings.GrossPayFrom.validator}"/>
+            </af:inputText>
+            <af:inputListOfValues id="employeeId6Id" popupTitle="Search and Select: #{bindings.EmployeeId6.hints.label}"
+                                  value="#{bindings.EmployeeId6.inputValue}" label="#{bindings.EmployeeId6.hints.label}"
+                                  model="#{bindings.EmployeeId6.listOfValuesModel}"
+                                  required="#{bindings.EmployeeId6.hints.mandatory}" columns="35"
+                                  shortDesc="#{bindings.EmployeeId6.hints.tooltip}"
+                                  binding="#{backingBeanScope.PayrollBean.employee}">
+              <f:validator binding="#{bindings.EmployeeId6.validator}"/>
+            </af:inputListOfValues>
+            <af:outputText value="#{bindings.reportName.inputValue}" shortDesc="#{bindings.reportName.hints.tooltip}"
+                           id="ot38"/>
+          </af:panelFormLayout>
+        </af:panelBox>
+        <f:facet name="toolbar"/>
+      </af:showDetailItem>
+    </af:panelTabbed>
+    <af:popup childCreation="deferred" autoCancel="enabled" id="p6" binding="#{backingBeanScope.PayrollBean.bankPopup}">
+      <af:panelWindow id="pw5">
+        <af:panelFormLayout id="pfl9">
+          <af:inputText value="#{bindings.BankName.inputValue}" label="Bank Name"
+                        required="#{bindings.BankName.hints.mandatory}" columns="35"
+                        maximumLength="#{bindings.BankName.hints.precision}"
+                        shortDesc="#{bindings.BankName.hints.tooltip}" id="it34">
+            <f:validator binding="#{bindings.BankName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BankBranchCode.inputValue}" label="Branch Code"
+                        required="#{bindings.BankBranchCode.hints.mandatory}" columns="35"
+                        maximumLength="#{bindings.BankBranchCode.hints.precision}"
+                        shortDesc="#{bindings.BankBranchCode.hints.tooltip}" id="it37">
+            <f:validator binding="#{bindings.BankBranchCode.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BankBranchName.inputValue}" label="Branch Name"
+                        required="#{bindings.BankBranchName.hints.mandatory}" columns="35"
+                        maximumLength="#{bindings.BankBranchName.hints.precision}"
+                        shortDesc="#{bindings.BankBranchName.hints.tooltip}" id="it38">
+            <f:validator binding="#{bindings.BankBranchName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BankAddress.inputValue}" label="Branch Address"
+                        required="#{bindings.BankAddress.hints.mandatory}" columns="50"
+                        maximumLength="#{bindings.BankAddress.hints.precision}"
+                        shortDesc="#{bindings.BankAddress.hints.tooltip}" id="it39" rows="6">
+            <f:validator binding="#{bindings.BankAddress.validator}"/>
+          </af:inputText>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl28">
+              <af:button id="b49" icon="/images/check.png" action="#{backingBeanScope.PayrollBean.saveBankAndExit}"/>
+              <af:button id="b50" icon="/images/cancel.png" action="#{backingBeanScope.PayrollBean.cancelBankForm}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="enabled" id="p5"
+              binding="#{backingBeanScope.PayrollBean.leavesPopup}">
+      <af:panelFormLayout id="pfl3">
+        <af:panelLabelAndMessage id="plam2" label="Employee">
+          <af:inputListOfValues id="employeeId1Id" popupTitle="Search and Select: #{bindings.EmployeeId1.hints.label}"
+                                value="#{bindings.EmployeeId1.inputValue}"
+                                model="#{bindings.EmployeeId1.listOfValuesModel}"
+                                required="#{bindings.EmployeeId1.hints.mandatory}" columns="35"
+                                shortDesc="#{bindings.EmployeeId1.hints.tooltip}" inlineStyle="margin-left:-15px">
+            <f:validator binding="#{bindings.EmployeeId1.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId1.format}"/>
+          </af:inputListOfValues>
+          <f:facet name="end">
+            <af:outputText value="#{bindings.EmployeeName1.inputValue}" id="ot8" inlineStyle="font-weight:bolder"/>
+          </f:facet>
+        </af:panelLabelAndMessage>
+        <af:inputText value="#{bindings.EmployeeDepartment1.inputValue}" label="Department"
+                      required="#{bindings.EmployeeDepartment1.hints.mandatory}" columns="35"
+                      maximumLength="#{bindings.EmployeeDepartment1.hints.precision}"
+                      shortDesc="#{bindings.EmployeeDepartment1.hints.tooltip}" partialTriggers="employeeId1Id"
+                      id="it15">
+          <f:validator binding="#{bindings.EmployeeDepartment1.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.EmployeeDesignation1.inputValue}" label="Designation"
+                      required="#{bindings.EmployeeDesignation1.hints.mandatory}" columns="35"
+                      maximumLength="#{bindings.EmployeeDesignation1.hints.precision}"
+                      shortDesc="#{bindings.EmployeeDesignation1.hints.tooltip}" partialTriggers="employeeId1Id"
+                      id="it16">
+          <f:validator binding="#{bindings.EmployeeDesignation1.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.EmployeeGrade1.inputValue}" label="Grade"
+                      required="#{bindings.EmployeeGrade1.hints.mandatory}" columns="35"
+                      maximumLength="#{bindings.EmployeeGrade1.hints.precision}"
+                      shortDesc="#{bindings.EmployeeGrade1.hints.tooltip}" partialTriggers="employeeId1Id" id="it17">
+          <f:validator binding="#{bindings.EmployeeGrade1.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.TotalLeaves.inputValue}" label="Total Leaves"
+                      required="#{bindings.TotalLeaves.hints.mandatory}" columns="35"
+                      maximumLength="#{bindings.TotalLeaves.hints.precision}"
+                      shortDesc="#{bindings.TotalLeaves.hints.tooltip}" id="it18">
+          <f:validator binding="#{bindings.TotalLeaves.validator}"/>
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.TotalLeaves.format}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.FromDate.inputValue}" label="From Date"
+                      required="#{bindings.FromDate.hints.mandatory}" columns="32"
+                      shortDesc="#{bindings.FromDate.hints.tooltip}" id="id2">
+          <f:validator binding="#{bindings.FromDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.FromDate.format}"/>
+        </af:inputDate>
+        <af:inputDate value="#{bindings.ToDate.inputValue}" label="To Date"
+                      required="#{bindings.ToDate.hints.mandatory}" columns="32"
+                      shortDesc="#{bindings.ToDate.hints.tooltip}" id="id3">
+          <f:validator binding="#{bindings.ToDate.validator}"/>
+          <af:convertDateTime pattern="#{bindings.ToDate.format}"/>
+        </af:inputDate>
+        <af:selectOneChoice value="#{bindings.LeaveType.inputValue}" label="Leave Type"
+                            required="#{bindings.LeaveType.hints.mandatory}"
+                            shortDesc="#{bindings.LeaveType.hints.tooltip}" id="soc6">
+          <f:selectItems value="#{bindings.LeaveType.items}" id="si6"/>
+          <f:validator binding="#{bindings.LeaveType.validator}"/>
+        </af:selectOneChoice>
+        <f:facet name="footer">
+          <af:panelGroupLayout id="pgl20">
+            <af:button id="b38" icon="/images/check.png" action="#{backingBeanScope.PayrollBean.saveLeaveAndExit}"/>
+            <af:button id="b39" icon="/images/cancel.png" action="#{backingBeanScope.PayrollBean.cancelLeavesPopup}"/>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:panelFormLayout>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="enabled" id="p4" binding="#{backingBeanScope.PayrollBean.loanPopup}">
+      <af:panelWindow id="pw4">
+        <af:panelFormLayout id="pfl4">
+          <af:panelLabelAndMessage id="plam3" label="Employee">
+            <af:inputListOfValues id="employeeId2Id" popupTitle="Search and Select: #{bindings.EmployeeId2.hints.label}"
+                                  value="#{bindings.EmployeeId2.inputValue}"
+                                  model="#{bindings.EmployeeId2.listOfValuesModel}"
+                                  required="#{bindings.EmployeeId2.hints.mandatory}" columns="32"
+                                  shortDesc="#{bindings.EmployeeId2.hints.tooltip}" inlineStyle="margin-left:-15px">
+              <f:validator binding="#{bindings.EmployeeId2.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId2.format}"/>
+            </af:inputListOfValues>
+            <f:facet name="end">
+              <af:outputText value="#{bindings.EmployeeName2.inputValue}" id="ot16" inlineStyle="font-weight:bolder"/>
+            </f:facet>
+          </af:panelLabelAndMessage>
+          <af:spacer width="10" height="4" id="s1"/>
+          <af:selectOneChoice value="#{bindings.LoanType.inputValue}" label="Loan Type"
+                              required="#{bindings.LoanType.hints.mandatory}"
+                              shortDesc="#{bindings.LoanType.hints.tooltip}" id="soc10" contentStyle="width:250px">
+            <f:selectItems value="#{bindings.LoanType.items}" id="si10"/>
+            <f:validator binding="#{bindings.LoanType.validator}"/>
+          </af:selectOneChoice>
+          <af:inputDate value="#{bindings.LoanDate.inputValue}" label="Loan Date"
+                        required="#{bindings.LoanDate.hints.mandatory}" columns="32"
+                        shortDesc="#{bindings.LoanDate.hints.tooltip}" id="id4">
+            <f:validator binding="#{bindings.LoanDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.LoanDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.LoanAmount.inputValue}" label="Total Loan Amount"
+                        required="#{bindings.LoanAmount.hints.mandatory}" columns="35"
+                        maximumLength="#{bindings.LoanAmount.hints.precision}"
+                        shortDesc="#{bindings.LoanAmount.hints.tooltip}" id="it19">
+            <f:validator binding="#{bindings.LoanAmount.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.LoanAmount.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.InstallmentCount.inputValue}" label="No. Of Installments"
+                        required="#{bindings.InstallmentCount.hints.mandatory}" columns="35"
+                        maximumLength="#{bindings.InstallmentCount.hints.precision}"
+                        shortDesc="#{bindings.InstallmentCount.hints.tooltip}" id="it20">
+            <f:validator binding="#{bindings.InstallmentCount.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.InstallmentCount.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.InstallmentAmount.inputValue}" label="Installment Amount"
+                        required="#{bindings.InstallmentAmount.hints.mandatory}" columns="35"
+                        maximumLength="#{bindings.InstallmentAmount.hints.precision}"
+                        shortDesc="#{bindings.InstallmentAmount.hints.tooltip}" id="it21">
+            <f:validator binding="#{bindings.InstallmentAmount.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.InstallmentAmount.format}"/>
+          </af:inputText>
+          <af:selectBooleanCheckbox value="#{bindings.StopDeduction.inputValue}" label="Stop Deduction"
+                                    shortDesc="#{bindings.StopDeduction.hints.tooltip}" id="sbc2"/>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl15">
+              <af:button id="b33" icon="/images/check.png" action="#{backingBeanScope.PayrollBean.saveLoanExit}"/>
+              <af:button id="b34" icon="/images/cancel.png" action="#{backingBeanScope.PayrollBean.exitLoanPopup}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="enabled" id="p3"
+              binding="#{backingBeanScope.PayrollBean.advSalaryPopup}">
+      <af:panelWindow id="pw3">
+        <af:panelFormLayout id="pfl5">
+          <af:panelLabelAndMessage label="Employee" id="plam4">
+            <af:inputListOfValues id="employeeId3Id" popupTitle="Search and Select: #{bindings.EmployeeId3.hints.label}"
+                                  value="#{bindings.EmployeeId3.inputValue}"
+                                  model="#{bindings.EmployeeId3.listOfValuesModel}"
+                                  required="#{bindings.EmployeeId3.hints.mandatory}" columns="35"
+                                  shortDesc="#{bindings.EmployeeId3.hints.tooltip}" inlineStyle="margin-left:-15px">
+              <f:validator binding="#{bindings.EmployeeId3.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId3.format}"/>
+            </af:inputListOfValues>
+            <f:facet name="end">
+              <af:outputText value="#{bindings.EmployeeName3.inputValue}" id="ot22" inlineStyle="font-weight:bolder"/>
+            </f:facet>
+          </af:panelLabelAndMessage>
+          <af:selectOneChoice value="#{bindings.DeductionMonth.inputValue}" label="#{bindings.DeductionMonth.label}"
+                              required="#{bindings.DeductionMonth.hints.mandatory}"
+                              shortDesc="#{bindings.DeductionMonth.hints.tooltip}" id="soc21">
+            <f:selectItems value="#{bindings.DeductionMonth.items}" id="si21"/>
+            <f:validator binding="#{bindings.DeductionMonth.validator}"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.Amount1.inputValue}" label="#{bindings.Amount1.hints.label}"
+                        required="#{bindings.Amount1.hints.mandatory}" columns="35"
+                        maximumLength="#{bindings.Amount1.hints.precision}"
+                        shortDesc="#{bindings.Amount1.hints.tooltip}" id="it10">
+            <f:validator binding="#{bindings.Amount1.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Amount1.format}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.AdvSalaryDate.inputValue}" label="#{bindings.AdvSalaryDate.hints.label}"
+                        required="#{bindings.AdvSalaryDate.hints.mandatory}" columns="35"
+                        shortDesc="#{bindings.AdvSalaryDate.hints.tooltip}" id="id5">
+            <f:validator binding="#{bindings.AdvSalaryDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.AdvSalaryDate.format}"/>
+          </af:inputDate>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl13">
+              <af:button id="b29" icon="/images/check.png"
+                         action="#{backingBeanScope.PayrollBean.saveAdvSalaryAndExit}"/>
+              <af:button id="b30" icon="/images/delete.png" action="#{backingBeanScope.PayrollBean.exitAdvSalary}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="enabled" id="p2"
+              binding="#{backingBeanScope.PayrollBean.overtimePopup}">
+      <af:panelWindow id="pw2">
+        <af:panelFormLayout id="pfl6">
+          <af:panelLabelAndMessage label="Employee" id="plam5">
+            <af:inputListOfValues id="employeeId4Id" popupTitle="Search and Select: #{bindings.EmployeeId4.hints.label}"
+                                  value="#{bindings.EmployeeId4.inputValue}"
+                                  model="#{bindings.EmployeeId4.listOfValuesModel}"
+                                  required="#{bindings.EmployeeId4.hints.mandatory}" columns="32"
+                                  shortDesc="#{bindings.EmployeeId4.hints.tooltip}" inlineStyle="margin-left:-15px">
+              <f:validator binding="#{bindings.EmployeeId4.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId4.format}"/>
+            </af:inputListOfValues>
+            <f:facet name="end">
+              <af:outputText value="#{bindings.EmployeeName4.inputValue}" partialTriggers="employeeId4Id"
+                             shortDesc="#{bindings.EmployeeName4.hints.tooltip}" id="ot32"/>
+            </f:facet>
+          </af:panelLabelAndMessage>
+          <af:inputText value="#{bindings.EmployeeDepartment2.inputValue}" label="Department"
+                        required="#{bindings.EmployeeDepartment2.hints.mandatory}" columns="35"
+                        maximumLength="#{bindings.EmployeeDepartment2.hints.precision}"
+                        shortDesc="#{bindings.EmployeeDepartment2.hints.tooltip}" id="it24">
+            <f:validator binding="#{bindings.EmployeeDepartment2.validator}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.OvertimeDate.inputValue}" label="Overtime Date"
+                        required="#{bindings.OvertimeDate.hints.mandatory}" columns="32"
+                        shortDesc="#{bindings.OvertimeDate.hints.tooltip}" id="id6">
+            <f:validator binding="#{bindings.OvertimeDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.OvertimeDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.OvertimeHours.inputValue}" label="Overtime Hours"
+                        required="#{bindings.OvertimeHours.hints.mandatory}" columns="35"
+                        maximumLength="#{bindings.OvertimeHours.hints.precision}"
+                        shortDesc="#{bindings.OvertimeHours.hints.tooltip}" id="it23">
+            <f:validator binding="#{bindings.OvertimeHours.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.OvertimeHours.format}"/>
+          </af:inputText>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl8">
+              <af:button id="b12" icon="/images/check.png"
+                         action="#{backingBeanScope.PayrollBean.saveOvertimeAndExit}"/>
+              <af:button id="b13" icon="/images/delete.png"
+                         action="#{backingBeanScope.PayrollBean.cancelOvertimePopup}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" autoCancel="enabled" id="p1"
+              binding="#{backingBeanScope.PayrollBean.monthlyAdjustPopup}">
+      <af:panelWindow id="pw1" inlineStyle="width:800px">
+        <af:panelFormLayout id="pfl2" labelAlignment="top" maxColumns="1" rows="6">
+          <af:panelLabelAndMessage label="Employee" id="plam1" for="Employee" inlineStyle="margin-left:-16px">
+            <af:inputListOfValues id="Employee" popupTitle="Search and Select: #{bindings.EmployeeId.hints.label}"
+                                  value="#{bindings.EmployeeId.inputValue}"
+                                  model="#{bindings.EmployeeId.listOfValuesModel}"
+                                  required="#{bindings.EmployeeId.hints.mandatory}" columns="18"
+                                  shortDesc="#{bindings.EmployeeId.hints.tooltip}">
+              <f:validator binding="#{bindings.EmployeeId.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeId.format}"/>
+            </af:inputListOfValues>
+            <f:facet name="end">
+              <af:outputText value="#{bindings.EmployeeName.inputValue}" id="ot6" inlineStyle="font-weight:bolder"/>
+            </f:facet>
+          </af:panelLabelAndMessage>
+          <af:inputText value="#{bindings.EmployeeDepartment.inputValue}" label="Department"
+                        required="#{bindings.EmployeeDepartment.hints.mandatory}" columns="20"
+                        maximumLength="#{bindings.EmployeeDepartment.hints.precision}"
+                        shortDesc="#{bindings.EmployeeDepartment.hints.tooltip}" partialTriggers="Employee" id="it11"
+                        disabled="true">
+            <f:validator binding="#{bindings.EmployeeDepartment.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.EmployeeDesignation.inputValue}" label="Designation"
+                        required="#{bindings.EmployeeDesignation.hints.mandatory}" columns="20"
+                        maximumLength="#{bindings.EmployeeDesignation.hints.precision}"
+                        shortDesc="#{bindings.EmployeeDesignation.hints.tooltip}" partialTriggers="Employee" id="it12"
+                        disabled="true">
+            <f:validator binding="#{bindings.EmployeeDesignation.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.EmployeeGrade.inputValue}" label="Grade"
+                        required="#{bindings.EmployeeGrade.hints.mandatory}" columns="20"
+                        maximumLength="#{bindings.EmployeeGrade.hints.precision}"
+                        shortDesc="#{bindings.EmployeeGrade.hints.tooltip}" partialTriggers="Employee" id="it13"
+                        disabled="true">
+            <f:validator binding="#{bindings.EmployeeGrade.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.AdjustmentType.inputValue}" label="Adjustment For"
+                              required="#{bindings.AdjustmentType.hints.mandatory}"
+                              shortDesc="#{bindings.AdjustmentType.hints.tooltip}" id="soc9" contentStyle="width:135px">
+            <f:selectItems value="#{bindings.AdjustmentType.items}" id="si9"/>
+            <f:validator binding="#{bindings.AdjustmentType.validator}"/>
+          </af:selectOneChoice>
+          <af:panelGroupLayout id="pgl3" layout="horizontal">
+            <af:inputDate value="#{bindings.AllowDeductDate.inputValue}"
+                          required="#{bindings.AllowDeductDate.hints.mandatory}" columns="15"
+                          shortDesc="#{bindings.AllowDeductDate.hints.tooltip}" id="id1" placeholder="Date">
+              <f:validator binding="#{bindings.AllowDeductDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.AllowDeductDate.format}"/>
+            </af:inputDate>
+            <af:inputText value="#{bindings.Amount.inputValue}" required="#{bindings.Amount.hints.mandatory}"
+                          columns="10" maximumLength="#{bindings.Amount.hints.precision}"
+                          shortDesc="#{bindings.Amount.hints.tooltip}" id="it14" placeholder="Amount">
+              <f:validator binding="#{bindings.Amount.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.Amount.format}"/>
+            </af:inputText>
+          </af:panelGroupLayout>
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl17" layout="horizontal">
+              <af:button id="b6" action="#{backingBeanScope.PayrollBean.hideMonthlyAdjustPopup}"
+                         icon="/images/check.png"/>
+              <af:button id="b36" icon="/images/cancel.png" action="#{backingBeanScope.PayrollBean.cancelAdjustment}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelFormLayout>
+      </af:panelWindow>
+    </af:popup>
+    <af:popup childCreation="deferred" id="p7" binding="#{backingBeanScope.PayrollBean.payrollConfirmationDialog}">
+      <af:panelWindow id="pw6">
+        <af:panelFormLayout id="pfl11">
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl29">
+              <af:button text="Yes" id="b21" action="#{backingBeanScope.PayrollBean.runPayrollYesOption}"/>
+              <af:button text="No" id="b22" action="#{backingBeanScope.PayrollBean.runPayrollNoOption}"/>
+            </af:panelGroupLayout>
+          </f:facet>
+          <af:outputText value="Payroll run exists, Do you want to re-run ?" id="ot39" inlineStyle="font-size:20px"/>
+        </af:panelFormLayout>
+      </af:panelWindow>
+    </af:popup>
+  </af:panelGroupLayout>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:PayrollBean-->
+</ui:composition>

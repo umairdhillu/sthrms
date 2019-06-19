@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="leave_managementPageDef"
+                Package="hr.pagefragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EmployeeLeavesView1" RangeSize="25" DataControl="LeaveManagementAMDataControl"
+              id="EmployeeLeavesView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="EmployeeLeavesView1Iterator" id="CreateInsert"
+            InstanceName="LeaveManagementAMDataControl.EmployeeLeavesView1" DataControl="LeaveManagementAMDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" DataControl="LeaveManagementAMDataControl" RequiresUpdateModel="true"
+            Action="commitTransaction"/>
+    <action id="Rollback" DataControl="LeaveManagementAMDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <methodAction id="leaveAction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="leaveAction"
+                  IsViewObjectMethod="false" DataControl="HRAMDataControl"
+                  InstanceName="bindings.leaveAction.dataControl.dataProvider">
+      <NamedData NDName="employeeID" NDType="int"/>
+      <NamedData NDName="leaveID" NDType="int"/>
+      <NamedData NDName="action" NDType="java.lang.String"/>
+      <NamedData NDName="leaveType" NDType="java.lang.String"/>
+      <NamedData NDName="total" NDType="int"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

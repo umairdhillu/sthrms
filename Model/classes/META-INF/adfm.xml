@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<MetadataDirectory xmlns="http://xmlns.oracle.com/adfm/metainf" version="11.1.1.0.0">
+   <BusinessComponentProjectRegistry path="com/soltechsystem/model/Model.jpx"/>
+   <BusinessComponentServiceRegistry path="com/soltechsystem/model/dashboard/am/common/bc4j.xcfg"/>
+   <BusinessComponentServiceRegistry path="com/soltechsystem/model/hr/LeaveManagement/am/common/bc4j.xcfg"/>
+   <BusinessComponentServiceRegistry path="com/soltechsystem/model/hr/am/common/bc4j.xcfg"/>
+   <BusinessComponentServiceRegistry path="com/soltechsystem/model/prl/am/common/bc4j.xcfg"/>
+   <BusinessComponentServiceRegistry path="com/soltechsystem/model/recruitment/am/common/bc4j.xcfg"/>
+   <BusinessComponentServiceRegistry path="com/soltechsystem/model/sys/am/common/bc4j.xcfg"/>
+   <BusinessComponentServiceRegistry path="com/soltechsystem/model/tms/am/common/bc4j.xcfg"/>
+</MetadataDirectory>

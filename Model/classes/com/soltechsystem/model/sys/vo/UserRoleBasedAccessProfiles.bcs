@@ -1,0 +1,12 @@
+//Groovy Scripts for com.soltechsystem.model.sys.vo.UserRoleBasedAccessProfiles
+
+package com.soltechsystem.model.sys.vo
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="p_userid")
+def p_userid_VariableScript_Variable()
+{
+adf.context.current.sessionScope.get('userid')
+}
+

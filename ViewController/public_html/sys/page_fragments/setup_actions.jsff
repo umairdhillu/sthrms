@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelTabbed position="above" id="pt1">
+    <af:showDetailItem id="lookup" text="Define Lookups" disclosed="true">
+      <af:panelGroupLayout id="pgl4" layout="vertical">
+        <af:panelBox id="pb4" icon="/images/find.png">
+          <f:facet name="toolbar"/>
+          <af:query id="qryId1" headerText="Search" disclosed="true"
+                    value="#{bindings.HrLookupContextViewCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.HrLookupContextViewCriteriaQuery.queryModel}"
+                    queryListener="#{bindings.HrLookupContextViewCriteriaQuery.processQuery}"
+                    queryOperationListener="#{bindings.HrLookupContextViewCriteriaQuery.processQueryOperation}"
+                    displayMode="simple" saveQueryMode="hidden"/>
+        </af:panelBox>
+        <af:panelBox text="Lookups ( Define lookups for List of Values )" id="pb1" showDisclosure="false"
+                     background="light">
+          <f:facet name="toolbar"/>
+          <af:panelGridLayout id="pgl2">
+            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+              <af:gridCell marginStart="5px" width="30%" id="gc1" halign="stretch">
+                <af:panelBox id="pb2" showDisclosure="false">
+                  <f:facet name="toolbar">
+                    <af:panelGroupLayout id="pgl3">
+                      <af:button actionListener="#{bindings.Previous.execute}" disabled="#{!bindings.Previous.enabled}"
+                                 partialSubmit="true" id="b3" icon="/images/shuttle_left.png"/>
+                      <af:button actionListener="#{bindings.Next.execute}" disabled="#{!bindings.Next.enabled}"
+                                 partialSubmit="true" id="b2" icon="/images/shuttle_right.png"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <af:panelFormLayout id="pfl1" labelAlignment="top">
+                    <af:inputText value="#{bindings.ContextName.inputValue}" label="Context"
+                                  required="#{bindings.ContextName.hints.mandatory}" columns="35"
+                                  maximumLength="#{bindings.ContextName.hints.precision}"
+                                  shortDesc="#{bindings.ContextName.hints.tooltip}" id="it1">
+                      <f:validator binding="#{bindings.ContextName.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.Description.inputValue}"
+                                  required="#{bindings.Description.hints.mandatory}" columns="40"
+                                  maximumLength="#{bindings.Description.hints.precision}"
+                                  shortDesc="#{bindings.Description.hints.tooltip}" id="it2" rows="6"
+                                  placeholder="Type description where this context will be used in application">
+                      <f:validator binding="#{bindings.Description.validator}"/>
+                    </af:inputText>
+                  </af:panelFormLayout>
+                </af:panelBox>
+              </af:gridCell>
+              <af:gridCell marginStart="5px" width="70%" marginEnd="5px" id="gc2">
+                <af:panelBox id="pb3" showDisclosure="false">
+                  <f:facet name="toolbar">
+                    <af:button actionListener="#{bindings.CreateInsert.execute}"
+                               disabled="#{!bindings.CreateInsert.enabled}" id="b1" icon="/images/new.png"/>
+                  </f:facet>
+                  <af:table value="#{bindings.HrLookupValuesView1.collectionModel}" var="row"
+                            rows="#{bindings.HrLookupValuesView1.rangeSize}"
+                            emptyText="#{bindings.HrLookupValuesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.HrLookupValuesView1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.HrLookupValuesView1.collectionModel.makeCurrent}"
+                            rowSelection="single" fetchSize="#{bindings.HrLookupValuesView1.rangeSize}" id="t1"
+                            partialTriggers="::b1">
+                    <af:column headerText="Lookup Value" id="c1" width="200">
+                      <af:inputText value="#{row.bindings.LookupValue.inputValue}"
+                                    label="#{bindings.HrLookupValuesView1.hints.LookupValue.label}"
+                                    required="#{bindings.HrLookupValuesView1.hints.LookupValue.mandatory}"
+                                    columns="#{bindings.HrLookupValuesView1.hints.LookupValue.displayWidth}"
+                                    maximumLength="#{bindings.HrLookupValuesView1.hints.LookupValue.precision}"
+                                    shortDesc="#{bindings.HrLookupValuesView1.hints.LookupValue.tooltip}" id="it3">
+                        <f:validator binding="#{row.bindings.LookupValue.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column id="c2" headerText="Value Description" width="400">
+                      <af:inputText value="#{row.bindings.ValueDescription.inputValue}" simple="true"
+                                    required="#{bindings.HrLookupValuesView1.hints.ValueDescription.mandatory}"
+                                    columns="#{bindings.HrLookupValuesView1.hints.ValueDescription.displayWidth}"
+                                    maximumLength="#{bindings.HrLookupValuesView1.hints.ValueDescription.precision}"
+                                    shortDesc="#{bindings.HrLookupValuesView1.hints.ValueDescription.tooltip}" id="it4">
+                        <f:validator binding="#{row.bindings.ValueDescription.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column id="c3" headerText="Enabled">
+                      <af:selectBooleanCheckbox value="#{row.bindings.Enabled.inputValue}"
+                                                label="#{row.bindings.Enabled.label}"
+                                                shortDesc="#{bindings.HrLookupValuesView1.hints.Enabled.tooltip}"
+                                                id="sbc1"/>
+                    </af:column>
+                  </af:table>
+                </af:panelBox>
+              </af:gridCell>
+            </af:gridRow>
+          </af:panelGridLayout>
+        </af:panelBox>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+    <af:showDetailItem id="master_profile" text="Define Profiles"/>
+  </af:panelTabbed>
+</ui:composition>

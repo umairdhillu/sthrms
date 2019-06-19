@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeeLeaves"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="EMPLOYEE_LEAVES"
+  AliasName="EmployeeLeaves"
+  BindingStyle="OracleName"
+  RowClass="com.soltechsystem.model.hr.LeaveManagement.Entity.EmployeeLeavesImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="LeaveId"
+    IsNotNull="true"
+    ColumnName="LEAVE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEE_LEAVES"
+    PrimaryKey="true">
+    <TransientExpression
+      Name="ExpressionScript"
+      CodeSourceName="EmployeeLeavesRow"/>
+  </Attribute>
+  <Attribute
+    Name="LeaveType"
+    ColumnName="LEAVE_TYPE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEE_LEAVES"/>
+  <Attribute
+    Name="LeaveStatus"
+    Precision="20"
+    ColumnName="LEAVE_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="EMPLOYEE_LEAVES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LeaveFrom"
+    ColumnName="LEAVE_FROM"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="EMPLOYEE_LEAVES"/>
+  <Attribute
+    Name="LeaveTo"
+    ColumnName="LEAVE_TO"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="EMPLOYEE_LEAVES"/>
+  <Attribute
+    Name="EmployeeId"
+    ColumnName="EMPLOYEE_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEE_LEAVES"/>
+  <Attribute
+    Name="CreatedBy"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEE_LEAVES"/>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="EMPLOYEE_LEAVES"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="UpdatedBy"
+    ColumnName="UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEE_LEAVES"/>
+  <Attribute
+    Name="UpdationDate"
+    ColumnName="UPDATION_DATE"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="EMPLOYEE_LEAVES"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="VersionNumber"
+    ColumnName="VERSION_NUMBER"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="EMPLOYEE_LEAVES"
+    HistoryColumn="VersionHistory"/>
+  <Key
+    Name="SysC0010979"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0010979"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.soltechsystem.model.hr.LeaveManagement.Entity.EmployeeLeaves.LeaveId"/>
+    </AttrArray>
+  </Key>
+</Entity>
